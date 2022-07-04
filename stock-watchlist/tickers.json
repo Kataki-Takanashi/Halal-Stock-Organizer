@@ -1,0 +1,196 @@
+{
+  "logs": [
+    {
+      "ticker": "TSLA",
+      "halal": true
+    },
+    {
+      "ticker": "BTC",
+      "halal": true
+    },
+    {
+      "ticker": "QCOM",
+      "halal": true
+    },
+    {
+      "ticker": "AZPN",
+      "halal": true
+    },
+    {
+      "ticker": "RRX",
+      "halal": true
+    },
+    {
+      "ticker": "EOG",
+      "halal": true
+    },
+    {
+      "ticker": "NOW",
+      "halal": true
+    },
+    {
+      "ticker": "LLY",
+      "halal": true
+    },
+    {
+      "ticker": "MRK",
+      "halal": true
+    },
+    {
+      "ticker": "MIDD",
+      "halal": true
+    },
+    {
+      "ticker": "CL",
+      "halal": true
+    },
+    {
+      "ticker": "CHRW",
+      "halal": true
+    },
+    {
+      "ticker": "PEP",
+      "halal": true
+    },
+    {
+      "ticker": "SNDR",
+      "halal": true
+    },
+    {
+      "ticker": "CHD",
+      "halal": true
+    },
+    {
+      "ticker": "MCK",
+      "halal": true
+    },
+    {
+      "ticker": "VRTX",
+      "halal": true
+    },
+    {
+      "ticker": "ARLP",
+      "halal": true
+    },
+    {
+      "ticker": "XOM",
+      "halal": true
+    },
+    {
+      "ticker": "MGY",
+      "halal": true
+    },
+    {
+      "ticker": "CSGS",
+      "halal": true
+    },
+    {
+      "ticker": "CHK",
+      "halal": true
+    },
+    {
+      "ticker": "FCX",
+      "halal": true
+    },
+    {
+      "ticker": "FLO",
+      "halal": true
+    },
+    {
+      "ticker": "BAX",
+      "halal": true
+    },
+    {
+      "ticker": "CVX",
+      "halal": true
+    },
+    {
+      "ticker": "ORLY",
+      "halal": true
+    },
+    {
+      "ticker": "WFG",
+      "halal": true
+    },
+    {
+      "ticker": "HPQ",
+      "halal": true
+    },
+    {
+      "ticker": "WY",
+      "halal": true
+    },
+    {
+      "ticker": "PG",
+      "halal": true
+    },
+    {
+      "ticker": "CDNS",
+      "halal": true
+    },
+    {
+      "ticker": "K",
+      "halal": false
+    },
+    {
+      "ticker": "CPB",
+      "halal": false
+    },
+    {
+      "ticker": "HOLX",
+      "halal": true
+    },
+    {
+      "ticker": "BOX",
+      "halal": true
+    },
+    {
+      "ticker": "WEC",
+      "halal": false
+    },
+    {
+      "ticker": "JNJ",
+      "halal": true
+    },
+    {
+      "ticker": "AAPL",
+      "halal": true
+    },
+    {
+      "ticker": "GO",
+      "halal": false
+    },
+    {
+      "ticker": "HALO",
+      "halal": true
+    },
+    {
+      "ticker": "TEST1",
+      "halal": true
+    },
+    {
+      "ticker": "WPC",
+      "halal": false
+    },
+    {
+      "ticker": "CALM",
+      "halal": true
+    },
+    {
+      "ticker": "FND",
+      "halal": true
+    },
+    {
+      "ticker": "LPLA",
+      "halal": false
+    },
+    {
+      "ticker": "PGR",
+      "halal": false
+    },
+    {
+      "ticker": "CEG",
+      "halal": false
+    }
+  ]
+}

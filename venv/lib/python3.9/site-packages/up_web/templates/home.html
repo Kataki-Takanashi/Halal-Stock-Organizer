@@ -1,0 +1,91 @@
+{% extends "core/base.html" %}
+
+{% block styles %}
+	{{ super () }}
+	<link rel="stylesheet" href="/css/graphs.css">
+{% endblock %}
+
+{% block scripts %}
+	{{ super () }}
+	<script src="/js/graphs.js"></script>
+{% endblock %}
+
+{% block nav_extras %}
+	{{ super () }}
+	<form class="navbar-form navbar-right" role="search">
+		<select id="path-selector" class="path-selector">
+			<option>Select a Status</option>
+			{% for path in paths %}
+				<option value="{{ path }}">{{ path }}</option>
+			{% endfor %}
+		</select>
+	</form>
+{% endblock %}
+
+{% block body %}
+	<div class="js-chart-container container">
+		<article class="quality">
+			<h2>Up&ndash;Duration Relationship</h2>
+			<figure class="chart">
+				<figcaption>Scatter</figcaption>
+				<div id="up-duration-chart"></div>
+				<div class="timeline"></div>
+			</figure>
+		</article>
+
+		<article class="quality">
+			<h2>Up-ness</h2>
+			<figure class="chart">
+				<figcaption>Raw data</figcaption>
+				<div id="up-chart"></div>
+				<div class="timeline"></div>
+			</figure>
+			<figure class="chart">
+				<figcaption>Histogram</figcaption>
+				<div id="up-buckets-chart"></div>
+			</figure>
+			<figure class="chart">
+				<figcaption>By Month</figcaption>
+				<div id="up-monthly-chart"></div>
+			</figure>
+			<figure class="chart">
+				<figcaption>By Day of Week</figcaption>
+				<div id="up-weekly-chart"></div>
+			</figure>
+			<figure class="chart">
+				<figcaption>By Hour</figcaption>
+				<div id="up-daily-chart"></div>
+			</figure>
+		</article>
+
+		<article class="quality">
+			<h2>Time to determine</h2>
+			<figure class="chart">
+				<figcaption>Raw data</figcaption>
+				<div id="duration-chart"></div>
+				<div class="timeline"></div>
+			</figure>
+			<figure class="chart">
+				<figcaption>By Month</figcaption>
+				<div id="duration-monthly-chart"></div>
+			</figure>
+			<figure class="chart">
+				<figcaption>By Day of Week</figcaption>
+				<div id="duration-weekly-chart"></div>
+			</figure>
+			<figure class="chart">
+				<figcaption>By Hour</figcaption>
+				<div id="duration-daily-chart"></div>
+			</figure>
+		</article>
+	</div>
+
+	<div id="up-duration-popover" class="popover right">
+		<div class="arrow"></div>
+		<h3 class="popover-title"><span class="date number"></span></h3>
+		<div class="popover-content">
+			<b><span class="up number"></span></b> up<br>
+			<b><span class="duration number"></span></b> response<br>
+		</div>
+	</div>
+{% endblock %}

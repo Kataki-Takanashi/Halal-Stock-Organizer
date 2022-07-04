@@ -1,0 +1,794 @@
+{
+  "logs": [
+    {
+      "ticker": "TSLA",
+      "time": "12/06/2022 02:25:51",
+      "packet": [
+        "12/06/2022 02:25:51",
+        [
+          -13.0,
+          [
+            "Is UNDER the 200!",
+            "Is under the 9!",
+            "Is one candle close UNDER the 9! (sell)",
+            "MACD Is above the the red (line) or is in the green (bar)!",
+            "MACD Is reversing to red or crossing under the red!",
+            "RSI is high!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending DOWN!",
+            "Is BELOW the Ribbons!",
+            "VPVR looks bad!",
+            "LUX looks bad!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "PG",
+      "time": "12/06/2022 16:14:06",
+      "packet": [
+        "12/06/2022 16:14:06",
+        [
+          -10.8,
+          [
+            "Is UNDER the 200!",
+            "Is under the 9!",
+            "Is one candle close UNDER the 9! (sell)",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "RSI is high!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending DOWN!",
+            "Is BELOW the Ribbons!",
+            "VPVR looks good!",
+            "LUX looks bad!",
+            "Is in the buy cloud!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "HOLX",
+      "time": "12/06/2022 21:30:55",
+      "packet": [
+        "12/06/2022 21:30:55",
+        [
+          -8.3,
+          [
+            "Is UNDER the 200!",
+            "Is under the 9!",
+            "Is one candle close UNDER the 9! (sell)",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "RSI is low!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending DOWN!",
+            "Is BELOW the Ribbons!",
+            "VPVR looks good!",
+            "Is about to jump UP!",
+            "LUX looks bad!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "BOX",
+      "time": "13/06/2022 16:52:41",
+      "packet": [
+        "13/06/2022 16:52:41",
+        [
+          -7.3,
+          [
+            "Is UNDER the 200!",
+            "Is under the 9!",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "RSI is low!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending DOWN!",
+            "Is BELOW the Ribbons!",
+            "VPVR looks good!",
+            "LUX looks bad!",
+            "Is near or in the buy cloud!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "JNJ",
+      "time": "13/06/2022 17:17:22",
+      "packet": [
+        "13/06/2022 17:17:22",
+        [
+          -4.8,
+          [
+            "Is above the 200!",
+            "Is about to cross UNDER the 200!",
+            "Is under the 9!",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "RSI is low!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending DOWN!",
+            "Is BELOW the Ribbons!",
+            "VPVR looks good!",
+            "LUX looks bad!",
+            "Is near or in the buy cloud!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "AAPL",
+      "time": "13/06/2022 17:17:23",
+      "packet": [
+        "13/06/2022 17:17:23",
+        [
+          -8.8,
+          [
+            "Is UNDER the 200!",
+            "Is under the 9!",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "RSI is low!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending DOWN!",
+            "Is BELOW the Ribbons!",
+            "VPVR looks good!",
+            "LUX looks bad!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "EOG",
+      "time": "13/06/2022 22:40:54",
+      "packet": [
+        "13/06/2022 22:40:54",
+        [
+          -6.6,
+          [
+            "Is above the 200!",
+            "Is under the 9!",
+            "Is one candle close UNDER the 9! (sell)",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "RSI is high!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending UP!",
+            "Is above the Ribbons!",
+            "VPVR looks good!",
+            "Is about to jump DOWN!",
+            "LUX looks bad!",
+            "Is near or in the sell cloud!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "LLY",
+      "time": "13/06/2022 22:40:34",
+      "packet": [
+        "13/06/2022 22:40:34",
+        [
+          -2.6,
+          [
+            "Is above the 200!",
+            "Is under the 9!",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "RSI is low!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending UP!",
+            "Is BELOW the Ribbons!",
+            "VPVR looks good!",
+            "LUX looks bad!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "MRK",
+      "time": "13/06/2022 22:52:29",
+      "packet": [
+        "13/06/2022 22:52:29",
+        [
+          -4.1,
+          [
+            "Is above the 200!",
+            "Is about to cross UNDER the 200!",
+            "Is under the 9!",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "RSI is low!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending UP!",
+            "Is BELOW the Ribbons!",
+            "VPVR looks good!",
+            "LUX looks bad!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "CVX",
+      "time": "13/06/2022 22:52:34",
+      "packet": [
+        "13/06/2022 22:52:34",
+        [
+          -2.6,
+          [
+            "Is above the 200!",
+            "Is under the 9!",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "RSI is low!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending UP!",
+            "Is BELOW the Ribbons!",
+            "VPVR looks good!",
+            "LUX looks bad!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "CHK",
+      "time": "13/06/2022 22:52:39",
+      "packet": [
+        "13/06/2022 22:52:39",
+        [
+          0.9,
+          [
+            "Is above the 200!",
+            "Is under the 9!",
+            "Is one candle close UNDER the 9! (sell)",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "RSI is low!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending UP!",
+            "Is above the Ribbons!",
+            "VPVR looks good!",
+            "LUX looks good!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "MGY",
+      "time": "13/06/2022 23:13:49",
+      "packet": [
+        "13/06/2022 23:13:49",
+        [
+          -3.1,
+          [
+            "Is above the 200!",
+            "Is under the 9!",
+            "Is one candle close UNDER the 9! (sell)",
+            "MACD Is above the the red (line) or is in the green (bar)!",
+            "MACD Is reversing to red or crossing under the red!",
+            "RSI is high!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending UP!",
+            "Is above the Ribbons!",
+            "VPVR looks good!",
+            "Is about to jump DOWN!",
+            "LUX looks good!",
+            "Is near or in the sell cloud!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "XOM",
+      "time": "13/06/2022 23:13:50",
+      "packet": [
+        "13/06/2022 23:13:50",
+        [
+          -2.6,
+          [
+            "Is above the 200!",
+            "Is under the 9!",
+            "Is one candle close UNDER the 9! (sell)",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "RSI is low!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending UP!",
+            "Is above the Ribbons!",
+            "VPVR looks good!",
+            "LUX looks bad!",
+            "Is near or in the sell cloud!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "ARLP",
+      "time": "13/06/2022 23:13:51",
+      "packet": [
+        "13/06/2022 23:13:51",
+        [
+          -1.6,
+          [
+            "Is above the 200!",
+            "Is under the 9!",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "RSI is low!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending UP!",
+            "Is above the Ribbons!",
+            "VPVR looks good!",
+            "Is about to jump DOWN!",
+            "LUX looks bad!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "VRTX",
+      "time": "13/06/2022 23:13:52",
+      "packet": [
+        "13/06/2022 23:13:52",
+        [
+          -4.1,
+          [
+            "Is above the 200!",
+            "Is under the 9!",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "RSI is low!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending UP!",
+            "Is BELOW the Ribbons!",
+            "VPVR looks good!",
+            "LUX looks bad!",
+            "Is near or in the sell cloud!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "MCK",
+      "time": "13/06/2022 23:13:53",
+      "packet": [
+        "13/06/2022 23:13:53",
+        [
+          -6.1,
+          [
+            "Is above the 200!",
+            "Is under the 9!",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "RSI is low!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending UP!",
+            "Is BELOW the Ribbons!",
+            "VPVR looks good!",
+            "Is about to jump DOWN!",
+            "LUX looks bad!",
+            "Is near or in the sell cloud!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "EOG",
+      "time": "16/06/2022 10:46:02",
+      "packet": [
+        "16/06/2022 10:46:02",
+        [
+          -2.6,
+          [
+            "Is above the 200!",
+            "Is under the 9!",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "RSI is low!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending UP!",
+            "Is BELOW the Ribbons!",
+            "VPVR looks good!",
+            "LUX looks bad!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "LLY",
+      "time": "16/06/2022 10:59:29",
+      "packet": [
+        "16/06/2022 10:59:29",
+        [
+          -6.8,
+          [
+            "Is above the 200!",
+            "Is under the 9!",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "RSI is low!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending DOWN!",
+            "Is BELOW the Ribbons!",
+            "VPVR looks good!",
+            "Is about to jump DOWN!",
+            "LUX looks bad!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "MRK",
+      "time": "16/06/2022 11:04:21",
+      "packet": [
+        "16/06/2022 11:04:21",
+        [
+          -8.3,
+          [
+            "Is above the 200!",
+            "Is about to cross UNDER the 200!",
+            "Is under the 9!",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "RSI is low!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending DOWN!",
+            "Is BELOW the Ribbons!",
+            "VPVR looks good!",
+            "Is about to jump DOWN!",
+            "LUX looks bad!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "CHRW",
+      "time": "16/06/2022 11:09:51",
+      "packet": [
+        "16/06/2022 11:09:51",
+        [
+          -4.3,
+          [
+            "Is above the 200!",
+            "Is about to cross UNDER the 200!",
+            "Is under the 9!",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "RSI is low!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending DOWN!",
+            "Is BELOW the Ribbons!",
+            "VPVR looks good!",
+            "Is about to jump UP!",
+            "LUX looks bad!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "CVX",
+      "time": "16/06/2022 11:13:00",
+      "packet": [
+        "16/06/2022 11:13:00",
+        [
+          -2.8,
+          [
+            "Is above the 200!",
+            "Is under the 9!",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "RSI is low!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending DOWN!",
+            "Is BELOW the Ribbons!",
+            "VPVR looks good!",
+            "Is about to jump UP!",
+            "LUX looks bad!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "CHK",
+      "time": "16/06/2022 11:24:41",
+      "packet": [
+        "16/06/2022 11:24:41",
+        [
+          -4.8,
+          [
+            "Is above the 200!",
+            "Is under the 9!",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "RSI is low!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending DOWN!",
+            "Is BELOW the Ribbons!",
+            "VPVR looks good!",
+            "LUX looks bad!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "MGY",
+      "time": "16/06/2022 11:26:24",
+      "packet": [
+        "16/06/2022 11:26:24",
+        [
+          -2.6,
+          [
+            "Is above the 200!",
+            "Is under the 9!",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "RSI is low!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending UP!",
+            "Is BELOW the Ribbons!",
+            "VPVR looks good!",
+            "LUX looks bad!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "XOM",
+      "time": "16/06/2022 11:28:30",
+      "packet": [
+        "16/06/2022 11:28:30",
+        [
+          -4.1,
+          [
+            "Is above the 200!",
+            "Is under the 9!",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "RSI is low!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending UP!",
+            "Is BELOW the Ribbons!",
+            "VPVR looks good!",
+            "LUX looks bad!",
+            "Is near or in the sell cloud!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "ARLP",
+      "time": "16/06/2022 11:30:08",
+      "packet": [
+        "16/06/2022 11:30:08",
+        [
+          -4.8,
+          [
+            "Is above the 200!",
+            "Is under the 9!",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "RSI is low!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending DOWN!",
+            "Is BELOW the Ribbons!",
+            "VPVR looks good!",
+            "LUX looks bad!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "VRTX",
+      "time": "16/06/2022 11:31:34",
+      "packet": [
+        "16/06/2022 11:31:34",
+        [
+          -4.8,
+          [
+            "Is above the 200!",
+            "Is under the 9!",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "RSI is low!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending DOWN!",
+            "Is BELOW the Ribbons!",
+            "VPVR looks good!",
+            "LUX looks bad!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "MCK",
+      "time": "16/06/2022 11:33:11",
+      "packet": [
+        "16/06/2022 11:33:11",
+        [
+          -6.8,
+          [
+            "Is above the 200!",
+            "Is under the 9!",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "RSI is low!",
+            "No gogo juise! :(",
+            "Heiken Ashi is trending DOWN!",
+            "Smoothed Heiken Ashi Candles are trending DOWN!",
+            "Is BELOW the Ribbons!",
+            "VPVR looks good!",
+            "Is about to jump DOWN!",
+            "LUX looks bad!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "VRTX",
+      "time": "17/06/2022 17:19:29",
+      "packet": [
+        "17/06/2022 17:19:29",
+        [
+          11.4,
+          [
+            "Is above the 200!",
+            "Is above the 9!",
+            "MACD Is above the the red (line) or is in the green (bar)!",
+            "RSI is high!",
+            "We have GoGo Juise!",
+            "Heiken Ashi is trending UP!",
+            "Smoothed Heiken Ashi Candles are trending DOWN!",
+            "Is above the Ribbons!",
+            "VPVR looks good!",
+            "Is about to jump UP!",
+            "LUX looks good!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "HALO",
+      "time": "17/06/2022 18:15:23",
+      "packet": [
+        "17/06/2022 18:15:23",
+        [
+          6.9,
+          [
+            "Is above the 200!",
+            "Is above the 9!",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "MACD Is reverseing to green or crossing above the red!",
+            "RSI is low!",
+            "We have GoGo Juise!",
+            "Heiken Ashi is trending UP!",
+            "Smoothed Heiken Ashi Candles are trending DOWN!",
+            "Is BELOW the Ribbons!",
+            "VPVR looks good!",
+            "Is about to jump UP!",
+            "LUX looks bad!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "LLY",
+      "time": "21/06/2022 13:23:10",
+      "packet": [
+        "21/06/2022 13:23:10",
+        [
+          9.4,
+          [
+            "Is above the 200!",
+            "Is above the 9!",
+            "Is one candle close above the 9!",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "MACD Is reverseing to green or crossing above the red!",
+            "RSI is high!",
+            "We have GoGo Juise!",
+            "Heiken Ashi is trending UP!",
+            "Smoothed Heiken Ashi Candles are trending DOWN!",
+            "Is above the Ribbons!",
+            "VPVR looks good!",
+            "Is about to jump UP!",
+            "LUX looks bad!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "CALM",
+      "time": "21/06/2022 13:29:02",
+      "packet": [
+        "21/06/2022 13:29:02",
+        [
+          10.6,
+          [
+            "Is UNDER the 200!",
+            "Is about to cross above the 200!",
+            "Is above the 9!",
+            "MACD Is above the the red (line) or is in the green (bar)!",
+            "RSI is high!",
+            "We have GoGo Juise!",
+            "Heiken Ashi is trending UP!",
+            "Smoothed Heiken Ashi Candles are trending UP!",
+            "Is above the Ribbons!",
+            "VPVR looks good!",
+            "Is about to jump UP!",
+            "LUX looks good!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "AZPN",
+      "time": "21/06/2022 13:31:41",
+      "packet": [
+        "21/06/2022 13:31:41",
+        [
+          7.9,
+          [
+            "Is above the 200!",
+            "Is above the 9!",
+            "MACD Is UNDER the red (line) or is in the red (bar)!",
+            "MACD Is reverseing to green or crossing above the red!",
+            "RSI is high!",
+            "We have GoGo Juise!",
+            "Heiken Ashi is trending UP!",
+            "Smoothed Heiken Ashi Candles are trending DOWN!",
+            "Is above the Ribbons!",
+            "VPVR looks good!",
+            "LUX looks good!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "VRTX",
+      "time": "21/06/2022 13:33:23",
+      "packet": [
+        "21/06/2022 13:33:23",
+        [
+          13.6,
+          [
+            "Is above the 200!",
+            "Is above the 9!",
+            "MACD Is above the the red (line) or is in the green (bar)!",
+            "RSI is high!",
+            "We have GoGo Juise!",
+            "Heiken Ashi is trending UP!",
+            "Smoothed Heiken Ashi Candles are trending UP!",
+            "Is above the Ribbons!",
+            "VPVR looks good!",
+            "Is about to jump UP!",
+            "LUX looks good!"
+          ]
+        ]
+      ]
+    },
+    {
+      "ticker": "HALO",
+      "time": "21/06/2022 13:36:10",
+      "packet": [
+        "21/06/2022 13:36:10",
+        [
+          9.4,
+          [
+            "Is above the 200!",
+            "Is above the 9!",
+            "MACD Is above the the red (line) or is in the green (bar)!",
+            "RSI is high!",
+            "We have GoGo Juise!",
+            "Heiken Ashi is trending UP!",
+            "Smoothed Heiken Ashi Candles are trending DOWN!",
+            "Is above the Ribbons!",
+            "VPVR looks good!",
+            "LUX looks good!"
+          ]
+        ]
+      ]
+    }
+  ]
+}

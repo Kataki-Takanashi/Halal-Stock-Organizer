@@ -1,0 +1,21 @@
+{% extends "core/base.html" %}
+
+{% block scripts %}
+	{{ super () }}
+	<script src="/js/lava.js"></script>
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div id="upness-lamp" class="lamp span3"></div>
+	</div>
+
+	<div id="lava-popover" class="popover right">
+		<div class="arrow"></div>
+		<h3 class="popover-title"></h3>
+		<div class="popover-content">
+			<b><span class="up number"></span>%</b> up<br>
+			<b><span class="samples number"></span></b> samples<br>
+		</div>
+	</div>
+{% endblock %}

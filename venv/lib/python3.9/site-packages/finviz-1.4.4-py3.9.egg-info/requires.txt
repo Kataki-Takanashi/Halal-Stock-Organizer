@@ -1,0 +1,9 @@
+lxml
+requests
+aiohttp
+urllib3
+cssselect
+user_agent
+beautifulsoup4
+tqdm
+tenacity

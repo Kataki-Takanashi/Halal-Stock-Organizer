@@ -1,0 +1,61 @@
+Metadata-Version: 2.1
+Name: mygui
+Version: 0.1.9
+Summary: A Simple icon to replace the tkinter feather for your programs
+Home-page: https://github.com/Caveman-Software/mygui
+Author: Michael E Mulvey
+Author-email: michael.e.mulvey@gmail.com
+Project-URL: Bug Tracker, https://github.com/Caveman-Software/mygui/issues
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.10
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+License-File: LICENSE.md
+
+
+
+# mygui 0.1.9
+
+## Caveman Software® 2022
+![icon.png](https://raw.githubusercontent.com/Caveman-Software/mygui/main/Icon.png)
+
+
+## lgrid
+
+
+example:
+
+#
+
+    import os
+    from tkinter import Tk
+
+    from mygui import egrid, lgrid
+
+    root = Tk()
+    root.minsize(300, 100)
+    lgrid(root, 'Label placed in grid 0,0', 0, 0)
+    lgrid(root, 'Label placed in grid 0,1', 0, 1)
+    egrid(root, 1, 0)
+    root.mainloop()
+
+
+
+## egrid
+
+#
+    import os
+    from tkinter import Tk,Entry
+    from mygui import egrid, lgrid
+
+    root = Tk()
+    root.minsize(300, 100)
+    egrid(root,0,0)
+    root.mainloop()
+
+#
+

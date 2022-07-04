@@ -1,0 +1,17 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700);
+
+body {
+	font-family: 'Source Sans Pro', sans-serif;
+	text-rendering: optimizelegibility;
+	padding-top: 70px;
+	padding-bottom: 150px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: bold;
+}
+
+.path-selector {
+	width: 210px;
+}
