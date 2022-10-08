@@ -47,7 +47,7 @@ VPVR = {"name": "VPVR", "gWeight": 1.2, "bWeight": -1, "spc": "Is it Jump Up/Jum
         "notes": "Good for crypto."}
 # t9 = {"name" : "The 9!", "gWeight" : 1.5, "bWeight" : -1.5, "spc" : "Is it One candle close above or below thw nine the 9? (Means get in or watch or get out if below)", "gsp" : 1.5, "bsp" : -1.5, "notes" : "Prob close when under 9"}
 others = ["Support", "Resistance", "Moveing Averages", "VBottoms (for entry) and etc...", "Wedges and etc...",
-          "Divergence (really bad", "Earnings Call (bad)"]
+          "Divergence (really bad)", "Earnings Call (bad)"]
 # LUX = "Is it neer a cloud?"
 LUX = {"name": "LUX", "gWeight": 1, "bWeight": -1, "spc": "Is it neer a cloud? Buy Cloud(y) Sell Cloud(n)", "gsp": 1.5, "bsp": -1.5,
        "notes": "Prob close when under 9"}
@@ -153,6 +153,10 @@ def questioner(aCount, question, answers):
 
 
 def seeStock(halalornothalal):
+    """
+    :param halalornothalal:
+    :return list of either all the halal stocks or all the non-halal stocks:
+    """
     stuff = load("tickers.json")
     halal = []
     nothalal = []
@@ -170,6 +174,11 @@ def seeStock(halalornothalal):
         error("Error: Check parameters.")
 
 def halalCheck(ticker):
+    """
+
+    :param ticker:
+    :return "halal" if the ticker is halal and "nothalal" if it isent, or "new" if its new:
+    """
     stuff = load("tickers.json")
     halal = []
     nothalal = []

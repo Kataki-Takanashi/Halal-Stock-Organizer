@@ -1,7 +1,7 @@
+import sys
 from tkinter.tix import Form
 
 # import MyGUI as MyGUI
-import self as self
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
 from PyQt5.QtGui import QFont
@@ -10,10 +10,10 @@ from PyQt5.QtWidgets import QApplication
 
 # Form, Window = uic.loadUiType("Stock-Watchlist-Logger.ui")
 
-class MyGUI(QMainWindow):
+class homeScreen(QMainWindow):
 
     def __init__(self):
-        super(MyGUI, self).__init__()
+        super(homeScreen, self).__init__()
         uic.loadUi("Stock-Watchlist-Logger.ui", self)
         self.show()
 
@@ -45,8 +45,8 @@ class MyGUI(QMainWindow):
     nobutton = False
 
     def clicked1(self):
-        MyGUI.button1 = True
-        print(MyGUI.button1)
+        homeScreen.button1 = True
+        print(homeScreen.button1)
         # return button1
     def clicked2(self):
         button2 = True
@@ -76,8 +76,8 @@ def q1():
     pass
 
 def main():
-    app = QApplication([])
-    window = MyGUI()
+    app = QApplication(sys.argv)
+    window = homeScreen()
 
     window.show()
     app.exec_()

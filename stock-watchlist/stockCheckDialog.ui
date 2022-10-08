@@ -1,0 +1,1426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>318</width>
+    <height>1387</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="Ticker_Box">
+     <property name="title">
+      <string>Ticker</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <widget class="QLineEdit" name="ticker_Input"/>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="halal_Box">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: green</string>
+        </property>
+        <property name="text">
+         <string>Halal</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="submit_Button">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff2a25;&quot;&gt;ONLY SUBMIT WHEN FORM IS DONE!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Submit</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>292</width>
+        <height>2085</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QGroupBox" name="twohundred_Is">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>The 200 is</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_9">
+            <item>
+             <widget class="QRadioButton" name="twohundred_Is_True">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: green</string>
+              </property>
+              <property name="text">
+               <string>ABOVE</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="twohundred_Is_False">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 0, 20)</string>
+              </property>
+              <property name="text">
+               <string>BELOW</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="twohundred_Check">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>Is the 200 crossing?</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_10">
+            <item>
+             <widget class="QRadioButton" name="twohundred_Check_True">
+              <property name="styleSheet">
+               <string notr="true">color: green</string>
+              </property>
+              <property name="text">
+               <string>Yes</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="twohundred_Check_False">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 0, 20)</string>
+              </property>
+              <property name="text">
+               <string>No</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="twohundred_SPC">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>The 200 is crossing UP or DOWN?</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_11">
+            <item>
+             <widget class="QRadioButton" name="twohundred_SPC_True">
+              <property name="styleSheet">
+               <string notr="true">color: green</string>
+              </property>
+              <property name="text">
+               <string>UP</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="twohundred_SPC_False">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 0, 20)</string>
+              </property>
+              <property name="text">
+               <string>DOWN</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="nine_Is">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>The 9 is</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_7">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_12">
+            <item>
+             <widget class="QRadioButton" name="nine_Is_True">
+              <property name="styleSheet">
+               <string notr="true">color: green</string>
+              </property>
+              <property name="text">
+               <string>ABOVE</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="nine_Is_False">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 0, 20)</string>
+              </property>
+              <property name="text">
+               <string>BELOW</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="nine_Check">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;pre style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1e1928;&quot;&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:11pt; color:#ffffff;&quot;&gt;Is it One candle close above or below the 9? (Means get in or watch or get out if below)&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="title">
+          <string>Is it one candle close away from the 9?</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_8">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_13">
+            <item>
+             <widget class="QRadioButton" name="nine_Check_True">
+              <property name="styleSheet">
+               <string notr="true">color: green</string>
+              </property>
+              <property name="text">
+               <string>Yes</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="nine_Check_False">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 0, 20)</string>
+              </property>
+              <property name="text">
+               <string>No</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="nine_SPC">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>One candle close ABOVE or BELOW?</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_22">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_14">
+            <item>
+             <widget class="QRadioButton" name="nine_SPC_True">
+              <property name="styleSheet">
+               <string notr="true">color: green</string>
+              </property>
+              <property name="text">
+               <string>ABOVE</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="nine_SPC_False">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 0, 20)</string>
+              </property>
+              <property name="text">
+               <string>BELOW</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="MACD_Is">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>The MACD is</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_23">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_15">
+            <item>
+             <widget class="QRadioButton" name="MACD_Is_True">
+              <property name="styleSheet">
+               <string notr="true">color: green</string>
+              </property>
+              <property name="text">
+               <string>GREEN</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="MACD_Is_False">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 0, 20)</string>
+              </property>
+              <property name="text">
+               <string>RED</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="MACD_Check">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>Is the MACD reversing or crossing?</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_24">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_16">
+            <item>
+             <widget class="QRadioButton" name="MACD_Check_True">
+              <property name="styleSheet">
+               <string notr="true">color: green</string>
+              </property>
+              <property name="text">
+               <string>Yes</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="MACD_Check_False">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 0, 20)</string>
+              </property>
+              <property name="text">
+               <string>No</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="MACD_SPC">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>MACD reversing UP or DOWN / crossing?</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_25">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_17">
+            <item>
+             <widget class="QRadioButton" name="MACD_SPC_True">
+              <property name="styleSheet">
+               <string notr="true">color: green</string>
+              </property>
+              <property name="text">
+               <string>UP | Yes</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="MACD_SPC_False">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 0, 20)</string>
+              </property>
+              <property name="text">
+               <string>DOWN | No</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="RSI_Is">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>Is the RSI LOW (good) or HIGH (bad)?</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_9">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_20">
+            <item>
+             <widget class="QRadioButton" name="RSI_Is_True">
+              <property name="styleSheet">
+               <string notr="true">color: green</string>
+              </property>
+              <property name="text">
+               <string>LOW</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="RSI_Is_False">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 0, 20)</string>
+              </property>
+              <property name="text">
+               <string>HIGH</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="RSI_Check">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>Rsi OVERBOUGHT / OVERSOLD?</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_10">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_22">
+            <item>
+             <widget class="QRadioButton" name="RSI_Check_True">
+              <property name="styleSheet">
+               <string notr="true">color: green</string>
+              </property>
+              <property name="text">
+               <string>Yes</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="RSI_Check_False">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 0, 20)</string>
+              </property>
+              <property name="text">
+               <string>No</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="RSI_SPC">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>Is the RSI OVERBOUGHT or OVERSOLD?</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_11">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_23">
+            <item>
+             <widget class="QRadioButton" name="RSI_SPC_True">
+              <property name="styleSheet">
+               <string notr="true">color: green</string>
+              </property>
+              <property name="text">
+               <string>OVERBOUGHT</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="RSI_SPC_False">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 0, 20)</string>
+              </property>
+              <property name="text">
+               <string>OVERSOLD</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="VWAP_Is">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;pre style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1e1928;&quot;&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:11pt; color:#ffffff;&quot;&gt;Is it above or below the VWAP? (above/on is gogo juise! VWAP above the 9 is gogo)&lt;/span&gt;&lt;span style=&quot; font-size:11pt; color:#ffffff;&quot;</string>
+         </property>
+         <property name="title">
+          <string>Is it ABOVE or BELOW the VWAP?</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_12">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_24">
+            <item>
+             <widget class="QRadioButton" name="VWAP_Is_True">
+              <property name="styleSheet">
+               <string notr="true">color: green</string>
+              </property>
+              <property name="text">
+               <string>ABOVE</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="VWAP_Is_False">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 0, 20)</string>
+              </property>
+              <property name="text">
+               <string>BELOW</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="HA_Is">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>Is the Heiken Ashi trending UP or DOWN?</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_13">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_25">
+            <item>
+             <widget class="QRadioButton" name="HA_Is_True">
+              <property name="styleSheet">
+               <string notr="true">color: green</string>
+              </property>
+              <property name="text">
+               <string>UP</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="HA_Is_False">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 0, 20)</string>
+              </property>
+              <property name="text">
+               <string>DOWN</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="SHAC_Is">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;pre style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#1e1928;&quot;&gt;&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; font-size:11pt; color:#ffffff;&quot;&gt;Is the Smoothed Heiken Ashi Candles trending up or down?&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="title">
+          <string>Is the SHAC trending UP or DOWN?</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_14">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_26">
+            <item>
+             <widget class="QRadioButton" name="SHAC_Is_True">
+              <property name="styleSheet">
+               <string notr="true">color: green</string>
+              </property>
+              <property name="text">
+               <string>UP</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="SHAC_Is_False">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 0, 20)</string>
+              </property>
+              <property name="text">
+               <string>DOWN</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="Ribbon_Is">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>Is ABOVE or BELOW the Ribbons?</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_15">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_27">
+            <item>
+             <widget class="QRadioButton" name="Ribbon_Is_True">
+              <property name="styleSheet">
+               <string notr="true">color: green</string>
+              </property>
+              <property name="text">
+               <string>ABOVE</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="Ribbon_Is_False">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 0, 20)</string>
+              </property>
+              <property name="text">
+               <string>BELOW</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="VPVR_Is">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>Does VPVR look good?</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_16">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_28">
+            <item>
+             <widget class="QRadioButton" name="VPVR_Is_True">
+              <property name="styleSheet">
+               <string notr="true">color: green</string>
+              </property>
+              <property name="text">
+               <string>YES</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="VPVR_Is_False">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 0, 20)</string>
+              </property>
+              <property name="text">
+               <string>NO</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="VPVR_Check">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>Is the VPVR going to JUMP?</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_17">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_29">
+            <item>
+             <widget class="QRadioButton" name="VPVR_Check_True">
+              <property name="styleSheet">
+               <string notr="true">color: green</string>
+              </property>
+              <property name="text">
+               <string>Yes</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="VPVR_Check_False">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 0, 20)</string>
+              </property>
+              <property name="text">
+               <string>No</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="VPVR_SPC">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>Is it jumping UP or DOWN?</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_18">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_30">
+            <item>
+             <widget class="QRadioButton" name="VPVR_SPC_True">
+              <property name="styleSheet">
+               <string notr="true">color: green</string>
+              </property>
+              <property name="text">
+               <string>UP</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="VPVR_SPC_False">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 0, 20)</string>
+              </property>
+              <property name="text">
+               <string>DOWN</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="LUX_Is">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>Does LUX look good?</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_19">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_31">
+            <item>
+             <widget class="QRadioButton" name="LUX_Is_True">
+              <property name="styleSheet">
+               <string notr="true">color: green</string>
+              </property>
+              <property name="text">
+               <string>YES</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="LUX_Is_False">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 0, 20)</string>
+              </property>
+              <property name="text">
+               <string>NO</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="LUX_Check">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>Is LUX near a cloud?</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_20">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_32">
+            <item>
+             <widget class="QRadioButton" name="LUX_Check_True">
+              <property name="styleSheet">
+               <string notr="true">color: green</string>
+              </property>
+              <property name="text">
+               <string>Yes</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="LUX_Check_False">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 0, 20)</string>
+              </property>
+              <property name="text">
+               <string>No</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="LUX_SPC">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>Is it near or in the buy or sell cloud?</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_21">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_33">
+            <item>
+             <widget class="QRadioButton" name="LUX_SPC_True">
+              <property name="styleSheet">
+               <string notr="true">color: green</string>
+              </property>
+              <property name="text">
+               <string>BUY</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="LUX_SPC_False">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 0, 20)</string>
+              </property>
+              <property name="text">
+               <string>SELL</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>twohundred_Check_True</sender>
+   <signal>clicked()</signal>
+   <receiver>twohundred_SPC</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>96</x>
+     <y>265</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>158</x>
+     <y>351</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>twohundred_Check_False</sender>
+   <signal>clicked()</signal>
+   <receiver>twohundred_SPC</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>220</x>
+     <y>265</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>158</x>
+     <y>351</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>LUX_Check_False</sender>
+   <signal>clicked()</signal>
+   <receiver>LUX_SPC</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>220</x>
+     <y>2051</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>158</x>
+     <y>2137</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>LUX_Check_True</sender>
+   <signal>clicked()</signal>
+   <receiver>LUX_SPC</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>96</x>
+     <y>2051</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>158</x>
+     <y>2137</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>MACD_Check_False</sender>
+   <signal>clicked()</signal>
+   <receiver>MACD_SPC</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>220</x>
+     <y>829</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>158</x>
+     <y>915</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>MACD_Check_True</sender>
+   <signal>clicked()</signal>
+   <receiver>MACD_SPC</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>96</x>
+     <y>829</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>158</x>
+     <y>915</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>RSI_Check_False</sender>
+   <signal>clicked()</signal>
+   <receiver>RSI_SPC</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>220</x>
+     <y>1111</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>158</x>
+     <y>1197</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>RSI_Check_True</sender>
+   <signal>clicked()</signal>
+   <receiver>RSI_SPC</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>96</x>
+     <y>1111</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>158</x>
+     <y>1197</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>VPVR_Check_False</sender>
+   <signal>clicked()</signal>
+   <receiver>VPVR_SPC</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>220</x>
+     <y>1769</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>158</x>
+     <y>1855</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>VPVR_Check_True</sender>
+   <signal>clicked()</signal>
+   <receiver>VPVR_SPC</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>96</x>
+     <y>1769</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>158</x>
+     <y>1855</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>nine_Check_True</sender>
+   <signal>clicked()</signal>
+   <receiver>nine_SPC</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>96</x>
+     <y>547</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>158</x>
+     <y>633</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>nine_Check_False</sender>
+   <signal>clicked()</signal>
+   <receiver>nine_SPC</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>220</x>
+     <y>547</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>158</x>
+     <y>633</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

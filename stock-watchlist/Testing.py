@@ -35,19 +35,21 @@ class MyGUI(QMainWindow):
 
 
 
-    button1 = False
-    button2 = False
-    button3 = False
-    button4 = False
-    button5 = False
-    button6 = False
-    yesbutton = False
-    nobutton = False
+    # button1 = False
+    # button2 = False :
+    def enabledYN(self, enabled=False):
+       if enabled:
+           self.YesButton.enabled = True
+           self.NoButton.enabled = True
+       else:
+           self.YesButton.enabled = False
+           self.NoButton.enabled = False
 
     def clicked1(self):
         MyGUI.button1 = True
         print(MyGUI.button1)
         # return button1
+
     def clicked2(self):
         button2 = True
         return button2
@@ -69,7 +71,7 @@ class MyGUI(QMainWindow):
     def clickedno(self):
         nobutton = True
         return nobutton
-    print(button1)
+#    print(button1)
 
 # print(MyGUI.clicked1)
 # num = MyGUI.clicked1()
