@@ -165,10 +165,6 @@
       "halal": true
     },
     {
-      "ticker": "TEST1",
-      "halal": true
-    },
-    {
       "ticker": "WPC",
       "halal": false
     },
@@ -190,6 +186,18 @@
     },
     {
       "ticker": "CEG",
+      "halal": false
+    },
+    {
+      "ticker": "KDP",
+      "halal": true
+    },
+    {
+      "ticker": "NOC",
+      "halal": false
+    },
+    {
+      "ticker": "SJM",
       "halal": false
     }
   ]
