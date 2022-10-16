@@ -1,6 +1,5 @@
 import sys
-import init.__init__
-from tkinter.tix import Form
+import __init__
 import random
 import time as t
 import json
@@ -23,7 +22,6 @@ num2 = str(num)
 # import MyGUI as MyGUI
 from PyQt5.QtWidgets import *
 from PyQt5 import uic, QtWidgets
-from PyQt5.uic import loadUi
 from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QApplication, QDialog
 
