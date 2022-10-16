@@ -7,11 +7,11 @@ import random
 import finviz
 import pickle
 import time
-import pandas
+#import pandas
 import json
 from datetime import date
 from datetime import datetime
-import stuffy as stuffyimportsys
+#import stuffy as stuffyimportsys
 
 now = datetime.now()
 dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
@@ -403,7 +403,7 @@ def q1():
         timestamp = time("time")
         save({"ticker": name, "time": timestamp, "packet": [timestamp, stuffy]}, "save_data.json")
     elif name in seeStock("nothalal"):  # and name not in seeStock("halal"):
-        print("Stock is NOT Halal, unable to proceed, check Zoya, edit 'tickers.json' if nessesary...")
+        print("Stock is NOT Halal, unable to proceed, check Zoya, edit 'tickers.json' if necessary...")
     elif name not in seeStock("halal") and name not in seeStock("nothalal"):
         # ticker = input("What is the ticker?\n>>> ").upper()
         print("Not registerd, makeing new stock log...")
