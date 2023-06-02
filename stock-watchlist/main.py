@@ -1,15 +1,15 @@
-import sys
-import __init__
-import random
-import time as t
 import json
+import random
+import sys
+import time as t
 from datetime import date
 from datetime import datetime
 
+import finviz
+from finviz.screener import Screener
 
 # Settings
-#Testing
-testMode = False
+# Testing
 
 now = datetime.now()
 dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
@@ -24,6 +24,8 @@ from PyQt5.QtWidgets import *
 from PyQt5 import uic, QtWidgets
 from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QApplication, QDialog
+from PyQt5 import QtCore
+from PyQt5.QtCore import QSettings, QCoreApplication
 
 yes = ["yes", "yep", "yea", "y", "yup", "true", "t", "Yes", "Yep", "Yea", "Y", "Yup", True, "True", "T", "halal",
        "Halal", "a", "o", "A", "O", "above", "Above", "over", "Over", "g", "G", "up", "Up", "UP", "", " "]
@@ -72,23 +74,56 @@ class homeScreen(QDialog):
         self.ticker_history_Button.clicked.connect(self.goSeeTickerHistory)
         self.yesterday_Button.clicked.connect(self.goSeeYesterday)
         self.today_Button.clicked.connect(self.goSeeToday)
+        self.todaystock_Button.clicked.connect(self.goSeeTodayStock)
+        self.settings_Button.clicked.connect(self.goSettings)
+
+        QCoreApplication.instance().aboutToQuit.connect(self.saveSettings)
+
+        # self.setWindowFlags(Qt.WindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)) # dident work
+
+        # print(self.settings_Button.objectName())
 
     def showStockCheck(self):
         widget.setCurrentIndex(widget.currentIndex() + 1)
+
     def halalchic(self):
         widget.setCurrentIndex(widget.currentIndex() + 2)
+
     def goSeeHalal(self):
         widget.setCurrentIndex(widget.currentIndex() + 3)
+
     def goSeeNotHalal(self):
         widget.setCurrentIndex(widget.currentIndex() + 4)
+
     def goSeeHistory(self):
         widget.setCurrentIndex(widget.currentIndex() + 5)
+
     def goSeeTickerHistory(self):
         widget.setCurrentIndex(widget.currentIndex() + 6)
+
     def goSeeYesterday(self):
         widget.setCurrentIndex(widget.currentIndex() + 7)
+
     def goSeeToday(self):
         widget.setCurrentIndex(widget.currentIndex() + 8)
+
+    def goSeeTodayStock(self):
+        widget.setCurrentIndex(widget.currentIndex() + 9)
+
+    def goSettings(self):
+        widget.setCurrentIndex(widget.currentIndex() + 10)
+
+    # def moveEvent(self, e):
+    #     print(self.pos())
+    #     print(self.rect().height(), self.rect().width())
+    #     super(homeScreen, self).moveEvent(e)
+
+    def saveSettings(self):
+        # SETTINGS.setValue("halal", json.dumps(halal.getSavables()))
+        # SETTINGS.setValue("stock", json.dumps(stockT.getSavables()))
+        # SETTINGS.setValue("settings", json.dumps(settings.getSavables()))
+        # SETTINGS.sync()
+        pass
 
 
 class stockCheck(QDialog):
@@ -107,14 +142,16 @@ class stockCheck(QDialog):
         self.home_Button.hide()
         self.q_Area.setEnabled(False)
 
-        #TODO
+        # self.aboutToQuit.connect(home.saveSettings())
+
+        # TODO
         # make compact ver with just one checkbox instead of two radio buttons
 
         # self.halal_Box.setChecked(True) # Example
 
         # Scoring
 
-        #Vars
+        # Vars
         self.twoHundred = False
         self.twoHundred_spc = False
         self.nine = False
@@ -245,7 +282,7 @@ class stockCheck(QDialog):
             self.new_Ticker.hide()
             self.halal_Box.setEnabled(False)
             self.q_Area.setEnabled(True)
-        elif not name in seeStock("halal"):
+        elif name not in seeStock("halal"):
             self.halal_Box.setChecked(False)
             self.new_Ticker.hide()
             self.halal_Box.setEnabled(False)
@@ -273,7 +310,7 @@ class stockCheck(QDialog):
             self.halal_Box.setChecked(True)
             self.new_Ticker.hide()
             self.halal_Box.setEnabled(False)
-        elif not name in seeStock("halal"):
+        elif name not in seeStock("halal"):
             self.halal_Box.setChecked(False)
             self.new_Ticker.hide()
             self.halal_Box.setEnabled(False)
@@ -315,80 +352,144 @@ class stockCheck(QDialog):
 
     def score(self):
         score = 0
+        self.indicators = []
         self.q_Area.setEnabled(False)
-        #self.Ticker_Box.setEnabled(False)
+        # self.Ticker_Box.setEnabled(False)
         # self._SPC.isEnabled
-        #t200
-        if self.twoHundred == True: score+= t200["gWeight"]; self.indicators.append("Is above the 200!")
-        elif self.twoHundred == False: score+= t200["bWeight"]; self.indicators.append("Is UNDER the 200!")
-        if self.twoHundred_spc == True and self.twohundred_SPC.isHidden(): score += t200["gsp"]; self.indicators.append("Is about to cross above the 200!")
-        elif self.twoHundred_spc == False and self.twohundred_SPC.isHidden(): score += t200["bsp"]; self.indicators.append("Is about to cross UNDER the 200!")
-        #t9
-        if self.nine == True: score+= t9["gWeight"]; self.indicators.append("Is above the 9!")
-        elif self.nine == False: score+= t9["bWeight"]; self.indicators.append("Is under the 9!")
-        if self.nine_spc == True and self.nine_SPC.isHidden(): score += t9["gsp"]; self.indicators.append("Is one candle close above the 9!")
-        elif self.nine_spc == False and self.nine_SPC.isHidden(): score += t9["bsp"]; self.indicators.append("Is one candle close UNDER the 9! (sell)")
-        #MACD
-        if self.MACD == True: score+= MACD["gWeight"]; self.indicators.append("MACD Is above the the red (line) or is in the green (bar)!")
-        elif self.MACD == False: score+= MACD["bWeight"]; self.indicators.append("MACD Is UNDER the red (line) or is in the red (bar)!")
-        if self.MACD_spc == True and self.MACD_SPC.isHidden(): score += MACD["gsp"]; self.indicators.append("MACD Is reverseing to green or crossing above the red!")
-        elif self.MACD_spc == False and self.MACD_SPC.isHidden(): score += MACD["bsp"]; self.indicators.append("MACD Is reversing to red or crossing under the red!")
-        #RSI
-        if self.RSI == True: score+= RSI["gWeight"]; self.indicators.append("RSI is low!")
-        elif self.RSI == False: score+= RSI["bWeight"]; self.indicators.append("RSI is high!")
-        if self.RSI_spc == True and self.RSI_SPC.isHidden(): score += RSI["gsp"]; self.indicators.append("RSI is overbought!")
-        elif self.RSI_spc == False and self.RSI_SPC.isHidden(): score += RSI["bsp"]; self.indicators.append("RSI is oversold!")
-        #VWAP
-        if self.VWAP == True: score+= VWAP["gWeight"]; self.indicators.append("We have GoGo Juise!")
-        elif self.VWAP == False: score+= VWAP["bWeight"]; self.indicators.append("No gogo juise! :(")
+        # t200
+        if self.twoHundred == True:
+            score += t200["gWeight"];
+            self.indicators.append("Is above the 200!")
+        elif self.twoHundred == False:
+            score += t200["bWeight"];
+            self.indicators.append("Is UNDER the 200!")
+        if self.twoHundred_spc == True and not self.twohundred_SPC.isHidden():
+            score += t200["gsp"];
+            self.indicators.append("Is about to cross above the 200!")
+        elif self.twoHundred_spc == False and not self.twohundred_SPC.isHidden():
+            score += t200["bsp"];
+            self.indicators.append("Is about to cross UNDER the 200!")
+        # t9
+        if self.nine == True:
+            score += t9["gWeight"];
+            self.indicators.append("Is above the 9!")
+        elif self.nine == False:
+            score += t9["bWeight"];
+            self.indicators.append("Is under the 9!")
+        if self.nine_spc == True and not self.nine_SPC.isHidden():
+            score += t9["gsp"];
+            self.indicators.append("Is one candle close above the 9!")
+        elif self.nine_spc == False and not self.nine_SPC.isHidden():
+            score += t9["bsp"];
+            self.indicators.append("Is one candle close UNDER the 9! (sell)")
+        # MACD
+        if self.MACD == True:
+            score += MACD["gWeight"];
+            self.indicators.append(
+                "MACD Is above the the red (line) or is in the green (bar)!")
+        elif self.MACD == False:
+            score += MACD["bWeight"];
+            self.indicators.append("MACD Is UNDER the red (line) or is in the red (bar)!")
+        if self.MACD_spc == True and not self.MACD_SPC.isHidden():
+            score += MACD["gsp"];
+            self.indicators.append("MACD Is reverseing to green or crossing above the red!")
+        elif self.MACD_spc == False and not self.MACD_SPC.isHidden():
+            score += MACD["bsp"];
+            self.indicators.append("MACD Is reversing to red or crossing under the red!")
+        # RSI
+        if self.RSI == True:
+            score += RSI["gWeight"];
+            self.indicators.append("RSI is low!")
+        elif self.RSI == False:
+            score += RSI["bWeight"];
+            self.indicators.append("RSI is high!")
+        if self.RSI_spc == True and not self.RSI_SPC.isHidden():
+            score += RSI["gsp"];
+            self.indicators.append("RSI is overbought!")
+        elif self.RSI_spc == False and not self.RSI_SPC.isHidden():
+            score += RSI["bsp"];
+            self.indicators.append("RSI is oversold!")
+        # VWAP
+        if self.VWAP == True:
+            score += VWAP["gWeight"];
+            self.indicators.append("We have GoGo Juise!")
+        elif self.VWAP == False:
+            score += VWAP["bWeight"];
+            self.indicators.append("No gogo juise! :(")
         # if self.VWAP_spc == True and self.VWAP_SPC.isHidden(): score += VWAP["gsp"]
         # elif self.VWAP_spc == False and self.VWAP_SPC.isHidden(): score += VWAP["bsp"]
-        #HA
-        if self.HA == True: score+= HA["gWeight"]; self.indicators.append("Heiken Ashi is trending UP!")
-        elif self.HA == False: score+= HA["bWeight"]; self.indicators.append("Heiken Ashi is trending DOWN!")
+        # HA
+        if self.HA == True:
+            score += HA["gWeight"];
+            self.indicators.append("Heiken Ashi is trending UP!")
+        elif self.HA == False:
+            score += HA["bWeight"];
+            self.indicators.append("Heiken Ashi is trending DOWN!")
         # if self.HA_spc == True and self.HA_SPC.isHidden(): score += HA["gsp"]
         # elif self.HA_spc == False and self.HA_SPC.isHidden(): score += HA["bsp"]
-        #SHAC
-        if self.SHAC == True: score+= SHAC["gWeight"]; self.indicators.append("Smoothed Heiken Ashi Candles are trending UP!")
-        elif self.SHAC == False: score+= SHAC["bWeight"]; self.indicators.append("Smoothed Heiken Ashi Candles are trending DOWN!")
+        # SHAC
+        if self.SHAC == True:
+            score += SHAC["gWeight"]; self.indicators.append("Smoothed Heiken Ashi Candles are trending UP!")
+        elif self.SHAC == False:
+            score += SHAC["bWeight"]; self.indicators.append("Smoothed Heiken Ashi Candles are trending DOWN!")
         # if self.SHAC_spc == True and self.SHAC_SPC.isHidden(): score += SHAC["gsp"]
         # elif self.SHAC_spc == False and self.SHAC_SPC.isHidden(): score += SHAC["bsp"]
-        #RIB
-        if self.RIB == True: score+= RIB["gWeight"]; self.indicators.append("Is above the Ribbons!")
-        elif self.RIB == False: score+= RIB["bWeight"]; self.indicators.append("Is BELOW the Ribbons!")
+        # RIB
+        if self.RIB == True:
+            score += RIB["gWeight"];
+            self.indicators.append("Is above the Ribbons!")
+        elif self.RIB == False:
+            score += RIB["bWeight"];
+            self.indicators.append("Is BELOW the Ribbons!")
         # if self.RIB_spc == True and self.RIB_SPC.isHidden(): score += RIB["gsp"]
         # elif self.RIB_spc == False and self.RIB_SPC.isHidden(): score += RIB["bsp"]
-        #VPVR
-        if self.VPVR == True: score+= VPVR["gWeight"]; self.indicators.append("VPVR looks good!")
-        elif self.VPVR == False: score+= VPVR["bWeight"]; self.indicators.append("VPVR looks bad!")
-        if self.VPVR_spc == True and self.VPVR_SPC.isHidden(): score += VPVR["gsp"]; self.indicators.append("VPVR is about to jump UP!")
-        elif self.VPVR_spc == False and self.VPVR_SPC.isHidden(): score += VPVR["bsp"]; self.indicators.append("VPVR is about to jump DOWN!")
-        #LUX
-        if self.LUX == True: score+= LUX["gWeight"]; self.indicators.append("LUX looks good!")
-        elif self.LUX == False: score+= LUX["bWeight"]; self.indicators.append("LUX looks bad!")
-        if self.LUX_spc == True and self.LUX_SPC.isHidden(): score += LUX["gsp"]; self.indicators.append("Is near or in the buy cloud!")
-        elif self.LUX_spc == False and self.LUX_SPC.isHidden(): score += LUX["bsp"]; self.indicators.append("Is near or in the sell cloud!")
+        # VPVR
+        if self.VPVR == True:
+            score += VPVR["gWeight"];
+            self.indicators.append("VPVR looks good!")
+        elif self.VPVR == False:
+            score += VPVR["bWeight"];
+            self.indicators.append("VPVR looks bad!")
+        if self.VPVR_spc == True and not self.VPVR_SPC.isHidden():
+            score += VPVR["gsp"];
+            self.indicators.append("VPVR is about to jump UP!")
+        elif self.VPVR_spc == False and not self.VPVR_SPC.isHidden():
+            score += VPVR["bsp"];
+            self.indicators.append("VPVR is about to jump DOWN!")
+        # LUX
+        if self.LUX == True:
+            score += LUX["gWeight"];
+            self.indicators.append("LUX looks good!")
+        elif self.LUX == False:
+            score += LUX["bWeight"];
+            self.indicators.append("LUX looks bad!")
+        if self.LUX_spc == True and not self.LUX_SPC.isHidden():
+            score += LUX["gsp"];
+            self.indicators.append("Is near or in the buy cloud!")
+        elif self.LUX_spc == False and not self.LUX_SPC.isHidden():
+            score += LUX["bsp"];
+            self.indicators.append("Is near or in the sell cloud!")
         score = round(score, 2)
         self.SCORE.display(score)
         indicators = self.indicators
-        pack = [score, indicators]
+        stuffy = pack = [score, indicators]
         name = self.ticker_Input.text()
 
-        stuffy = pack
+        # stuffy = pack
 
         # TODO0
         # enable saving
         timestamp = time("time")
         if not testMode:
-            save({"ticker": name, "time": timestamp, "packet": [timestamp, stuffy]}, "save_data.json")
-
-
+            save({"ticker": name.upper(), "time": timestamp, "packet": [timestamp, stuffy]}, "save_data.json")
 
         self.another_Button.show()
         self.home_Button.show()
         self.submit_Button.setEnabled(False)
         self.ticker_Input.setEnabled(False)
 
+        # TODO
+        # make search only need a fe leters ex searching 't' with still bring up 'TSLA' (Ticker History) DONE!
 
         #return pack
 
@@ -518,14 +619,21 @@ class stockCheck(QDialog):
         self.submit_Button.setEnabled(True)
     def LUX_check_True(self):
         pass
+
     def LUX_check_False(self):
         pass
+
     def LUX_spc_True(self):
         self.LUX_spc = True
         self.submit_Button.setEnabled(True)
+
     def LUX_spc_False(self):
         self.LUX_spc = False
         self.submit_Button.setEnabled(True)
+
+    # TODO
+    # add notes at end
+
 
 def error(error):
     """
@@ -565,22 +673,24 @@ def write_json(data, filename):
     with open(filename, 'w') as f:
         json.dump(data, f, indent=2)
 
-def save(datas, filename):
-    thetime = time("time")
-    thedate = time("date")
-    # with open('save_data.txt', 'a') as file:
-    #     file.write(f"{date}\n")
-    # file.write({"date" : date, "ticker" : "TSLA"})
 
-    with open(filename) as file:
-        # file.write(json.dumps({date : [{"ticker" : "TSLA", "indicator" : VPVR}]}, indent=2))
-        # stand it data btw will pass in from func
-        data = json.load(file)
-        temp = data["logs"]
-        # new_data = {thedate : [{"timestamp": thetime, "packet": [{"ticker": "TSLA", "indicator": VPVR}]}]}
-        # new_data = {thedate: [{"timestamp": thetime, "packet": datas}]}
-        temp.append(datas)
-        write_json(data, filename)
+def save(datas, filename):
+    if not testMode:
+        thetime = time("time")
+        thedate = time("date")
+        # with open('save_data.txt', 'a') as file:
+        #     file.write(f"{date}\n")
+        # file.write({"date" : date, "ticker" : "TSLA"})
+
+        with open(filename) as file:
+            # file.write(json.dumps({date : [{"ticker" : "TSLA", "indicator" : VPVR}]}, indent=2))
+            # stand it data btw will pass in from func
+            data = json.load(file)
+            temp = data["logs"]
+            # new_data = {thedate : [{"timestamp": thetime, "packet": [{"ticker": "TSLA", "indicator": VPVR}]}]}
+            # new_data = {thedate: [{"timestamp": thetime, "packet": datas}]}
+            temp.append(datas)
+            write_json(data, filename)
 
 def load(filename):
     with open(filename, 'r') as file:
@@ -643,31 +753,46 @@ class halalChic(QDialog):
         self.submit_Button.clicked.connect(self.process)
         self.submit_Ticker_Button.clicked.connect(self.process_New)
         self.home_Button.clicked.connect(self.goHome)
+        self.savables = {"fields": [self.ticker_Input.text(), self.lotso_Input.toPlainText()], "halal": []}
+
+        # self.savedables = dict(json.loads(SETTINGS.value("halal", defaultValue=json.dumps('{"fields": [self.ticker_Input.text(), self.lotso_Input.toPlainText()], "halal": []}'))))
+        # fields = self.savedables["fields"]
+        # self.ticker_Input.setText("replace with qsettings") if fields[0] else None
+        # self.lotso_Input.setText("replace with qsettings") if fields[1] else None; self.lotso_Box.setChecked(True) if fields[1] else None; self.lotso_Box.stateChanged.emit(self.lotso_Box.isChecked()) if fields[1] else None
 
     def goHome(self):
         widget.setCurrentIndex(widget.currentIndex() - 2)
 
     def lotsoCheck(self):
-        if self.lotso_Box.isChecked(): self.lotso_Input.show()
-        else: self.lotso_Input.hide(); self.lotso_Input.setText("")
+        if self.lotso_Box.isChecked():
+            self.lotso_Input.show()
+        else:
+            self.lotso_Input.hide();
+            self.lotso_Input.setText(
+                "") if "qSettings" else None  # todo mapke this a setting "clear lots o tickers imput when unchecked
 
     def process(self):
         halal_Stocks = []
         non_halal_Stocks = []
         new_Stocks = []
 
-        for i in reversed(range(self.verticalLayout_3.count())):
-            self.verticalLayout_3.itemAt(i).widget().setParent(None)
+        try:
+            for i in reversed(range(self.verticalLayout_3.count())):
+                self.verticalLayout_3.itemAt(i).widget().setParent(None)
+        except AttributeError:
+            print('Error deleting somthing: Empty layout (not important)')
 
         if not self.ticker_Input.text() == "" and self.lotso_Input.toPlainText() == "":
             tickers = self.ticker_Input.text().upper()
         elif not self.ticker_Input.text() == "" and not self.lotso_Input.toPlainText() == "":
             tickers = self.ticker_Input.text().upper() + ',' + self.lotso_Input.toPlainText().upper()
-        else: tickers = self.lotso_Input.toPlainText().upper()
+        else:
+            tickers = self.lotso_Input.toPlainText().upper()
         tickers = tickers.replace(' ', '')
         tickers = tickers.split(",")
 
         for i in tickers:
+            if i == "": continue  # TODO: save everything in new tickers and save the checkstates and add them to the new tickers on next open (should use q settings) do same for simmilar pages
             if i in seeStock("halal"): halal_Stocks.append(i)
             if i in seeStock("nothalal"): non_halal_Stocks.append(i)
             if i not in seeStock("halal") and i not in seeStock("nothalal"): new_Stocks.append(i)
@@ -679,6 +804,7 @@ class halalChic(QDialog):
 
         for i in halal_Stocks:
             label = QLabel(i)
+            label.setStyleSheet('color: green')
             self.verticalLayout_3.addWidget(label)
 
         label = QLabel("Non-Halal Tickers:")
@@ -687,6 +813,7 @@ class halalChic(QDialog):
 
         for i in non_halal_Stocks:
             label = QLabel(i)
+            label.setStyleSheet('color: red')
             self.verticalLayout_3.addWidget(label)
 
         label = QLabel("New Tickers:")
@@ -695,18 +822,37 @@ class halalChic(QDialog):
 
         self.new_Ticker_Boxes = []
 
-        for i in new_Stocks:
-            g = QGroupBox()
-            l = QHBoxLayout()
-            g.setTitle('')
-            t = QLabel(i)
-            c = QCheckBox()
-            c.setText("Halal")
-            l.addWidget(t)
-            l.addWidget(c)
-            g.setLayout(l)
-            self.new_Ticker_Boxes.append((t, c))
-            self.verticalLayout_3.addWidget(g)
+        if new_Stocks:
+            for i in new_Stocks:
+                g = QGroupBox()
+                l = QHBoxLayout()
+                g.setTitle('')
+                t = QLabel(i)
+                c = QCheckBox()
+                c.setText("Halal")
+                s = t, c;
+                self.savables["halal"].append(s)
+                l.addWidget(t)
+                l.addWidget(c)
+                g.setLayout(l)
+                self.new_Ticker_Boxes.append((t, c))
+                self.verticalLayout_3.addWidget(g)
+        if self.savedables["halal"]:
+            for i in self.savedables["halal"]:
+                if not i[0] in new_Stocks:
+                    g = QGroupBox()
+                    l = QHBoxLayout()
+                    g.setTitle('')
+                    t = QLabel(i[0])
+                    c = i[1]
+                    c.setText("Halal")
+                    s = t, c;
+                    self.savables["halal"].append(s)
+                    l.addWidget(t)
+                    l.addWidget(c)
+                    g.setLayout(l)
+                    self.new_Ticker_Boxes.append((t, c))
+                    self.verticalLayout_3.addWidget(g)
 
 
     def process_New(self):
@@ -714,6 +860,7 @@ class halalChic(QDialog):
         saves the new tickers
         :return:
         """
+        self.savables["halal"], self.savedables["halal"] = [], []  #FIXME this might not work
         for i in self.new_Ticker_Boxes:
             if i[1].isChecked():
                 if not testMode:
@@ -725,6 +872,10 @@ class halalChic(QDialog):
         for i in reversed(range(self.verticalLayout_3.count())):
             self.verticalLayout_3.itemAt(i).widget().setParent(None)
 
+        self.process()
+
+    def getSavables(self):
+        return self.savables
 class seeHalal(QDialog):
     def __init__(self):
         super(seeHalal, self).__init__()
@@ -813,14 +964,14 @@ class seeTickerHistory(QDialog):
         for i in reversed(range(self.verticalLayout_2.count())):
             self.verticalLayout_2.itemAt(i).widget().setParent(None)
 
-        if ticker in seeStock("halal"):
+        if (e := [i for i in seeStock("halal") if i.startswith(ticker)]):
             self.lock(lock=False)
             for block in self.history["logs"]:
-                if block["ticker"] == ticker:
+                if block["ticker"] in e:
                     p = QPushButton(f'On {block["time"]} {block["ticker"]} had a score of {block["packet"][1][0]}')
                     p.setFlat(True)
-                    #p.clicked.connect(lambda: self.viewBlock(block))
-                    self.connectBlock(p,block)
+                    # p.clicked.connect(lambda: self.viewBlock(block))
+                    self.connectBlock(p, block)
                     # blocks.append((p, block))
                     self.verticalLayout_2.addWidget(p)
         else:
@@ -842,11 +993,34 @@ class seeTickerHistory(QDialog):
         h.setFrameShadow(QtWidgets.QFrame.Sunken)
         h.setSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
         self.verticalLayout_3.addWidget(h)
+        self.bottom()
+
+        # self.scrollArea_2.verticalScrollBar().setValue(self.scrollArea_2.verticalScrollBar().maximum())
+        # self.scrollArea_2.ensureVisible(0, self.scrollArea_2.verticalScrollBar().maximum())
+        # content_widget = self.scrollArea_2.findChild(QWidget, "scrollAreaWidgetContents_2")
+        # self.scrollArea_2.verticalScrollBar().setValue(content_widget.height())
+        # self.scrollArea_2.ensureVisible(0, content_widget.height() + 200)
+        # scroll_area = self.scrollArea_2
+        # scroll_bar = scroll_area.verticalScrollBar()
+        # scroll_bar.setValue(scroll_bar.maximum())
+        scroll_area = self.scrollArea_2
+        content_widget = self.scrollAreaWidgetContents_2
+        content_widget_height = content_widget.height()
+        scroll_area_height = scroll_area.viewport().height()
+        scroll_area.ensureVisible(0, content_widget_height - scroll_area_height + 240, 0, 0)
 
     def lock(self, lock=True):
         self.scrollArea.setDisabled(lock)
         self.line.setDisabled(lock)
-        #self.scrollArea_2.setDisabled(lock)
+        # self.scrollArea_2.setDisabled(lock)
+
+    def bottom(self):
+        scroll_area = self.scrollArea_2
+        content_widget = self.scrollAreaWidgetContents_2
+        content_widget_height = content_widget.height()
+        scroll_area_height = scroll_area.viewport().height()
+        scroll_area.ensureVisible(0, content_widget_height - scroll_area_height + 240, 0, 0)
+
 
 class seeYesterday(QDialog):
     def __init__(self):
@@ -931,8 +1105,414 @@ class seeToday(QDialog):
         self.verticalLayout_3.addWidget(h)
 
 
+class todayStock(QDialog):
+    def __init__(self):
+        super(todayStock, self).__init__()
+        uic.loadUi("TodaysStock.ui", self)
+
+        self.prevent429 = 1  # how long to sleep for to avoid making too many requests to the api in a short time
+        # self.filters.hide() if "QSETTINGS" else None
+
+        self.savables = {"halal": [], "filters": {
+            "Default": ['fa_salesqoq_o30', 'ind_stocksonly', 'ipodate_prev3yrs', 'sh_avgvol_o500', 'sh_short_o5',
+                        'ta_changeopen_u', 'ta_sma20_pa', 'ta_sma200_pa', 'ta_sma50_pa']}}  # TODO make filters editable
+        # self.savedables = json.loads(SETTINGS.value("stock", defaultValue=json.dumps({"halal": [], "filters": {"Default": ['fa_salesqoq_o30', 'ind_stocksonly', 'ipodate_prev3yrs', 'sh_avgvol_o500', 'sh_short_o5',
+        #            'ta_changeopen_u', 'ta_sma20_pa', 'ta_sma200_pa', 'ta_sma50_pa']}})))
+
+        self.submit_Ticker_Button.clicked.connect(self.process_New)
+        self.home_Button.clicked.connect(self.goHome)
+        self.process()
+
+    def goHome(self):
+        widget.setCurrentIndex(widget.currentIndex() - 9)
+
+    def get_Stock(self, filters):
+        # stock_list1, stock_list2, stock_list3 = Screener(filters=filters, table='Performance',
+        #                                                  order='price'), Screener(filters=filters,
+        #                                                                           table='Performance'), []
+        # this was not uses because it assigned variables too fast an made too many requests Too Many Requests for url: https://finviz.com/screener.ashx?
+
+        stock_list1 = Screener(filters=filters, table='Performance', order='price');
+        t.sleep(self.prevent429)
+        stock_list2 = Screener(filters=filters, table='Performance')
+        stock_list3 = []
+
+        for stock in stock_list1:
+            stock_list3.append(stock['Ticker'])
+        for stock in stock_list2:
+            if stock['Ticker'] not in stock_list3:
+                stock_list3.append(stock['Ticker'])
+        # for stock in stock_list3:
+        #     print(stock)
+        return stock_list3
+
+    def process(self):
+        halal_Stocks = []
+        non_halal_Stocks = []
+        new_Stocks = []
+
+        for i in reversed(range(self.verticalLayout_3.count())):
+            self.verticalLayout_3.itemAt(i).widget().setParent(None)
+
+        filters = ['fa_salesqoq_o30', 'ind_stocksonly', 'ipodate_prev3yrs', 'sh_avgvol_o500', 'sh_short_o5',
+                   'ta_changeopen_u', 'ta_sma20_pa', 'ta_sma200_pa',
+                   'ta_sma50_pa']  # , 'ta_volatility_mo15' to test the except statement
+        filters2 = ['cap_midover', 'sh_curvol_o1000', 'ta_sma20_pa10']
+
+        try:
+            self.submit_Ticker_Button.setEnabled(True)
+            tickers = self.get_Stock(filters2)
+
+            for i in tickers:
+                if i in seeStock("halal"): halal_Stocks.append(i)
+                if i in seeStock("nothalal"): non_halal_Stocks.append(i)
+                if i not in seeStock("halal") and i not in seeStock("nothalal"): new_Stocks.append(i)
+
+            # Adding tickers. . .
+            label = QLabel(
+                "Halal Tickers:                                                                        ")  # buffer to fit anya
+            label.setFont(QFont("Arial", 16))
+            self.verticalLayout_3.addWidget(label)
+
+            for i in halal_Stocks:
+                label = QLabel(i)
+                label.setStyleSheet('color: green')
+                self.verticalLayout_3.addWidget(label)
+
+            label = QLabel("Non-Halal Tickers:")
+            label.setFont(QFont("Arial", 16))
+            self.verticalLayout_3.addWidget(label)
+
+            for i in non_halal_Stocks:
+                label = QLabel(i)
+                label.setStyleSheet('color: red')
+                self.verticalLayout_3.addWidget(label)
+
+            label = QLabel("New Tickers:")
+            label.setFont(QFont("Arial", 16))
+            self.verticalLayout_3.addWidget(label)
+
+            self.new_Ticker_Boxes = []
+
+            if new_Stocks:
+                for i in new_Stocks:
+                    g = QGroupBox()
+                    l = QHBoxLayout()
+                    g.setTitle('')
+                    t = QLabel(i)
+                    c = QCheckBox()
+                    c.setText("Halal")
+                    s = t.text(), c.isChecked()
+                    self.savables["halal"].append(s)
+                    l.addWidget(t)
+                    l.addWidget(c)
+                    g.setLayout(l)
+                    self.new_Ticker_Boxes.append((t, c))
+                    self.verticalLayout_3.addWidget(g)
+            # if self.savedables["halal"]:
+            #     for i in self.savedables["halal"]:
+            #         if not i[0] in new_Stocks:
+            #             g = QGroupBox()
+            #             l = QHBoxLayout()
+            #             g.setTitle('')
+            #             t = QLabel(i[0])
+            #             c = i[1]
+            #             c.setText("Halal")
+            #             s = t.text(), c.isChecked()
+            #             self.savables["halal"].append(s)
+            #             l.addWidget(t)
+            #             l.addWidget(c)
+            #             g.setLayout(l)
+            #             self.new_Ticker_Boxes.append((t, c))
+            #             self.verticalLayout_3.addWidget(g)
+        except (finviz.helper_functions.error_handling.NoResults,
+                IndexError) as e:  # Replace with idex error if needed in testing, seems to be ide's fault
+            # print(e.__traceback__.__str__())
+            # self.filters
+            self.filters.show()
+            self.submit_Ticker_Button.setEnabled(False)
+            label = QLabel(
+                """Sorry,\nNo New Tickers Today\n
+            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢲⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠄⠂⢉⠤⠐⠋⠈⠡⡈⠉⠐⠠⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⢀⡀⢠⣤⠔⠁⢀⠀⠀⠀⠀⠀⠀⠀⠈⢢⠀⠀⠈⠱⡤⣤⠄⣀⠀⠀⠀⠀⠀
+⠀⠀⠰⠁⠀⣰⣿⠃⠀⢠⠃⢸⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠈⢞⣦⡀⠈⡇⠀⠀⠀
+⠀⠀⠀⢇⣠⡿⠁⠀⢀⡃⠀⣈⠀⠀⠀⠀⢰⡀⠀⠀⠀⠀⢢⠰⠀⠀⢺⣧⢰⠀⠀⠀⠀
+⠀⠀⠀⠈⣿⠁⡘⠀⡌⡇⠀⡿⠸⠀⠀⠀⠈⡕⡄⠀⠐⡀⠈⠀⢃⠀⠀⠾⠇⠀⠀⠀⠀
+⠀⠀⠀⠀⠇⡇⠃⢠⠀⠶⡀⡇⢃⠡⡀⠀⠀⠡⠈⢂⡀⢁⠀⡁⠸⠀⡆⠘⡀⠀⠀⠀⠀
+⠀⠀⠀⠸⠀⢸⠀⠘⡜⠀⣑⢴⣀⠑⠯⡂⠄⣀⣣⢀⣈⢺⡜⢣⠀⡆⡇⠀⢣⠀⠀⠀⠀
+⠀⠀⠀⠇⠀⢸⠀⡗⣰⡿⡻⠿⡳⡅⠀⠀⠀⠀⠈⡵⠿⠿⡻⣷⡡⡇⡇⠀⢸⣇⠀⠀⠀
+⠀⠀⢰⠀⠀⡆⡄⣧⡏⠸⢠⢲⢸⠁⠀⠀⠀⠀⠐⢙⢰⠂⢡⠘⣇⡇⠃⠀⠀⢹⡄⠀⠀
+⠀⠀⠟⠀⠀⢰⢁⡇⠇⠰⣀⢁⡜⠀⠀⠀⠀⠀⠀⠘⣀⣁⠌⠀⠃⠰⠀⠀⠀⠈⠰⠀⠀
+⠀⡘⠀⠀⠀⠀⢊⣤⠀⠀⠤⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠤⠄⠀⢸⠃⠀⠀⠀⠀⠀⠃⠀
+⢠⠁⢀⠀⠀⠀⠈⢿⡀⠀⠀⠀⠀⠀⠀⢀⡀⠀⠀⠀⠀⠀⠀⢀⠏⠀⠀⠀⠀⠀⠀⠸⠀
+⠘⠸⠘⡀⠀⠀⠀⠀⢣⠀⠀⠀⠀⠀⠀⠁⠀⠃⠀⠀⠀⠀⢀⠎⠀⠀⠀⠀⠀⢠⠀⠀⡇
+⠀⠇⢆⢃⠀⠀⠀⠀⠀⡏⢲⢤⢀⡀⠀⠀⠀⠀⠀⢀⣠⠄⡚⠀⠀⠀⠀⠀⠀⣾⠀⠀⠀
+⢰⠈⢌⢎⢆⠀⠀⠀⠀⠁⣌⠆⡰⡁⠉⠉⠀⠉⠁⡱⡘⡼⠇⠀⠀⠀⠀⢀⢬⠃⢠⠀⡆
+⠀⢢⠀⠑⢵⣧⡀⠀⠀⡿⠳⠂⠉⠀⠀⠀⠀⠀⠀⠀⠁⢺⡀⠀⠀⢀⢠⣮⠃⢀⠆⡰⠀
+⠀⠀⠑⠄⣀⠙⡭⠢⢀⡀⠀⠁⠄⣀⣀⠀⢀⣀⣀⣀⡠⠂⢃⡀⠔⠱⡞⢁⠄⣁⠔⠁⠀
+⠀⠀⠀⠀⠀⢠⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⠉⠁⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀
+
+
+PRO-TIP: You can use different filters/
+or get Tickers from Bravo or Finviz!
+____________
+|HOVER HERE|
+¯¯¯¯¯¯¯¯¯¯¯¯""")
+            label.setFont(QFont("Arial", 16))
+            label.setStyleSheet('color: rgb(244, 184, 243)')
+            label.setAlignment(QtCore.Qt.AlignCenter)
+            label.setToolTip(str(filters))
+            self.verticalLayout_3.addWidget(label)
+
+    def process_New(self):
+        """
+        saves the new tickers
+        :return:
+        """
+        # self.savables["halal"], self.savedables["halal"] = [], []  # FIXME this might not work
+        for i in self.new_Ticker_Boxes:
+            if i[1].isChecked():
+                if not testMode:
+                    save({"ticker": i[0].text().upper(), "halal": True}, "tickers.json")
+            elif not i[1].isChecked():
+                if not testMode:
+                    save({"ticker": i[0].text().upper(), "halal": False}, "tickers.json")
+
+        for i in reversed(range(self.verticalLayout_3.count())):
+            self.verticalLayout_3.itemAt(i).widget().setParent(None)
+
+        self.process()
+
+    def getSavables(self):
+        return self.savables
+
+    def saveSettings(self):
+        # SETTINGS.setValue("stock", json.dumps(self.savables))
+        pass
+
+
+class Settings(QDialog):  # TODO make sure new filters match format with regex
+    def __init__(self):
+        super(Settings, self).__init__()
+        uic.loadUi("Settings.ui", self)
+
+        self.scrollArea.hide()
+        self.autoFilter_Box.clicked.connect(lambda: self.showFilter_Box.setChecked(True) if "qSettings" else False)
+
+        self.home_Button.clicked.connect(self.goHome)
+        self.filterBox.addItems(i for i in stockT.getSavables()["filters"].keys())
+        self.filterBox.currentIndexChanged.connect(self.changeFilter)
+        self.saveButton.clicked.connect(self.saveSettings)
+
+        self.savables = {
+            "boxes": [{self.testMode_Box.objectName(): self.testMode_Box.isChecked()},
+                      {self.autoFilter_Box.objectName(): self.autoFilter_Box.isChecked()},
+                      {self.showFilter_Box.objectName(): self.showFilter_Box.isChecked()},
+                      {self.savespot_Box.objectName(): self.savespot_Box.isChecked()},
+                      {self.clear_Box.objectName(): self.clear_Box.isChecked()}],
+            "currentFilter": "",
+            "weights": [{self.doubleSpinBox_61.objectName(): self.doubleSpinBox_61.value()},
+                        {self.doubleSpinBox_62.objectName(): self.doubleSpinBox_62.value()},
+                        {self.doubleSpinBox_63.objectName(): self.doubleSpinBox_63.value()},
+                        {self.doubleSpinBox_64.objectName(): self.doubleSpinBox_64.value()},
+                        # FIXME fix these names theyre horrendous
+                        {self.doubleSpinBox_49.objectName(): self.doubleSpinBox_49.value()},
+                        {self.doubleSpinBox_50.objectName(): self.doubleSpinBox_50.value()},
+                        {self.doubleSpinBox_51.objectName(): self.doubleSpinBox_51.value()},
+                        {self.doubleSpinBox_52.objectName(): self.doubleSpinBox_52.value()},
+                        {self.doubleSpinBox_65.objectName(): self.doubleSpinBox_65.value()},
+                        {self.doubleSpinBox_66.objectName(): self.doubleSpinBox_66.value()},
+                        {self.doubleSpinBox_67.objectName(): self.doubleSpinBox_67.value()},
+                        {self.doubleSpinBox_68.objectName(): self.doubleSpinBox_68.value()},
+                        {self.doubleSpinBox_69.objectName(): self.doubleSpinBox_69.value()},
+                        {self.doubleSpinBox_70.objectName(): self.doubleSpinBox_70.value()},
+                        {self.doubleSpinBox_71.objectName(): self.doubleSpinBox_71.value()},
+                        {self.doubleSpinBox_72.objectName(): self.doubleSpinBox_72.value()},
+                        {self.doubleSpinBox_73.objectName(): self.doubleSpinBox_73.value()},
+                        {self.doubleSpinBox_74.objectName(): self.doubleSpinBox_74.value()},
+                        {self.doubleSpinBox_75.objectName(): self.doubleSpinBox_75.value()},
+                        {self.doubleSpinBox_76.objectName(): self.doubleSpinBox_76.value()},
+                        {self.doubleSpinBox_77.objectName(): self.doubleSpinBox_77.value()},
+                        {self.doubleSpinBox_78.objectName(): self.doubleSpinBox_78.value()},
+                        {self.doubleSpinBox_78.objectName(): self.doubleSpinBox_78.value()},
+                        {self.doubleSpinBox_80.objectName(): self.doubleSpinBox_80.value()},
+                        {self.doubleSpinBox.objectName(): self.doubleSpinBox.value()},
+                        {self.doubleSpinBox_2.objectName(): self.doubleSpinBox_2.value()},
+                        {self.doubleSpinBox_3.objectName(): self.doubleSpinBox_3.value()},
+                        {self.doubleSpinBox_4.objectName(): self.doubleSpinBox_4.value()},
+                        {self.doubleSpinBox_45.objectName(): self.doubleSpinBox_45.value()},
+                        {self.doubleSpinBox_46.objectName(): self.doubleSpinBox_46.value()},
+                        {self.doubleSpinBox_47.objectName(): self.doubleSpinBox_47.value()},
+                        {self.doubleSpinBox_48.objectName(): self.doubleSpinBox_48.value()},
+                        {self.doubleSpinBox_53.objectName(): self.doubleSpinBox_53.value()},
+                        {self.doubleSpinBox_54.objectName(): self.doubleSpinBox_54.value()},
+                        {self.doubleSpinBox_55.objectName(): self.doubleSpinBox_55.value()},
+                        {self.doubleSpinBox_56.objectName(): self.doubleSpinBox_56.value()},
+                        {self.doubleSpinBox_57.objectName(): self.doubleSpinBox_57.value()},
+                        {self.doubleSpinBox_58.objectName(): self.doubleSpinBox_58.value()},
+                        {self.doubleSpinBox_59.objectName(): self.doubleSpinBox_59.value()},
+                        {self.doubleSpinBox_60.objectName(): self.doubleSpinBox_60.value()}
+                        ]
+        }
+
+        # self.savedables = json.loads(SETTINGS.value("settings", defaultValue=json.dumps({
+        #     "boxes": [{self.testMode_Box.objectName(): self.testMode_Box.isChecked()} , {self.autoFilter_Box.objectName(): self.autoFilter_Box.isChecked()} , {self.showFilter_Box.objectName(): self.showFilter_Box.isChecked()} , {self.savespot_Box.objectName(): self.savespot_Box.isChecked()} , {self.clear_Box.objectName(): self.clear_Box.isChecked()} ],
+        #     "currentFilter": "",
+        #     "weights": [{self.doubleSpinBox_61.objectName(): self.doubleSpinBox_61.value()} , {self.doubleSpinBox_62.objectName(): self.doubleSpinBox_62.value()} , {self.doubleSpinBox_63.objectName(): self.doubleSpinBox_63.value()} , {self.doubleSpinBox_64.objectName(): self.doubleSpinBox_64.value()} , #FIXME fix these names theyre horrendous
+        #                 {self.doubleSpinBox_49.objectName(): self.doubleSpinBox_49.value()} , {self.doubleSpinBox_50.objectName(): self.doubleSpinBox_50.value()} , {self.doubleSpinBox_51.objectName(): self.doubleSpinBox_51.value()} , {self.doubleSpinBox_52.objectName(): self.doubleSpinBox_52.value()} ,
+        #                 {self.doubleSpinBox_65.objectName(): self.doubleSpinBox_65.value()} , {self.doubleSpinBox_66.objectName(): self.doubleSpinBox_66.value()} , {self.doubleSpinBox_67.objectName(): self.doubleSpinBox_67.value()} , {self.doubleSpinBox_68.objectName(): self.doubleSpinBox_68.value()} ,
+        #                 {self.doubleSpinBox_69.objectName(): self.doubleSpinBox_69.value()} , {self.doubleSpinBox_70.objectName(): self.doubleSpinBox_70.value()} , {self.doubleSpinBox_71.objectName(): self.doubleSpinBox_71.value()} , {self.doubleSpinBox_72.objectName(): self.doubleSpinBox_72.value()} ,
+        #                 {self.doubleSpinBox_73.objectName(): self.doubleSpinBox_73.value()} , {self.doubleSpinBox_74.objectName(): self.doubleSpinBox_74.value()} , {self.doubleSpinBox_75.objectName(): self.doubleSpinBox_75.value()} , {self.doubleSpinBox_76.objectName(): self.doubleSpinBox_76.value()} ,
+        #                 {self.doubleSpinBox_77.objectName(): self.doubleSpinBox_77.value()} , {self.doubleSpinBox_78.objectName(): self.doubleSpinBox_78.value()} , {self.doubleSpinBox_78.objectName(): self.doubleSpinBox_78.value()} , {self.doubleSpinBox_80.objectName(): self.doubleSpinBox_80.value()} ,
+        #                 {self.doubleSpinBox.objectName(): self.doubleSpinBox.value()} , {self.doubleSpinBox_2.objectName(): self.doubleSpinBox_2.value()} , {self.doubleSpinBox_3.objectName(): self.doubleSpinBox_3.value()} , {self.doubleSpinBox_4.objectName(): self.doubleSpinBox_4.value()} ,
+        #                 {self.doubleSpinBox_45.objectName(): self.doubleSpinBox_45.value()} , {self.doubleSpinBox_46.objectName(): self.doubleSpinBox_46.value()} , {self.doubleSpinBox_47.objectName(): self.doubleSpinBox_47.value()} , {self.doubleSpinBox_48.objectName(): self.doubleSpinBox_48.value()} ,
+        #                 {self.doubleSpinBox_53.objectName(): self.doubleSpinBox_53.value()} , {self.doubleSpinBox_54.objectName(): self.doubleSpinBox_54.value()} , {self.doubleSpinBox_55.objectName(): self.doubleSpinBox_55.value()} , {self.doubleSpinBox_56.objectName(): self.doubleSpinBox_56.value()} ,
+        #                 {self.doubleSpinBox_57.objectName(): self.doubleSpinBox_57.value()} , {self.doubleSpinBox_58.objectName(): self.doubleSpinBox_58.value()} , {self.doubleSpinBox_59.objectName(): self.doubleSpinBox_59.value()} , {self.doubleSpinBox_60.objectName(): self.doubleSpinBox_60.value()}
+        #                 ]
+        # })))
+        self.loadSettings()
+
+    def goHome(self):
+        widget.setCurrentIndex(widget.currentIndex() - 10)
+
+    def getSavables(self):
+        return self.savables
+
+    def getSavedables(self):
+        # return self.savedables
+        pass
+
+    def changeFilter(self, index):
+        # self.savables["currentFilter"] = {index: stockSettings["filters"][index]} if index != -1 else None
+        self.saveSettings()
+
+    # TODO func to add new filter to stockT qSettings
+
+    def saveSettings(self):
+        # self.savedables = json.loads(SETTINGS.value("settings", defaultValue=json.dumps({
+        #     "boxes": [{self.testMode_Box.objectName(): self.testMode_Box.isChecked()},
+        #               {self.autoFilter_Box.objectName(): self.autoFilter_Box.isChecked()},
+        #               {self.showFilter_Box.objectName(): self.showFilter_Box.isChecked()},
+        #               {self.savespot_Box.objectName(): self.savespot_Box.isChecked()},
+        #               {self.clear_Box.objectName(): self.clear_Box.isChecked()}],
+        #     "currentFilter": "",
+        #     "weights": [{self.doubleSpinBox_61.objectName(): self.doubleSpinBox_61.value()},
+        #                 {self.doubleSpinBox_62.objectName(): self.doubleSpinBox_62.value()},
+        #                 {self.doubleSpinBox_63.objectName(): self.doubleSpinBox_63.value()},
+        #                 {self.doubleSpinBox_64.objectName(): self.doubleSpinBox_64.value()},
+        #                 # FIXME fix these names theyre horrendous
+        #                 {self.doubleSpinBox_49.objectName(): self.doubleSpinBox_49.value()},
+        #                 {self.doubleSpinBox_50.objectName(): self.doubleSpinBox_50.value()},
+        #                 {self.doubleSpinBox_51.objectName(): self.doubleSpinBox_51.value()},
+        #                 {self.doubleSpinBox_52.objectName(): self.doubleSpinBox_52.value()},
+        #                 {self.doubleSpinBox_65.objectName(): self.doubleSpinBox_65.value()},
+        #                 {self.doubleSpinBox_66.objectName(): self.doubleSpinBox_66.value()},
+        #                 {self.doubleSpinBox_67.objectName(): self.doubleSpinBox_67.value()},
+        #                 {self.doubleSpinBox_68.objectName(): self.doubleSpinBox_68.value()},
+        #                 {self.doubleSpinBox_69.objectName(): self.doubleSpinBox_69.value()},
+        #                 {self.doubleSpinBox_70.objectName(): self.doubleSpinBox_70.value()},
+        #                 {self.doubleSpinBox_71.objectName(): self.doubleSpinBox_71.value()},
+        #                 {self.doubleSpinBox_72.objectName(): self.doubleSpinBox_72.value()},
+        #                 {self.doubleSpinBox_73.objectName(): self.doubleSpinBox_73.value()},
+        #                 {self.doubleSpinBox_74.objectName(): self.doubleSpinBox_74.value()},
+        #                 {self.doubleSpinBox_75.objectName(): self.doubleSpinBox_75.value()},
+        #                 {self.doubleSpinBox_76.objectName(): self.doubleSpinBox_76.value()},
+        #                 {self.doubleSpinBox_77.objectName(): self.doubleSpinBox_77.value()},
+        #                 {self.doubleSpinBox_78.objectName(): self.doubleSpinBox_78.value()},
+        #                 {self.doubleSpinBox_78.objectName(): self.doubleSpinBox_78.value()},
+        #                 {self.doubleSpinBox_80.objectName(): self.doubleSpinBox_80.value()},
+        #                 {self.doubleSpinBox.objectName(): self.doubleSpinBox.value()},
+        #                 {self.doubleSpinBox_2.objectName(): self.doubleSpinBox_2.value()},
+        #                 {self.doubleSpinBox_3.objectName(): self.doubleSpinBox_3.value()},
+        #                 {self.doubleSpinBox_4.objectName(): self.doubleSpinBox_4.value()},
+        #                 {self.doubleSpinBox_45.objectName(): self.doubleSpinBox_45.value()},
+        #                 {self.doubleSpinBox_46.objectName(): self.doubleSpinBox_46.value()},
+        #                 {self.doubleSpinBox_47.objectName(): self.doubleSpinBox_47.value()},
+        #                 {self.doubleSpinBox_48.objectName(): self.doubleSpinBox_48.value()},
+        #                 {self.doubleSpinBox_53.objectName(): self.doubleSpinBox_53.value()},
+        #                 {self.doubleSpinBox_54.objectName(): self.doubleSpinBox_54.value()},
+        #                 {self.doubleSpinBox_55.objectName(): self.doubleSpinBox_55.value()},
+        #                 {self.doubleSpinBox_56.objectName(): self.doubleSpinBox_56.value()},
+        #                 {self.doubleSpinBox_57.objectName(): self.doubleSpinBox_57.value()},
+        #                 {self.doubleSpinBox_58.objectName(): self.doubleSpinBox_58.value()},
+        #                 {self.doubleSpinBox_59.objectName(): self.doubleSpinBox_59.value()},
+        #                 {self.doubleSpinBox_60.objectName(): self.doubleSpinBox_60.value()}
+        #                 ]
+        # })))
+        # SETTINGS.setValue("settings", json.dumps(self.getSavables()))
+        # stockT.saveSettings()
+        # SETTINGS.sync()
+        pass
+
+    def loadSettings(self):
+        # self.savedables = json.loads(SETTINGS.value("settings", defaultValue=json.dumps({
+        #     "boxes": [{self.testMode_Box.objectName(): self.testMode_Box.isChecked()},
+        #               {self.autoFilter_Box.objectName(): self.autoFilter_Box.isChecked()},
+        #               {self.showFilter_Box.objectName(): self.showFilter_Box.isChecked()},
+        #               {self.savespot_Box.objectName(): self.savespot_Box.isChecked()},
+        #               {self.clear_Box.objectName(): self.clear_Box.isChecked()}],
+        #     "currentFilter": "",
+        #     "weights": [{self.doubleSpinBox_61.objectName(): self.doubleSpinBox_61.value()},
+        #                 {self.doubleSpinBox_62.objectName(): self.doubleSpinBox_62.value()},
+        #                 {self.doubleSpinBox_63.objectName(): self.doubleSpinBox_63.value()},
+        #                 {self.doubleSpinBox_64.objectName(): self.doubleSpinBox_64.value()},
+        #                 # FIXME fix these names theyre horrendous
+        #                 {self.doubleSpinBox_49.objectName(): self.doubleSpinBox_49.value()},
+        #                 {self.doubleSpinBox_50.objectName(): self.doubleSpinBox_50.value()},
+        #                 {self.doubleSpinBox_51.objectName(): self.doubleSpinBox_51.value()},
+        #                 {self.doubleSpinBox_52.objectName(): self.doubleSpinBox_52.value()},
+        #                 {self.doubleSpinBox_65.objectName(): self.doubleSpinBox_65.value()},
+        #                 {self.doubleSpinBox_66.objectName(): self.doubleSpinBox_66.value()},
+        #                 {self.doubleSpinBox_67.objectName(): self.doubleSpinBox_67.value()},
+        #                 {self.doubleSpinBox_68.objectName(): self.doubleSpinBox_68.value()},
+        #                 {self.doubleSpinBox_69.objectName(): self.doubleSpinBox_69.value()},
+        #                 {self.doubleSpinBox_70.objectName(): self.doubleSpinBox_70.value()},
+        #                 {self.doubleSpinBox_71.objectName(): self.doubleSpinBox_71.value()},
+        #                 {self.doubleSpinBox_72.objectName(): self.doubleSpinBox_72.value()},
+        #                 {self.doubleSpinBox_73.objectName(): self.doubleSpinBox_73.value()},
+        #                 {self.doubleSpinBox_74.objectName(): self.doubleSpinBox_74.value()},
+        #                 {self.doubleSpinBox_75.objectName(): self.doubleSpinBox_75.value()},
+        #                 {self.doubleSpinBox_76.objectName(): self.doubleSpinBox_76.value()},
+        #                 {self.doubleSpinBox_77.objectName(): self.doubleSpinBox_77.value()},
+        #                 {self.doubleSpinBox_78.objectName(): self.doubleSpinBox_78.value()},
+        #                 {self.doubleSpinBox_78.objectName(): self.doubleSpinBox_78.value()},
+        #                 {self.doubleSpinBox_80.objectName(): self.doubleSpinBox_80.value()},
+        #                 {self.doubleSpinBox.objectName(): self.doubleSpinBox.value()},
+        #                 {self.doubleSpinBox_2.objectName(): self.doubleSpinBox_2.value()},
+        #                 {self.doubleSpinBox_3.objectName(): self.doubleSpinBox_3.value()},
+        #                 {self.doubleSpinBox_4.objectName(): self.doubleSpinBox_4.value()},
+        #                 {self.doubleSpinBox_45.objectName(): self.doubleSpinBox_45.value()},
+        #                 {self.doubleSpinBox_46.objectName(): self.doubleSpinBox_46.value()},
+        #                 {self.doubleSpinBox_47.objectName(): self.doubleSpinBox_47.value()},
+        #                 {self.doubleSpinBox_48.objectName(): self.doubleSpinBox_48.value()},
+        #                 {self.doubleSpinBox_53.objectName(): self.doubleSpinBox_53.value()},
+        #                 {self.doubleSpinBox_54.objectName(): self.doubleSpinBox_54.value()},
+        #                 {self.doubleSpinBox_55.objectName(): self.doubleSpinBox_55.value()},
+        #                 {self.doubleSpinBox_56.objectName(): self.doubleSpinBox_56.value()},
+        #                 {self.doubleSpinBox_57.objectName(): self.doubleSpinBox_57.value()},
+        #                 {self.doubleSpinBox_58.objectName(): self.doubleSpinBox_58.value()},
+        #                 {self.doubleSpinBox_59.objectName(): self.doubleSpinBox_59.value()},
+        #                 {self.doubleSpinBox_60.objectName(): self.doubleSpinBox_60.value()}
+        #                 ]
+        # })))
+        # for i  in self.savedables["boxes"]:
+        #     self.findChild(QtWidgets.QCheckBox, list(i.items())[0][0]).setChecked(list(i.items())[0][1])
+        #     print(list(i.items())[0][1])
+        # SETTINGS.sync()
+        pass
+
+
 def main():
     app = QApplication(sys.argv)
+
+    QCoreApplication.setOrganizationName("FireFlies")
+    QCoreApplication.setOrganizationDomain("https://github.com/Kataki-Takanashi")
+    # SETTINGS = QSettings()
+
+    testMode = False
 
     widget = QtWidgets.QStackedWidget()
     home = homeScreen()
@@ -944,6 +1524,8 @@ def main():
     seetickerhistory = seeTickerHistory()
     yesterday = seeYesterday()
     today = seeToday()
+    stockT = todayStock()
+    settings = Settings()  # to find stuff that looks like this use this regex \w{0,20}\s*\=\s*[^qQ]{0,20}\(\)$ https://regex-vis.com/?r=%5Cw%7B0%2C20%7D%5Cs*%5C%3D%5Cs*%5B%5EqQ%5D%7B0%2C20%7D%5C%28%5C%29%24&e=0
     widget.addWidget(home)
     widget.addWidget(stock)
     widget.addWidget(halal)
@@ -953,11 +1535,18 @@ def main():
     widget.addWidget(seetickerhistory)
     widget.addWidget(yesterday)
     widget.addWidget(today)
-
+    widget.addWidget(stockT)
+    widget.addWidget(settings)
     widget.show()
+    widget.setFixedSize(487, 1387)  # TODO setting to save current window pos and one for size as default
+    widget.move(0, 0)
     app.exec_()
 
 
+QCoreApplication.setOrganizationName("FireFlies")
+QCoreApplication.setOrganizationDomain("https://github.com/Kataki-Takanashi")
+QCoreApplication.setApplicationName("HalalStockOrganizer")
+SETTINGS = QSettings()
 
 app = QApplication(sys.argv)
 widget = QtWidgets.QStackedWidget()
@@ -970,6 +1559,8 @@ history = seeHistory()
 seetickerhistory = seeTickerHistory()
 yesterday = seeYesterday()
 today = seeToday()
+stockT = todayStock()
+settings = Settings()
 widget.addWidget(home)
 widget.addWidget(stock)
 widget.addWidget(halal)
@@ -979,7 +1570,37 @@ widget.addWidget(history)
 widget.addWidget(seetickerhistory)
 widget.addWidget(yesterday)
 widget.addWidget(today)
+widget.addWidget(stockT)
+widget.addWidget(settings)
+
+# halalSettings = json.loads(SETTINGS.value("halal", defaultValue=json.dumps({"fields": [halal.ticker_Input.text(), halal.lotso_Input.toPlainText()], "halal": []})))
+# stockSettings = json.loads(SETTINGS.value("stock", defaultValue=json.dumps({"halal": [], "filters": {"Default": ['fa_salesqoq_o30', 'ind_stocksonly', 'ipodate_prev3yrs', 'sh_avgvol_o500', 'sh_short_o5',
+#                    'ta_changeopen_u', 'ta_sma20_pa', 'ta_sma200_pa', 'ta_sma50_pa']}})))
+# settingsSettings = json.loads(SETTINGS.value("settings", defaultValue=json.dumps({
+#             "boxes": [{settings.testMode_Box.objectName(): settings.testMode_Box.isChecked()} , {settings.autoFilter_Box.objectName(): settings.autoFilter_Box.isChecked()} , {settings.showFilter_Box.objectName(): settings.showFilter_Box.isChecked()} , {settings.savespot_Box.objectName(): settings.savespot_Box.isChecked()} , {settings.clear_Box.objectName(): settings.clear_Box.isChecked()} ],
+#             "currentFilter": "",
+#             "weights": [{settings.doubleSpinBox_61.objectName(): settings.doubleSpinBox_61.value()} , {settings.doubleSpinBox_62.objectName(): settings.doubleSpinBox_62.value()} , {settings.doubleSpinBox_63.objectName(): settings.doubleSpinBox_63.value()} , {settings.doubleSpinBox_64.objectName(): settings.doubleSpinBox_64.value()} , #FIXME fix these names theyre horrendous
+#                         {settings.doubleSpinBox_49.objectName(): settings.doubleSpinBox_49.value()} , {settings.doubleSpinBox_50.objectName(): settings.doubleSpinBox_50.value()} , {settings.doubleSpinBox_51.objectName(): settings.doubleSpinBox_51.value()} , {settings.doubleSpinBox_52.objectName(): settings.doubleSpinBox_52.value()} ,
+#                         {settings.doubleSpinBox_65.objectName(): settings.doubleSpinBox_65.value()} , {settings.doubleSpinBox_66.objectName(): settings.doubleSpinBox_66.value()} , {settings.doubleSpinBox_67.objectName(): settings.doubleSpinBox_67.value()} , {settings.doubleSpinBox_68.objectName(): settings.doubleSpinBox_68.value()} ,
+#                         {settings.doubleSpinBox_69.objectName(): settings.doubleSpinBox_69.value()} , {settings.doubleSpinBox_70.objectName(): settings.doubleSpinBox_70.value()} , {settings.doubleSpinBox_71.objectName(): settings.doubleSpinBox_71.value()} , {settings.doubleSpinBox_72.objectName(): settings.doubleSpinBox_72.value()} ,
+#                         {settings.doubleSpinBox_73.objectName(): settings.doubleSpinBox_73.value()} , {settings.doubleSpinBox_74.objectName(): settings.doubleSpinBox_74.value()} , {settings.doubleSpinBox_75.objectName(): settings.doubleSpinBox_75.value()} , {settings.doubleSpinBox_76.objectName(): settings.doubleSpinBox_76.value()} ,
+#                         {settings.doubleSpinBox_77.objectName(): settings.doubleSpinBox_77.value()} , {settings.doubleSpinBox_78.objectName(): settings.doubleSpinBox_78.value()} , {settings.doubleSpinBox_78.objectName(): settings.doubleSpinBox_78.value()} , {settings.doubleSpinBox_80.objectName(): settings.doubleSpinBox_80.value()} ,
+#                         {settings.doubleSpinBox.objectName(): settings.doubleSpinBox.value()} , {settings.doubleSpinBox_2.objectName(): settings.doubleSpinBox_2.value()} , {settings.doubleSpinBox_3.objectName(): settings.doubleSpinBox_3.value()} , {settings.doubleSpinBox_4.objectName(): settings.doubleSpinBox_4.value()} ,
+#                         {settings.doubleSpinBox_45.objectName(): settings.doubleSpinBox_45.value()} , {settings.doubleSpinBox_46.objectName(): settings.doubleSpinBox_46.value()} , {settings.doubleSpinBox_47.objectName(): settings.doubleSpinBox_47.value()} , {settings.doubleSpinBox_48.objectName(): settings.doubleSpinBox_48.value()} ,
+#                         {settings.doubleSpinBox_53.objectName(): settings.doubleSpinBox_53.value()} , {settings.doubleSpinBox_54.objectName(): settings.doubleSpinBox_54.value()} , {settings.doubleSpinBox_55.objectName(): settings.doubleSpinBox_55.value()} , {settings.doubleSpinBox_56.objectName(): settings.doubleSpinBox_56.value()} ,
+#                         {settings.doubleSpinBox_57.objectName(): settings.doubleSpinBox_57.value()} , {settings.doubleSpinBox_58.objectName(): settings.doubleSpinBox_58.value()} , {settings.doubleSpinBox_59.objectName(): settings.doubleSpinBox_59.value()} , {settings.doubleSpinBox_60.objectName(): settings.doubleSpinBox_60.value()}
+#                         ]
+#         })))
+# SETTINGS.clear()
+windowSettings = SETTINGS.value("window", defaultValue=[False, False], type=list)
+
+# testMode = settings.getSavedables()["boxes"][0]
+testMode = False
+print(testMode)
+
 widget.show()
+widget.setFixedSize(487, 1387) if windowSettings[0] else None
+widget.move(0, 0) if windowSettings[1] else None
 app.exec_()
 
 

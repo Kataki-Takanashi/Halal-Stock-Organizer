@@ -55,20 +55,26 @@
    </item>
    <item>
     <widget class="QScrollArea" name="scrollArea_2">
-     <property name="widgetResizable">
-      <bool>true</bool>
-     </property>
-     <widget class="QWidget" name="scrollAreaWidgetContents_2">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>575</width>
-        <height>111</height>
-       </rect>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_3"/>
-     </widget>
+        <property name="verticalScrollBarPolicy">
+            <enum>Qt::ScrollBarAlwaysOn</enum>
+        </property>
+        <property name="sizeAdjustPolicy">
+            <enum>QAbstractScrollArea::AdjustToContents</enum>
+        </property>
+        <property name="widgetResizable">
+            <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="scrollAreaWidgetContents_2">
+            <property name="geometry">
+                <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>575</width>
+                    <height>111</height>
+                </rect>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_3"/>
+        </widget>
     </widget>
    </item>
    <item alignment="Qt::AlignRight">

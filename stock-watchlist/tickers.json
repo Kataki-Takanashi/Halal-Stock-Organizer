@@ -199,6 +199,518 @@
     {
       "ticker": "SJM",
       "halal": false
+    },
+    {
+      "ticker": "BOWL",
+      "halal": false
+    },
+    {
+      "ticker": "BROS",
+      "halal": false
+    },
+    {
+      "ticker": "IOT",
+      "halal": true
+    },
+    {
+      "ticker": "OSH",
+      "halal": true
+    },
+    {
+      "ticker": "PCOR",
+      "halal": true
+    },
+    {
+      "ticker": "SOUN",
+      "halal": true
+    },
+    {
+      "ticker": "GLBE",
+      "halal": true
+    },
+    {
+      "ticker": "MNDY",
+      "halal": true
+    },
+    {
+      "ticker": "CAG",
+      "halal": false
+    },
+    {
+      "ticker": "AGCO",
+      "halal": false
+    },
+    {
+      "ticker": "TWI",
+      "halal": false
+    },
+    {
+      "ticker": "DGX",
+      "halal": false
+    },
+    {
+      "ticker": "SRPT",
+      "halal": true
+    },
+    {
+      "ticker": "HESM",
+      "halal": false
+    },
+    {
+      "ticker": "M",
+      "halal": false
+    },
+    {
+      "ticker": "BWXT",
+      "halal": false
+    },
+    {
+      "ticker": "AGYS",
+      "halal": true
+    },
+    {
+      "ticker": "ARHS",
+      "halal": false
+    },
+    {
+      "ticker": "MIR",
+      "halal": false
+    },
+    {
+      "ticker": "NVTS",
+      "halal": true
+    },
+    {
+      "ticker": "VLD",
+      "halal": true
+    },
+    {
+      "ticker": "OSCR",
+      "halal": false
+    },
+    {
+      "ticker": "ZETA",
+      "halal": true
+    },
+    {
+      "ticker": "EOSE",
+      "halal": false
+    },
+    {
+      "ticker": "RXRX",
+      "halal": false
+    },
+    {
+      "ticker": "IONQ",
+      "halal": false
+    },
+    {
+      "ticker": "CRDO",
+      "halal": true
+    },
+    {
+      "ticker": "LTH",
+      "halal": false
+    },
+    {
+      "ticker": "S",
+      "halal": true
+    },
+    {
+      "ticker": "ASAN",
+      "halal": true
+    },
+    {
+      "ticker": "FLNC",
+      "halal": true
+    },
+    {
+      "ticker": "CFLT",
+      "halal": true
+    },
+    {
+      "ticker": "HCP",
+      "halal": true
+    },
+    {
+      "ticker": "DOCN",
+      "halal": false
+    },
+    {
+      "ticker": "SYM",
+      "halal": false
+    },
+    {
+      "ticker": "NE",
+      "halal": true
+    },
+    {
+      "ticker": "DASH",
+      "halal": true
+    },
+    {
+      "ticker": "DUOL",
+      "halal": true
+    },
+    {
+      "ticker": "DNA",
+      "halal": false
+    },
+    {
+      "ticker": "JOBY",
+      "halal": false
+    },
+    {
+      "ticker": "GDRX",
+      "halal": false
+    },
+    {
+      "ticker": "ETRN",
+      "halal": false
+    },
+    {
+      "ticker": "NU",
+      "halal": false
+    },
+    {
+      "ticker": "ASX",
+      "halal": false
+    },
+    {
+      "ticker": "BHC",
+      "halal": false
+    },
+    {
+      "ticker": "SNAP",
+      "halal": false
+    },
+    {
+      "ticker": "CCCS",
+      "halal": false
+    },
+    {
+      "ticker": "CVNA",
+      "halal": false
+    },
+    {
+      "ticker": "PLTR",
+      "halal": false
+    },
+    {
+      "ticker": "IMGN",
+      "halal": true
+    },
+    {
+      "ticker": "AFRM",
+      "halal": false
+    },
+    {
+      "ticker": "GT",
+      "halal": false
+    },
+    {
+      "ticker": "RIVN",
+      "halal": false
+    },
+    {
+      "ticker": "FSLY",
+      "halal": false
+    },
+    {
+      "ticker": "XP",
+      "halal": false
+    },
+    {
+      "ticker": "VRT",
+      "halal": false
+    },
+    {
+      "ticker": "APP",
+      "halal": false
+    },
+    {
+      "ticker": "UPST",
+      "halal": false
+    },
+    {
+      "ticker": "FLEX",
+      "halal": false
+    },
+    {
+      "ticker": "PSTG",
+      "halal": true
+    },
+    {
+      "ticker": "ZION",
+      "halal": false
+    },
+    {
+      "ticker": "NTNX",
+      "halal": true
+    },
+    {
+      "ticker": "URBN",
+      "halal": false
+    },
+    {
+      "ticker": "AI",
+      "halal": false
+    },
+    {
+      "ticker": "DV",
+      "halal": true
+    },
+    {
+      "ticker": "GTLB",
+      "halal": true
+    },
+    {
+      "ticker": "RNG",
+      "halal": false
+    },
+    {
+      "ticker": "WAL",
+      "halal": false
+    },
+    {
+      "ticker": "COHR",
+      "halal": false
+    },
+    {
+      "ticker": "PBF",
+      "halal": false
+    },
+    {
+      "ticker": "WDC",
+      "halal": false
+    },
+    {
+      "ticker": "IONS",
+      "halal": false
+    },
+    {
+      "ticker": "MBLY",
+      "halal": true
+    },
+    {
+      "ticker": "SMAR",
+      "halal": true
+    },
+    {
+      "ticker": "WOLF",
+      "halal": false
+    },
+    {
+      "ticker": "LITE",
+      "halal": false
+    },
+    {
+      "ticker": "TWLO",
+      "halal": false
+    },
+    {
+      "ticker": "NET",
+      "halal": true
+    },
+    {
+      "ticker": "MRVL",
+      "halal": true
+    },
+    {
+      "ticker": "RMBS",
+      "halal": true
+    },
+    {
+      "ticker": "ESTC",
+      "halal": true
+    },
+    {
+      "ticker": "PDD",
+      "halal": false
+    },
+    {
+      "ticker": "MU",
+      "halal": true
+    },
+    {
+      "ticker": "AMBA",
+      "halal": true
+    },
+    {
+      "ticker": "OKTA",
+      "halal": true
+    },
+    {
+      "ticker": "JBL",
+      "halal": false
+    },
+    {
+      "ticker": "DDOG",
+      "halal": true
+    },
+    {
+      "ticker": "MKSI",
+      "halal": false
+    },
+    {
+      "ticker": "SPLK",
+      "halal": true
+    },
+    {
+      "ticker": "ELF",
+      "halal": true
+    },
+    {
+      "ticker": "COF",
+      "halal": false
+    },
+    {
+      "ticker": "TSM",
+      "halal": true
+    },
+    {
+      "ticker": "TER",
+      "halal": true
+    },
+    {
+      "ticker": "ENTG",
+      "halal": false
+    },
+    {
+      "ticker": "FN",
+      "halal": true
+    },
+    {
+      "ticker": "AMD",
+      "halal": true
+    },
+    {
+      "ticker": "ZS",
+      "halal": true
+    },
+    {
+      "ticker": "AMAT",
+      "halal": true
+    },
+    {
+      "ticker": "CRWD",
+      "halal": true
+    },
+    {
+      "ticker": "TEAM",
+      "halal": true
+    },
+    {
+      "ticker": "ANET",
+      "halal": true
+    },
+    {
+      "ticker": "PANW",
+      "halal": true
+    },
+    {
+      "ticker": "WDAY",
+      "halal": true
+    },
+    {
+      "ticker": "SMCI",
+      "halal": true
+    },
+    {
+      "ticker": "NFLX",
+      "halal": false
+    },
+    {
+      "ticker": "NVDA",
+      "halal": true
+    },
+    {
+      "ticker": "ADBE",
+      "halal": true
+    },
+    {
+      "ticker": "SNPS",
+      "halal": true
+    },
+    {
+      "ticker": "KLAC",
+      "halal": true
+    },
+    {
+      "ticker": "MPWR",
+      "halal": true
+    },
+    {
+      "ticker": "LRCX",
+      "halal": true
+    },
+    {
+      "ticker": "ASML",
+      "halal": true
+    },
+    {
+      "ticker": "AVGO",
+      "halal": true
+    },
+    {
+      "ticker": "SOFI",
+      "halal": false
+    },
+    {
+      "ticker": "IOVA",
+      "halal": false
+    },
+    {
+      "ticker": "CHPT",
+      "halal": false
+    },
+    {
+      "ticker": "NOVA",
+      "halal": false
+    },
+    {
+      "ticker": "PATH",
+      "halal": false
+    },
+    {
+      "ticker": "EXTR",
+      "halal": false
+    },
+    {
+      "ticker": "SDA",
+      "halal": false
+    },
+    {
+      "ticker": "GME",
+      "halal": false
+    },
+    {
+      "ticker": "FIVN",
+      "halal": false
+    },
+    {
+      "ticker": "ABCL",
+      "halal": false
+    },
+    {
+      "ticker": "W",
+      "halal": false
+    },
+    {
+      "ticker": "MDB",
+      "halal": true
+    },
+    {
+      "ticker": "ACN",
+      "halal": true
+    },
+    {
+      "ticker": "ZI",
+      "halal": true
+    },
+    {
+      "ticker": "DIS",
+      "halal": false
     }
   ]
 }
