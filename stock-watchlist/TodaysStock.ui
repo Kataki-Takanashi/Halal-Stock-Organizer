@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+    <class>TodaysStocks</class>
+    <widget class="QDialog" name="TodaysStocks">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>594</width>
+                <height>606</height>
+            </rect>
+        </property>
+        <property name="windowTitle">
+            <string>Stock Watchlist &amp; Logger</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+            <item alignment="Qt::AlignRight">
+                <widget class="QPushButton" name="home_Button">
+                    <property name="text">
+                        <string>Home</string>
+                    </property>
+                </widget>
+            </item>
+            <item>
+                <widget class="QScrollArea" name="scrollArea">
+                    <property name="widgetResizable">
+                        <bool>true</bool>
+                    </property>
+                    <widget class="QWidget" name="scrollAreaWidgetContents_2">
+                        <property name="geometry">
+                            <rect>
+                                <x>0</x>
+                                <y>0</y>
+                                <width>568</width>
+                                <height>476</height>
+                            </rect>
+                        </property>
+                        <layout class="QVBoxLayout" name="verticalLayout_3"/>
+                    </widget>
+                </widget>
+            </item>
+            <item>
+                <widget class="QComboBox" name="filters">
+                    <property name="currentText">
+                        <string/>
+                    </property>
+                    <property name="placeholderText">
+                        <string>Filters</string>
+                    </property>
+                </widget>
+            </item>
+            <item>
+                <widget class="QPushButton" name="submit_Ticker_Button">
+                    <property name="text">
+                        <string>Submit</string>
+                    </property>
+                </widget>
+            </item>
+        </layout>
+    </widget>
+    <resources/>
+    <connections/>
+</ui>

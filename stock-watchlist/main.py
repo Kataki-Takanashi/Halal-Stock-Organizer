@@ -1223,7 +1223,8 @@ class todayStock(QDialog):
             #             l.addWidget(t)
             #             l.addWidget(c)
             #             g.setLayout(l)
-            #             self.new_Ticker_Boxes.append((t, c))
+            #             self.new_Ticker_Boxes.append((t, c))self.savedables = dict(json.loads(SETTINGS.value("halal", defaultValue=json.dumps('{"fields": [self.ticker_Input.text(), self.lotso_Input.toPlainText()], "halal": []}'))))
+            # ValueError: dictionary update sequence element #0 has length 1; 2 is required
             #             self.verticalLayout_3.addWidget(g)
         except (finviz.helper_functions.error_handling.NoResults,
                 IndexError) as e:  # Replace with idex error if needed in testing, seems to be ide's fault

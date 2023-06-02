@@ -1,0 +1,1945 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+    <class>Settings</class>
+    <widget class="QDialog" name="Settings">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>393</width>
+                <height>1387</height>
+            </rect>
+        </property>
+        <property name="windowTitle">
+            <string>Settings</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+            <item alignment="Qt::AlignRight">
+                <widget class="QPushButton" name="home_Button">
+                    <property name="text">
+                        <string>Home</string>
+                    </property>
+                </widget>
+            </item>
+            <item>
+                <widget class="QGroupBox" name="groupBox">
+                    <property name="styleSheet">
+                        <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0
+                            rgba(245, 0, 0, 255), stop:0.08867 rgba(246, 228, 0, 255), stop:0.137931 rgba(246, 0, 0,
+                            255), stop:0.192118 rgba(184, 95, 0, 255), stop:0.251232 rgba(248, 211, 0, 255),
+                            stop:0.320197 rgba(248, 92, 0, 255), stop:0.384236 rgba(249, 138, 0, 255), stop:0.46798
+                            rgba(164, 0, 0, 255), stop:0.581281 rgba(251, 214, 0, 255), stop:0.669951 rgba(185, 110, 0,
+                            255), stop:0.753695 rgba(252, 243, 0, 255), stop:0.79803 rgba(218, 0, 0, 255), stop:0.862069
+                            rgba(254, 180, 66, 255), stop:0.91133 rgba(254, 128, 41, 255), stop:1 rgba(255, 42, 43,
+                            255));
+                        </string>
+                    </property>
+                    <property name="title">
+                        <string/>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout">
+                        <item>
+                            <widget class="QCheckBox" name="testMode_Box">
+                                <property name="toolTip">
+                                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot;
+                                        color:#ff0009;&quot;&gt;TestMode dosent save anything!!!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                    </string>
+                                </property>
+                                <property name="styleSheet">
+                                    <string notr="true">color: rgb(0, 0, 0)</string>
+                                </property>
+                                <property name="text">
+                                    <string>TestMode</string>
+                                </property>
+                            </widget>
+                        </item>
+                    </layout>
+                </widget>
+            </item>
+            <item>
+                <widget class="QCheckBox" name="checkBox_2">
+                    <property name="text">
+                        <string>Show Weights</string>
+                    </property>
+                </widget>
+            </item>
+            <item>
+                <widget class="QScrollArea" name="scrollArea">
+                    <property name="whatsThis">
+                        <string>a thing</string>
+                    </property>
+                    <property name="widgetResizable">
+                        <bool>true</bool>
+                    </property>
+                    <widget class="QWidget" name="scrollAreaWidgetContents">
+                        <property name="geometry">
+                            <rect>
+                                <x>0</x>
+                                <y>0</y>
+                                <width>367</width>
+                                <height>938</height>
+                            </rect>
+                        </property>
+                        <layout class="QVBoxLayout" name="verticalLayout_2">
+                            <item>
+                                <widget class="QGroupBox" name="groupBox_9">
+                                    <property name="title">
+                                        <string/>
+                                    </property>
+                                    <layout class="QHBoxLayout" name="horizontalLayout_17">
+                                        <item alignment="Qt::AlignHCenter">
+                                            <widget class="QLabel" name="label_71">
+                                                <property name="toolTip">
+                                                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This is the
+                                                        200! (Big white line on chart) stay above!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                    </string>
+                                                </property>
+                                                <property name="text">
+                                                    <string>t200</string>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_59">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_72">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is good&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: green</string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>gWeight</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_57">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="singleStep">
+                                                            <double>1.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>2.000000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_60">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_73">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is bad&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: red</string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>bWeight</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_58">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>-2.000000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_61">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_74">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is good but special (like macd
+                                                                crossing up)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: qradialgradient(spread:repeat,
+                                                                cx:0.5, cy:0.5, radius:0.077, fx:0.5, fy:0.5, stop:0
+                                                                rgba(19, 255, 0, 147), stop:0.497326 rgba(0, 0, 0, 147),
+                                                                stop:1 rgba(0, 255, 113, 147));
+                                                            </string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>gsw</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_59">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>1.000000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_62">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_75">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is bad but special (like macd
+                                                                crossing down)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: qradialgradient(spread:repeat,
+                                                                cx:0.5, cy:0.5, radius:0.077, fx:0.5, fy:0.5, stop:0
+                                                                rgba(255, 0, 0, 147), stop:0.497537 rgba(58, 30, 30,
+                                                                146), stop:1 rgba(255, 94, 0, 147));
+                                                            </string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>bsw</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_60">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>-1.500000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                    </layout>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QGroupBox" name="groupBox_8">
+                                    <property name="title">
+                                        <string/>
+                                    </property>
+                                    <layout class="QHBoxLayout" name="horizontalLayout_16">
+                                        <item alignment="Qt::AlignHCenter">
+                                            <widget class="QLabel" name="label_66">
+                                                <property name="text">
+                                                    <string>t9</string>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_55">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_67">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is good&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: green</string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>gWeight</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_53">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>1.500000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_56">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_68">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is bad&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: red</string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>bWeight</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_54">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>-1.500000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_57">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_69">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is good but special (like macd
+                                                                crossing up)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: qradialgradient(spread:repeat,
+                                                                cx:0.5, cy:0.5, radius:0.077, fx:0.5, fy:0.5, stop:0
+                                                                rgba(19, 255, 0, 147), stop:0.497326 rgba(0, 0, 0, 147),
+                                                                stop:1 rgba(0, 255, 113, 147));
+                                                            </string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>gsw</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_55">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>1.500000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_58">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_70">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is bad but special (like macd
+                                                                crossing down)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: qradialgradient(spread:repeat,
+                                                                cx:0.5, cy:0.5, radius:0.077, fx:0.5, fy:0.5, stop:0
+                                                                rgba(255, 0, 0, 147), stop:0.497537 rgba(58, 30, 30,
+                                                                146), stop:1 rgba(255, 94, 0, 147));
+                                                            </string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>bsw</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_56">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>-1.500000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                    </layout>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QGroupBox" name="groupBox_7">
+                                    <property name="title">
+                                        <string/>
+                                    </property>
+                                    <layout class="QHBoxLayout" name="horizontalLayout_14">
+                                        <item alignment="Qt::AlignHCenter">
+                                            <widget class="QLabel" name="label_56">
+                                                <property name="text">
+                                                    <string>MACD</string>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_47">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_57">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is good&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: green</string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>gWeight</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_45">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>1.500000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_48">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_58">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is bad&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: red</string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>bWeight</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_46">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>-1.500000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_49">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_59">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is good but special (like macd
+                                                                crossing up)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: qradialgradient(spread:repeat,
+                                                                cx:0.5, cy:0.5, radius:0.077, fx:0.5, fy:0.5, stop:0
+                                                                rgba(19, 255, 0, 147), stop:0.497326 rgba(0, 0, 0, 147),
+                                                                stop:1 rgba(0, 255, 113, 147));
+                                                            </string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>gsw</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_47">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>1.500000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_50">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_60">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is bad but special (like macd
+                                                                crossing down)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: qradialgradient(spread:repeat,
+                                                                cx:0.5, cy:0.5, radius:0.077, fx:0.5, fy:0.5, stop:0
+                                                                rgba(255, 0, 0, 147), stop:0.497537 rgba(58, 30, 30,
+                                                                146), stop:1 rgba(255, 94, 0, 147));
+                                                            </string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>bsw</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_48">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>-1.500000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                    </layout>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QGroupBox" name="groupBox_12">
+                                    <property name="title">
+                                        <string/>
+                                    </property>
+                                    <layout class="QHBoxLayout" name="horizontalLayout_19">
+                                        <item alignment="Qt::AlignHCenter">
+                                            <widget class="QLabel" name="label_81">
+                                                <property name="text">
+                                                    <string>RSI</string>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_67">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_82">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is good&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: green</string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>gWeight</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_65">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>1.000000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_68">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_83">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is bad&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: red</string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>bWeight</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_66">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>-1.000000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_69">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_84">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is good but special (like macd
+                                                                crossing up)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: qradialgradient(spread:repeat,
+                                                                cx:0.5, cy:0.5, radius:0.077, fx:0.5, fy:0.5, stop:0
+                                                                rgba(19, 255, 0, 147), stop:0.497326 rgba(0, 0, 0, 147),
+                                                                stop:1 rgba(0, 255, 113, 147));
+                                                            </string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>gsw</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_67">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>1.500000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_70">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_85">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is bad but special (like macd
+                                                                crossing down)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: qradialgradient(spread:repeat,
+                                                                cx:0.5, cy:0.5, radius:0.077, fx:0.5, fy:0.5, stop:0
+                                                                rgba(255, 0, 0, 147), stop:0.497537 rgba(58, 30, 30,
+                                                                146), stop:1 rgba(255, 94, 0, 147));
+                                                            </string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>bsw</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_68">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>-1.000000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                    </layout>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QGroupBox" name="groupBox_14">
+                                    <property name="title">
+                                        <string/>
+                                    </property>
+                                    <layout class="QHBoxLayout" name="horizontalLayout_21">
+                                        <item alignment="Qt::AlignHCenter">
+                                            <widget class="QLabel" name="label_91">
+                                                <property name="text">
+                                                    <string>VWAP</string>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_75">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_92">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is good&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: green</string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>gWeight</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_73">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>1.500000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_76">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_93">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is bad&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: red</string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>bWeight</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_74">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>-1.500000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_77">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_94">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is good but special (like macd
+                                                                crossing up)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: qradialgradient(spread:repeat,
+                                                                cx:0.5, cy:0.5, radius:0.077, fx:0.5, fy:0.5, stop:0
+                                                                rgba(19, 255, 0, 147), stop:0.497326 rgba(0, 0, 0, 147),
+                                                                stop:1 rgba(0, 255, 113, 147));
+                                                            </string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>gsw</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_75">
+                                                        <property name="enabled">
+                                                            <bool>false</bool>
+                                                        </property>
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_78">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_95">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is bad but special (like macd
+                                                                crossing down)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: qradialgradient(spread:repeat,
+                                                                cx:0.5, cy:0.5, radius:0.077, fx:0.5, fy:0.5, stop:0
+                                                                rgba(255, 0, 0, 147), stop:0.497537 rgba(58, 30, 30,
+                                                                146), stop:1 rgba(255, 94, 0, 147));
+                                                            </string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>bsw</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_76">
+                                                        <property name="enabled">
+                                                            <bool>false</bool>
+                                                        </property>
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                    </layout>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QGroupBox" name="groupBox_13">
+                                    <property name="title">
+                                        <string/>
+                                    </property>
+                                    <layout class="QHBoxLayout" name="horizontalLayout_20">
+                                        <item alignment="Qt::AlignHCenter">
+                                            <widget class="QLabel" name="label_86">
+                                                <property name="text">
+                                                    <string>HA</string>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_71">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_87">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is good&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: green</string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>gWeight</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_69">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>1.000000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_72">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_88">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is bad&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: red</string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>bWeight</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_70">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>-1.000000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_73">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_89">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is good but special (like macd
+                                                                crossing up)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: qradialgradient(spread:repeat,
+                                                                cx:0.5, cy:0.5, radius:0.077, fx:0.5, fy:0.5, stop:0
+                                                                rgba(19, 255, 0, 147), stop:0.497326 rgba(0, 0, 0, 147),
+                                                                stop:1 rgba(0, 255, 113, 147));
+                                                            </string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>gsw</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_71">
+                                                        <property name="enabled">
+                                                            <bool>false</bool>
+                                                        </property>
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_74">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_90">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is bad but special (like macd
+                                                                crossing down)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: qradialgradient(spread:repeat,
+                                                                cx:0.5, cy:0.5, radius:0.077, fx:0.5, fy:0.5, stop:0
+                                                                rgba(255, 0, 0, 147), stop:0.497537 rgba(58, 30, 30,
+                                                                146), stop:1 rgba(255, 94, 0, 147));
+                                                            </string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>bsw</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_72">
+                                                        <property name="enabled">
+                                                            <bool>false</bool>
+                                                        </property>
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                    </layout>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QGroupBox" name="groupBox_11">
+                                    <property name="title">
+                                        <string/>
+                                    </property>
+                                    <layout class="QHBoxLayout" name="horizontalLayout_15">
+                                        <item alignment="Qt::AlignHCenter">
+                                            <widget class="QLabel" name="label_61">
+                                                <property name="text">
+                                                    <string>SHAC</string>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_51">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_62">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is good&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: green</string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>gWeight</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_49">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>1.000000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_52">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_63">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is bad&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: red</string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>bWeight</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_50">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>-1.000000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_53">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_64">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is good but special (like macd
+                                                                crossing up)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: qradialgradient(spread:repeat,
+                                                                cx:0.5, cy:0.5, radius:0.077, fx:0.5, fy:0.5, stop:0
+                                                                rgba(19, 255, 0, 147), stop:0.497326 rgba(0, 0, 0, 147),
+                                                                stop:1 rgba(0, 255, 113, 147));
+                                                            </string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>gsw</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_51">
+                                                        <property name="enabled">
+                                                            <bool>false</bool>
+                                                        </property>
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_54">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_65">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is bad but special (like macd
+                                                                crossing down)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: qradialgradient(spread:repeat,
+                                                                cx:0.5, cy:0.5, radius:0.077, fx:0.5, fy:0.5, stop:0
+                                                                rgba(255, 0, 0, 147), stop:0.497537 rgba(58, 30, 30,
+                                                                146), stop:1 rgba(255, 94, 0, 147));
+                                                            </string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>bsw</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_52">
+                                                        <property name="enabled">
+                                                            <bool>false</bool>
+                                                        </property>
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                    </layout>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QGroupBox" name="groupBox_10">
+                                    <property name="title">
+                                        <string/>
+                                    </property>
+                                    <layout class="QHBoxLayout" name="horizontalLayout_18">
+                                        <item alignment="Qt::AlignHCenter">
+                                            <widget class="QLabel" name="label_76">
+                                                <property name="text">
+                                                    <string>RIB</string>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_63">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_77">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is good&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: green</string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>gWeight</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_61">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>1.000000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_64">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_78">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is bad&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: red</string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>bWeight</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_62">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>-1.000000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_65">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_79">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is good but special (like macd
+                                                                crossing up)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: qradialgradient(spread:repeat,
+                                                                cx:0.5, cy:0.5, radius:0.077, fx:0.5, fy:0.5, stop:0
+                                                                rgba(19, 255, 0, 147), stop:0.497326 rgba(0, 0, 0, 147),
+                                                                stop:1 rgba(0, 255, 113, 147));
+                                                            </string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>gsw</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_63">
+                                                        <property name="enabled">
+                                                            <bool>false</bool>
+                                                        </property>
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_66">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_80">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is bad but special (like macd
+                                                                crossing down)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: qradialgradient(spread:repeat,
+                                                                cx:0.5, cy:0.5, radius:0.077, fx:0.5, fy:0.5, stop:0
+                                                                rgba(255, 0, 0, 147), stop:0.497537 rgba(58, 30, 30,
+                                                                146), stop:1 rgba(255, 94, 0, 147));
+                                                            </string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>bsw</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_64">
+                                                        <property name="enabled">
+                                                            <bool>false</bool>
+                                                        </property>
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                    </layout>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QGroupBox" name="groupBox_15">
+                                    <property name="title">
+                                        <string/>
+                                    </property>
+                                    <layout class="QHBoxLayout" name="horizontalLayout_22">
+                                        <item alignment="Qt::AlignHCenter">
+                                            <widget class="QLabel" name="label_96">
+                                                <property name="text">
+                                                    <string>VPVR</string>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_79">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_97">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is good&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: green</string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>gWeight</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_77">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>1.500000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_80">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_98">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is bad&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: red</string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>bWeight</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_78">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>0.000000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_81">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_99">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is good but special (like macd
+                                                                crossing up)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: qradialgradient(spread:repeat,
+                                                                cx:0.5, cy:0.5, radius:0.077, fx:0.5, fy:0.5, stop:0
+                                                                rgba(19, 255, 0, 147), stop:0.497326 rgba(0, 0, 0, 147),
+                                                                stop:1 rgba(0, 255, 113, 147));
+                                                            </string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>gsw</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_79">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>2.000000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_82">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_100">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is bad but special (like macd
+                                                                crossing down)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: qradialgradient(spread:repeat,
+                                                                cx:0.5, cy:0.5, radius:0.077, fx:0.5, fy:0.5, stop:0
+                                                                rgba(255, 0, 0, 147), stop:0.497537 rgba(58, 30, 30,
+                                                                146), stop:1 rgba(255, 94, 0, 147));
+                                                            </string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>bsw</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_80">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>-2.000000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                    </layout>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QGroupBox" name="groupBox_6">
+                                    <property name="title">
+                                        <string/>
+                                    </property>
+                                    <layout class="QHBoxLayout" name="horizontalLayout_3">
+                                        <item alignment="Qt::AlignHCenter">
+                                            <widget class="QLabel" name="label">
+                                                <property name="text">
+                                                    <string>LUX</string>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_3">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_2">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is good&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: green</string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>gWeight</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>1.000000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_4">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_3">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is bad&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: red</string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>bWeight</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>-1.000000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_5">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_4">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is good but special (like macd
+                                                                crossing up)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: qradialgradient(spread:repeat,
+                                                                cx:0.5, cy:0.5, radius:0.077, fx:0.5, fy:0.5, stop:0
+                                                                rgba(19, 255, 0, 147), stop:0.497326 rgba(0, 0, 0, 147),
+                                                                stop:1 rgba(0, 255, 113, 147));
+                                                            </string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>gsw</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_3">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>1.500000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                        <item>
+                                            <layout class="QVBoxLayout" name="verticalLayout_6">
+                                                <item alignment="Qt::AlignHCenter">
+                                                    <widget class="QLabel" name="label_5">
+                                                        <property name="toolTip">
+                                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;points
+                                                                added to score when this is bad but special (like macd
+                                                                crossing down)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                            </string>
+                                                        </property>
+                                                        <property name="styleSheet">
+                                                            <string notr="true">color: qradialgradient(spread:repeat,
+                                                                cx:0.5, cy:0.5, radius:0.077, fx:0.5, fy:0.5, stop:0
+                                                                rgba(255, 0, 0, 147), stop:0.497537 rgba(58, 30, 30,
+                                                                146), stop:1 rgba(255, 94, 0, 147));
+                                                            </string>
+                                                        </property>
+                                                        <property name="text">
+                                                            <string>bsw</string>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                                <item>
+                                                    <widget class="QDoubleSpinBox" name="doubleSpinBox_4">
+                                                        <property name="decimals">
+                                                            <number>1</number>
+                                                        </property>
+                                                        <property name="minimum">
+                                                            <double>-10.000000000000000</double>
+                                                        </property>
+                                                        <property name="maximum">
+                                                            <double>10.000000000000000</double>
+                                                        </property>
+                                                        <property name="value">
+                                                            <double>-1.500000000000000</double>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                    </layout>
+                                </widget>
+                            </item>
+                        </layout>
+                    </widget>
+                </widget>
+            </item>
+            <item>
+                <widget class="QGroupBox" name="groupBox_3">
+                    <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="maximumSize">
+                        <size>
+                            <width>16777215</width>
+                            <height>318</height>
+                        </size>
+                    </property>
+                    <property name="title">
+                        <string/>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_4">
+                        <item>
+                            <layout class="QVBoxLayout" name="verticalLayout_8">
+                                <item>
+                                    <layout class="QHBoxLayout" name="horizontalLayout_2">
+                                        <item>
+                                            <widget class="QLabel" name="label_6">
+                                                <property name="text">
+                                                    <string>Filter</string>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                        <item>
+                                            <widget class="QComboBox" name="filterBox">
+                                                <property name="placeholderText">
+                                                    <string>Filters</string>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                    </layout>
+                                </item>
+                                <item>
+                                    <widget class="QCheckBox" name="autoFilter_Box">
+                                        <property name="toolTip">
+                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Auto changes to next
+                                                filter if current filter has none&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                            </string>
+                                        </property>
+                                        <property name="text">
+                                            <string>Auto Filter</string>
+                                        </property>
+                                    </widget>
+                                </item>
+                                <item>
+                                    <widget class="QCheckBox" name="showFilter_Box">
+                                        <property name="toolTip">
+                                            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;shows filter selector
+                                                when filter auto changes or current filter has none&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                            </string>
+                                        </property>
+                                        <property name="text">
+                                            <string>Show Filter</string>
+                                        </property>
+                                    </widget>
+                                </item>
+                            </layout>
+                        </item>
+                        <item>
+                            <widget class="QGroupBox" name="groupBox_16">
+                                <property name="title">
+                                    <string/>
+                                </property>
+                                <layout class="QVBoxLayout" name="verticalLayout_7">
+                                    <item>
+                                        <widget class="QLineEdit" name="lineEdit">
+                                            <property name="placeholderText">
+                                                <string>Filter Name . . .</string>
+                                            </property>
+                                        </widget>
+                                    </item>
+                                    <item>
+                                        <widget class="QTextEdit" name="textEdit">
+                                            <property name="maximumSize">
+                                                <size>
+                                                    <width>16777215</width>
+                                                    <height>207</height>
+                                                </size>
+                                            </property>
+                                            <property name="placeholderText">
+                                                <string>Filter as list ['xxxx', 'xxx', 'xyz']</string>
+                                            </property>
+                                        </widget>
+                                    </item>
+                                    <item>
+                                        <widget class="QPushButton" name="pushButton_2">
+                                            <property name="text">
+                                                <string>Save Filter</string>
+                                            </property>
+                                        </widget>
+                                    </item>
+                                </layout>
+                            </widget>
+                        </item>
+                    </layout>
+                </widget>
+            </item>
+            <item>
+                <widget class="QGroupBox" name="groupBox_4">
+                    <property name="title">
+                        <string/>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_5">
+                        <item>
+                            <widget class="QCheckBox" name="savespot_Box">
+                                <property name="toolTip">
+                                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Keep off to open on top left
+                                        and sized for trading view&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                    </string>
+                                </property>
+                                <property name="text">
+                                    <string>Open in trading spot on screen</string>
+                                </property>
+                            </widget>
+                        </item>
+                    </layout>
+                </widget>
+            </item>
+            <item>
+                <widget class="QGroupBox" name="groupBox_5">
+                    <property name="title">
+                        <string/>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_6">
+                        <item>
+                            <widget class="QCheckBox" name="clear_Box">
+                                <property name="toolTip">
+                                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;clear lots o tickers imput
+                                        when unchecked&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                    </string>
+                                </property>
+                                <property name="text">
+                                    <string>Clear Tickers</string>
+                                </property>
+                            </widget>
+                        </item>
+                    </layout>
+                </widget>
+            </item>
+            <item>
+                <widget class="QPushButton" name="saveButton">
+                    <property name="text">
+                        <string>Save</string>
+                    </property>
+                </widget>
+            </item>
+        </layout>
+    </widget>
+    <resources/>
+    <connections>
+        <connection>
+            <sender>checkBox_2</sender>
+            <signal>clicked(bool)</signal>
+            <receiver>scrollArea</receiver>
+            <slot>setVisible(bool)</slot>
+            <hints>
+                <hint type="sourcelabel">
+                    <x>203</x>
+                    <y>126</y>
+                </hint>
+                <hint type="destinationlabel">
+                    <x>199</x>
+                    <y>202</y>
+                </hint>
+            </hints>
+        </connection>
+        <connection>
+            <sender>autoFilter_Box</sender>
+            <signal>clicked(bool)</signal>
+            <receiver>showFilter_Box</receiver>
+            <slot>setVisible(bool)</slot>
+            <hints>
+                <hint type="sourcelabel">
+                    <x>101</x>
+                    <y>1204</y>
+                </hint>
+                <hint type="destinationlabel">
+                    <x>101</x>
+                    <y>1225</y>
+                </hint>
+            </hints>
+        </connection>
+    </connections>
+</ui>
