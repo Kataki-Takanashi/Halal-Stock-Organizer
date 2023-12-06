@@ -711,6 +711,42 @@
     {
       "ticker": "DIS",
       "halal": false
+    },
+    {
+      "ticker": "AMZN",
+      "halal": false
+    },
+    {
+      "ticker": "0R1O-LN",
+      "halal": false
+    },
+    {
+      "ticker": "0RIH-LN",
+      "halal": false
+    },
+    {
+      "ticker": "GOOGL",
+      "halal": false
+    },
+    {
+      "ticker": "0HD6-LN",
+      "halal": false
+    },
+    {
+      "ticker": "GOOG",
+      "halal": false
+    },
+    {
+      "ticker": "0QYP-LN",
+      "halal": false
+    },
+    {
+      "ticker": "MSFT",
+      "halal": false
+    },
+    {
+      "ticker": "0R2V-LN",
+      "halal": true
     }
   ]
 }

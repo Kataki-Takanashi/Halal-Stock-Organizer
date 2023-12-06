@@ -739,7 +739,53 @@ def halalCheck(ticker):
         return "halal"
     elif ticker in nothalal:
         return "nothalal"
-    else: return "new"
+    else:
+        return "new"
+
+
+def convert_csv_to_json(input_file, output_file):
+    input_data = []
+
+    with open(input_file, newline='') as csvfile:
+        next(csvfile)  # Skip the header line
+
+        for line in csvfile:
+            columns = line.strip().split(',')  # Splitting each line using comma as delimiter
+
+            transformed_entry = {
+                "ticker": columns[1].strip(),  # Assuming Symbol is the second column
+                "halal": columns[2].strip() == "Pass"  # Assuming Compliance Status is the third column
+            }
+            input_data.append(transformed_entry)
+
+    with open(output_file, 'w') as jsonfile:
+        json.dump(input_data, jsonfile, indent=4)
+
+
+def merge_json(old_file, new_file, output_file):
+    # Load data from the old JSON file
+    with open(old_file, 'r') as old_json:
+        old_data = json.load(old_json)
+
+    # Load data from the new JSON file
+    with open(new_file, 'r') as new_json:
+        new_data = json.load(new_json)
+
+    # Update existing data and add missing data
+    for new_entry in new_data:
+        ticker = new_entry["ticker"]
+        for old_entry in old_data["logs"]:
+            if old_entry["ticker"] == ticker:
+                # Update existing halal status if ticker exists in old data
+                old_entry["halal"] = new_entry["halal"]
+                break
+        else:
+            # Add missing ticker data from the new file to the old data
+            old_data["logs"].append(new_entry)
+
+    # Write the merged data to a new JSON file
+    with open(output_file, 'w') as merged_json:
+        json.dump(old_data, merged_json, indent=4)
 
 
 class halalChic(QDialog):
@@ -837,8 +883,8 @@ class halalChic(QDialog):
                 g.setLayout(l)
                 self.new_Ticker_Boxes.append((t, c))
                 self.verticalLayout_3.addWidget(g)
-        if self.savedables["halal"]:
-            for i in self.savedables["halal"]:
+        if self.savables["halal"]:
+            for i in self.savables["halal"]:
                 if not i[0] in new_Stocks:
                     g = QGroupBox()
                     l = QHBoxLayout()
@@ -1307,6 +1353,7 @@ class Settings(QDialog):  # TODO make sure new filters match format with regex
         self.filterBox.addItems(i for i in stockT.getSavables()["filters"].keys())
         self.filterBox.currentIndexChanged.connect(self.changeFilter)
         self.saveButton.clicked.connect(self.saveSettings)
+        self.UpdateLocalDB_button.clicked.connect(self.UpdateLocalDB)
 
         self.savables = {
             "boxes": [{self.testMode_Box.objectName(): self.testMode_Box.isChecked()},
@@ -1505,6 +1552,27 @@ class Settings(QDialog):  # TODO make sure new filters match format with regex
         # SETTINGS.sync()
         pass
 
+    def UpdateLocalDB(self):
+        try:
+            options = QFileDialog.Options()
+            options |= QFileDialog.DontUseNativeDialog
+
+            # Display file dialog and get the selected file path
+            file_name, _ = QFileDialog.getOpenFileName(self, "Open CSV File", "", "CSV Files (*.csv)", options=options)
+
+            if file_name:
+                # print("Selected file:", file_name)  # Print the selected file path
+                self.selected_file = file_name  # Store the file path in a variable
+                convert_csv_to_json(file_name, 'new_data.json')  # Convert the new ticker data from csv into json
+                merge_json('tickers.json', 'new_data.json', 'tickers.json')
+
+
+        except:
+            self.UpdateLocalDB_button.setStyleSheet("color: red")
+            self.UpdateLocalDB_button.setText("Error: Invalid File")
+            t.sleep(4)
+            self.UpdateLocalDB_button.setStyleSheet("color: white")
+            self.UpdateLocalDB_button.setText("Update Local Tickers (.csv)")
 
 def main():
     app = QApplication(sys.argv)
