@@ -190,7 +190,7 @@
     },
     {
       "ticker": "SJM",
-      "halal": true
+      "halal": false
     },
     {
       "ticker": "BOWL",
@@ -406,7 +406,7 @@
     },
     {
       "ticker": "APP",
-      "halal": false
+      "halal": true
     },
     {
       "ticker": "UPST",
@@ -502,7 +502,7 @@
     },
     {
       "ticker": "PDD",
-      "halal": false
+      "halal": true
     },
     {
       "ticker": "MU",
@@ -638,7 +638,7 @@
     },
     {
       "ticker": "CHPT",
-      "halal": true
+      "halal": false
     },
     {
       "ticker": "NOVA",
@@ -727,6 +727,18 @@
     {
       "ticker": "AL",
       "halal": false
+    },
+    {
+      "ticker": "POOL",
+      "halal": true
+    },
+    {
+      "ticker": "0R1Z-LN",
+      "halal": true
+    },
+    {
+      "ticker": "0R2V-LN",
+      "halal": true
     }
   ]
 }

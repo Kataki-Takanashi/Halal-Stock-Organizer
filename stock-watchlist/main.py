@@ -7,6 +7,7 @@ from datetime import date
 from datetime import datetime
 
 import finviz
+import timeago
 from finviz.screener import Screener
 
 import tradingview_ta_kataki as ta
@@ -18,8 +19,10 @@ now = datetime.now()
 dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 today = date.today()
 date = today.strftime("%d/%m/%Y")
+date_ago = today.strftime("%Y-%m-%d")
 timestamp = dt_string
 interval = ta.Interval.INTERVAL_4_HOURS
+# interval = "4h"
 with open('exchanges.json', 'r') as f:
     ticker_exchanges = json.load(f)
 with open('tickers.json', 'r') as f:
@@ -272,6 +275,24 @@ class homeScreen(QDialog):
         # self.setWindowFlags(Qt.WindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)) # dident work
 
         # print(self.settings_Button.objectName())
+
+        # Zoya API Support
+
+        if settingsLoaded["db_last_update"] != '':
+            ago = timeago.format(settingsLoaded["db_last_update"], date_ago)
+
+        if settingsLoaded["db_last_update"] == '':
+            self.db_last_update_label.setText("Database last updated: Never")
+            # print(timeago.format("2024-1-23", today.strftime("%Y-%m-%d")))
+
+
+        elif not 'month' in ago or not 'year' in ago or not 'months' in ago or not 'years' in ago:
+            self.db_last_update_label.setText(f"Database last updated: {ago}")
+            self.db_last_update_label.setStyleSheet("color: green")
+            # print(timeago.format(settingsLoaded["db_last_update"], today.strftime("%Y-%m-%d")))
+
+        else:
+            self.db_last_update_label.setText(f"Database last updated: {ago}")
 
     def showStockCheck(self):
         widget.setCurrentIndex(widget.currentIndex() + 1)
@@ -1760,6 +1781,8 @@ class Settings(QDialog):  # TODO make sure new filters match format with regex
         self.UpdateLocalDB_button.clicked.connect(self.UpdateLocalDB)
         self.APIKey_edit_button.clicked.connect(self.enableAPIedit)
 
+        self.db_updated_today = False
+
         self.getSavables()
 
         # self.savedables = json.loads(SETTINGS.value("settings", defaultValue=json.dumps({
@@ -1798,6 +1821,7 @@ class Settings(QDialog):  # TODO make sure new filters match format with regex
             "line_edits": [{self.APIKey_edit.objectName(): self.APIKey_edit.text()}],
             "currentFilter": self.filterBox.currentIndex(),
             "filters": settingsLoaded["filters"],
+            "db_last_update": '',
             "weights": [{self.doubleSpinBox_61.objectName(): self.doubleSpinBox_61.value()},
                         {self.doubleSpinBox_62.objectName(): self.doubleSpinBox_62.value()},
                         {self.doubleSpinBox_63.objectName(): self.doubleSpinBox_63.value()},
@@ -1844,6 +1868,14 @@ class Settings(QDialog):  # TODO make sure new filters match format with regex
 
         if self.filterName.text() and self.filter_new_edit.toPlainText():
             self.savables["filters"].append({self.filterName.text(): self.filter_new_edit.toPlainText()})
+
+        if settingsLoaded["db_last_update"] != '':
+            self.savables["db_last_update"] = settingsLoaded["db_last_update"]
+
+        if self.db_updated_today:
+            self.savables["db_last_update"] = date_ago
+            self.db_updated_today = False
+
         return self.savables
 
     def getSavedables(self):
@@ -1948,6 +1980,8 @@ class Settings(QDialog):  # TODO make sure new filters match format with regex
                 self.selected_file = file_name  # Store the file path in a variable
                 convert_csv_to_json(file_name, 'new_data.json')  # Convert the new ticker data from csv into json
                 merge_json('tickers.json', 'new_data.json', 'tickers.json')
+
+                self.db_updated_today = True
 
 
         except:

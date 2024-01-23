@@ -1,7 +1,7 @@
 # RUN THIS FIRST
 # Import this
 import os
-from this import s as s
+
 try:
     import PyQt5
     print("Importing PyQt5")
@@ -17,4 +17,4 @@ except ImportError:
             print("Still still trying to install PyQt5")
             os.system("pip3 install PyQt5")
 
-print(s)
+# print(s)

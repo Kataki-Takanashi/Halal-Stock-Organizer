@@ -9,7 +9,7 @@
    <rect>
        <x>0</x>
        <y>0</y>
-       <width>497</width>
+       <width>448</width>
        <height>624</height>
    </rect>
   </property>
@@ -25,22 +25,22 @@
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-         <spacer name="verticalSpacer">
-             <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeType">
-                 <enum>QSizePolicy::Minimum</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-                 <size>
-                     <width>20</width>
-                     <height>20</height>
-                 </size>
-             </property>
-         </spacer>
-     </item>
+        <item>
+            <spacer name="verticalSpacer">
+                <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeType">
+                    <enum>QSizePolicy::Minimum</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                    <size>
+                        <width>20</width>
+                        <height>20</height>
+                    </size>
+                </property>
+            </spacer>
+        </item>
         <item>
             <layout class="QHBoxLayout" name="horizontalLayout_3">
                 <item alignment="Qt::AlignRight">
@@ -67,20 +67,63 @@
             </widget>
         </item>
         <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+                <item>
+                    <spacer name="horizontalSpacer_5">
+                        <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeType">
+                            <enum>QSizePolicy::Minimum</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                            <size>
+                                <width>125</width>
+                                <height>0</height>
+                            </size>
+                        </property>
+                    </spacer>
+                </item>
+                <item alignment="Qt::AlignRight">
+                    <widget class="QLabel" name="db_last_update_label">
+                        <property name="maximumSize">
+                            <size>
+                                <width>96000</width>
+                                <height>10</height>
+                            </size>
+                        </property>
+                        <property name="styleSheet">
+                            <string notr="true">color: Red</string>
+                        </property>
+                        <property name="text">
+                            <string>Database last updated: Error</string>
+                        </property>
+                    </widget>
+                </item>
+                <item alignment="Qt::AlignLeft">
+                    <widget class="QPushButton" name="Update_Button">
+                        <property name="text">
+                            <string>Update</string>
+                        </property>
+                    </widget>
+                </item>
+            </layout>
+        </item>
+        <item>
             <layout class="QHBoxLayout" name="horizontalLayout_2">
                 <item>
                     <spacer name="horizontalSpacer">
                         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
+                            <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                            <size>
+                                <width>40</width>
+                                <height>20</height>
+                            </size>
+                        </property>
+                    </spacer>
+                </item>
        <item>
         <widget class="QPushButton" name="halalCheck_Button">
          <property name="text">
@@ -167,16 +210,16 @@
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_5">
-       <property name="sizeConstraint">
-        <enum>QLayout::SetDefaultConstraint</enum>
-       </property>
-       <item>
-        <widget class="QPushButton" name="ticker_history_Button">
-         <property name="text">
-          <string>Ticker History</string>
-         </property>
-        </widget>
-       </item>
+          <property name="sizeConstraint">
+              <enum>QLayout::SetDefaultConstraint</enum>
+          </property>
+          <item>
+              <widget class="QPushButton" name="ticker_history_Button">
+                  <property name="text">
+                      <string>Ticker History</string>
+                  </property>
+              </widget>
+          </item>
           <item>
               <widget class="QPushButton" name="yesterday_Button">
                   <property name="text">

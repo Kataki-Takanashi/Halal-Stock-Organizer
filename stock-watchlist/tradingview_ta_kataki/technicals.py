@@ -12,7 +12,6 @@ class Recommendation:
     neutral = "NEUTRAL"
     error = "ERROR"
 
-
 class Compute:
     def MA(ma, close):
         """Compute Moving Average

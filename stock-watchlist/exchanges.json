@@ -328,5 +328,14 @@
   },
   {
     "CAT": "NYSE"
+  },
+  {
+    "APP": "NASDAQ"
+  },
+  {
+    "PDD": "NASDAQ"
+  },
+  {
+    "POOL": "NASDAQ"
   }
 ]

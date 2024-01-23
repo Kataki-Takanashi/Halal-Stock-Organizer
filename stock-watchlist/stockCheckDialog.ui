@@ -1323,7 +1323,7 @@
  <connections>
   <connection>
    <sender>twohundred_Check_True</sender>
-      <signal>toggled(bool)</signal>
+   <signal>toggled(bool)</signal>
    <receiver>twohundred_SPC</receiver>
    <slot>show()</slot>
    <hints>
