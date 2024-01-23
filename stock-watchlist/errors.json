@@ -655,6 +655,30 @@
           "error": "Error: Check parameters."
         }
       ]
+    },
+    {
+      "22/01/2024": [
+        {
+          "timestamp": "22/01/2024 00:16:24",
+          "error": "Warning: Missing filter index 20"
+        }
+      ]
+    },
+    {
+      "22/01/2024": [
+        {
+          "timestamp": "22/01/2024 00:16:37",
+          "error": "Warning: Missing filter index 20"
+        }
+      ]
+    },
+    {
+      "22/01/2024": [
+        {
+          "timestamp": "22/01/2024 00:16:38",
+          "error": "Warning: Missing filter index 20"
+        }
+      ]
     }
   ]
 }

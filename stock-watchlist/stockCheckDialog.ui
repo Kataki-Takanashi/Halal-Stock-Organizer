@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>318</width>
-    <height>407</height>
+    <height>1387</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -1323,7 +1323,7 @@
  <connections>
   <connection>
    <sender>twohundred_Check_True</sender>
-   <signal>clicked()</signal>
+      <signal>toggled(bool)</signal>
    <receiver>twohundred_SPC</receiver>
    <slot>show()</slot>
    <hints>
@@ -1339,7 +1339,7 @@
   </connection>
   <connection>
    <sender>twohundred_Check_False</sender>
-   <signal>clicked()</signal>
+      <signal>toggled(bool)</signal>
    <receiver>twohundred_SPC</receiver>
    <slot>hide()</slot>
    <hints>
@@ -1355,7 +1355,7 @@
   </connection>
   <connection>
    <sender>LUX_Check_False</sender>
-   <signal>clicked()</signal>
+      <signal>toggled(bool)</signal>
    <receiver>LUX_SPC</receiver>
    <slot>hide()</slot>
    <hints>
@@ -1371,7 +1371,7 @@
   </connection>
   <connection>
    <sender>LUX_Check_True</sender>
-   <signal>clicked()</signal>
+      <signal>toggled(bool)</signal>
    <receiver>LUX_SPC</receiver>
    <slot>show()</slot>
    <hints>
@@ -1387,7 +1387,7 @@
   </connection>
   <connection>
    <sender>MACD_Check_False</sender>
-   <signal>clicked()</signal>
+      <signal>toggled(bool)</signal>
    <receiver>MACD_SPC</receiver>
    <slot>hide()</slot>
    <hints>
@@ -1403,7 +1403,7 @@
   </connection>
   <connection>
    <sender>MACD_Check_True</sender>
-   <signal>clicked()</signal>
+      <signal>toggled(bool)</signal>
    <receiver>MACD_SPC</receiver>
    <slot>show()</slot>
    <hints>
@@ -1419,7 +1419,7 @@
   </connection>
   <connection>
    <sender>RSI_Check_False</sender>
-   <signal>clicked()</signal>
+      <signal>toggled(bool)</signal>
    <receiver>RSI_SPC</receiver>
    <slot>hide()</slot>
    <hints>
@@ -1435,7 +1435,7 @@
   </connection>
   <connection>
    <sender>RSI_Check_True</sender>
-   <signal>clicked()</signal>
+      <signal>toggled(bool)</signal>
    <receiver>RSI_SPC</receiver>
    <slot>show()</slot>
    <hints>
@@ -1451,7 +1451,7 @@
   </connection>
   <connection>
    <sender>VPVR_Check_False</sender>
-   <signal>clicked()</signal>
+      <signal>toggled(bool)</signal>
    <receiver>VPVR_SPC</receiver>
    <slot>hide()</slot>
    <hints>
@@ -1467,7 +1467,7 @@
   </connection>
   <connection>
    <sender>VPVR_Check_True</sender>
-   <signal>clicked()</signal>
+      <signal>toggled(bool)</signal>
    <receiver>VPVR_SPC</receiver>
    <slot>show()</slot>
    <hints>
@@ -1483,7 +1483,7 @@
   </connection>
   <connection>
    <sender>nine_Check_True</sender>
-   <signal>clicked()</signal>
+      <signal>toggled(bool)</signal>
    <receiver>nine_SPC</receiver>
    <slot>show()</slot>
    <hints>
@@ -1499,7 +1499,7 @@
   </connection>
   <connection>
    <sender>nine_Check_False</sender>
-   <signal>clicked()</signal>
+      <signal>toggled(bool)</signal>
    <receiver>nine_SPC</receiver>
    <slot>hide()</slot>
    <hints>

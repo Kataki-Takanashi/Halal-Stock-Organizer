@@ -1,0 +1,332 @@
+[
+  {
+    "TSLA": "NASDAQ"
+  },
+  {
+    "QCOM": "NASDAQ"
+  },
+  {
+    "AZPN": "NASDAQ"
+  },
+  {
+    "RRX": "NYSE"
+  },
+  {
+    "EOG": "NYSE"
+  },
+  {
+    "NOW": "NYSE"
+  },
+  {
+    "LLY": "NYSE"
+  },
+  {
+    "MRK": "NYSE"
+  },
+  {
+    "MIDD": "NASDAQ"
+  },
+  {
+    "CL": "NYSE"
+  },
+  {
+    "CHRW": "NASDAQ"
+  },
+  {
+    "PEP": "NASDAQ"
+  },
+  {
+    "SNDR": "NYSE"
+  },
+  {
+    "CHD": "NYSE"
+  },
+  {
+    "MCK": "NYSE"
+  },
+  {
+    "VRTX": "NASDAQ"
+  },
+  {
+    "ARLP": "NASDAQ"
+  },
+  {
+    "XOM": "NYSE"
+  },
+  {
+    "MGY": "NYSE"
+  },
+  {
+    "CSGS": "NASDAQ"
+  },
+  {
+    "CHK": "NASDAQ"
+  },
+  {
+    "FCX": "NYSE"
+  },
+  {
+    "FLO": "NYSE"
+  },
+  {
+    "BAX": "NYSE"
+  },
+  {
+    "CVX": "NYSE"
+  },
+  {
+    "ORLY": "NASDAQ"
+  },
+  {
+    "WFG": "NYSE"
+  },
+  {
+    "HPQ": "NYSE"
+  },
+  {
+    "WY": "NYSE"
+  },
+  {
+    "PG": "NYSE"
+  },
+  {
+    "CDNS": "NASDAQ"
+  },
+  {
+    "HOLX": "NASDAQ"
+  },
+  {
+    "BOX": "NYSE"
+  },
+  {
+    "JNJ": "NYSE"
+  },
+  {
+    "AAPL": "NASDAQ"
+  },
+  {
+    "HALO": "NASDAQ"
+  },
+  {
+    "CALM": "NASDAQ"
+  },
+  {
+    "FND": "NYSE"
+  },
+  {
+    "KDP": "NASDAQ"
+  },
+  {
+    "IOT": "NYSE"
+  },
+  {
+    "PCOR": "NYSE"
+  },
+  {
+    "SOUN": "NASDAQ"
+  },
+  {
+    "GLBE": "NASDAQ"
+  },
+  {
+    "MNDY": "NASDAQ"
+  },
+  {
+    "SRPT": "NASDAQ"
+  },
+  {
+    "AGYS": "NASDAQ"
+  },
+  {
+    "NVTS": "NASDAQ"
+  },
+  {
+    "VLD": "NYSE"
+  },
+  {
+    "ZETA": "NYSE"
+  },
+  {
+    "CRDO": "NASDAQ"
+  },
+  {
+    "S": "NYSE"
+  },
+  {
+    "ASAN": "NYSE"
+  },
+  {
+    "FLNC": "NASDAQ"
+  },
+  {
+    "CFLT": "NASDAQ"
+  },
+  {
+    "HCP": "NASDAQ"
+  },
+  {
+    "NE": "NYSE"
+  },
+  {
+    "DASH": "NASDAQ"
+  },
+  {
+    "DUOL": "NASDAQ"
+  },
+  {
+    "IMGN": "NASDAQ"
+  },
+  {
+    "PSTG": "NYSE"
+  },
+  {
+    "NTNX": "NASDAQ"
+  },
+  {
+    "DV": "NYSE"
+  },
+  {
+    "GTLB": "NASDAQ"
+  },
+  {
+    "MBLY": "NASDAQ"
+  },
+  {
+    "SMAR": "NYSE"
+  },
+  {
+    "NET": "NYSE"
+  },
+  {
+    "MRVL": "NASDAQ"
+  },
+  {
+    "RMBS": "NASDAQ"
+  },
+  {
+    "ESTC": "NYSE"
+  },
+  {
+    "MU": "NASDAQ"
+  },
+  {
+    "AMBA": "NASDAQ"
+  },
+  {
+    "OKTA": "NASDAQ"
+  },
+  {
+    "DDOG": "NASDAQ"
+  },
+  {
+    "SPLK": "NASDAQ"
+  },
+  {
+    "ELF": "NYSE"
+  },
+  {
+    "TSM": "NYSE"
+  },
+  {
+    "TER": "NASDAQ"
+  },
+  {
+    "FN": "NYSE"
+  },
+  {
+    "AMD": "NASDAQ"
+  },
+  {
+    "ZS": "NASDAQ"
+  },
+  {
+    "AMAT": "NASDAQ"
+  },
+  {
+    "CRWD": "NASDAQ"
+  },
+  {
+    "TEAM": "NASDAQ"
+  },
+  {
+    "ANET": "NYSE"
+  },
+  {
+    "PANW": "NASDAQ"
+  },
+  {
+    "WDAY": "NASDAQ"
+  },
+  {
+    "SMCI": "NASDAQ"
+  },
+  {
+    "NVDA": "NASDAQ"
+  },
+  {
+    "ADBE": "NASDAQ"
+  },
+  {
+    "SNPS": "NASDAQ"
+  },
+  {
+    "KLAC": "NASDAQ"
+  },
+  {
+    "MPWR": "NASDAQ"
+  },
+  {
+    "LRCX": "NASDAQ"
+  },
+  {
+    "ASML": "NASDAQ"
+  },
+  {
+    "AVGO": "NASDAQ"
+  },
+  {
+    "MDB": "NASDAQ"
+  },
+  {
+    "ACN": "NYSE"
+  },
+  {
+    "ZI": "NASDAQ"
+  },
+  {
+    "CEG": "NASDAQ"
+  },
+  {
+    "SJM": "NYSE"
+  },
+  {
+    "AGCO": "NYSE"
+  },
+  {
+    "SYM": "NASDAQ"
+  },
+  {
+    "FSLY": "NYSE"
+  },
+  {
+    "VRT": "NYSE"
+  },
+  {
+    "JBL": "NYSE"
+  },
+  {
+    "CHPT": "NYSE"
+  },
+  {
+    "PATH": "NYSE"
+  },
+  {
+    "EXTR": "NASDAQ"
+  },
+  {
+    "FIVN": "NASDAQ"
+  },
+  {
+    "CAT": "NYSE"
+  }
+]

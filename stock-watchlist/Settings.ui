@@ -56,6 +56,16 @@
                     </layout>
                 </widget>
             </item>
+            <item alignment="Qt::AlignHCenter">
+                <widget class="QLabel" name="label_7">
+                    <property name="styleSheet">
+                        <string notr="true">color: Red</string>
+                    </property>
+                    <property name="text">
+                        <string>Some settings require app restart</string>
+                    </property>
+                </widget>
+            </item>
             <item>
                 <widget class="QCheckBox" name="checkBox_2">
                     <property name="text">
@@ -1795,7 +1805,8 @@
                                     <widget class="QCheckBox" name="autoFilter_Box">
                                         <property name="toolTip">
                                             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Auto changes to next
-                                                filter if current filter has none&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                                filter if current filter has none (Warning: can somtimes cause error
+                                                that requiers app to be reopened)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                                             </string>
                                         </property>
                                         <property name="text">
@@ -1824,14 +1835,14 @@
                                 </property>
                                 <layout class="QVBoxLayout" name="verticalLayout_7">
                                     <item>
-                                        <widget class="QLineEdit" name="lineEdit">
+                                        <widget class="QLineEdit" name="filterName">
                                             <property name="placeholderText">
                                                 <string>Filter Name . . .</string>
                                             </property>
                                         </widget>
                                     </item>
                                     <item>
-                                        <widget class="QTextEdit" name="textEdit">
+                                        <widget class="QTextEdit" name="filter_new_edit">
                                             <property name="maximumSize">
                                                 <size>
                                                     <width>16777215</width>
@@ -1844,13 +1855,36 @@
                                         </widget>
                                     </item>
                                     <item>
-                                        <widget class="QPushButton" name="pushButton_2">
+                                        <widget class="QPushButton" name="save_filter_button">
                                             <property name="text">
                                                 <string>Save Filter</string>
                                             </property>
                                         </widget>
                                     </item>
                                 </layout>
+                            </widget>
+                        </item>
+                    </layout>
+                </widget>
+            </item>
+            <item>
+                <widget class="QGroupBox" name="groupBox_2">
+                    <property name="title">
+                        <string/>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_7">
+                        <item>
+                            <widget class="QLineEdit" name="APIKey_edit">
+                                <property name="placeholderText">
+                                    <string>Zoya API Key</string>
+                                </property>
+                            </widget>
+                        </item>
+                        <item>
+                            <widget class="QPushButton" name="APIKey_edit_button">
+                                <property name="text">
+                                    <string>Edit</string>
+                                </property>
                             </widget>
                         </item>
                     </layout>
@@ -1865,8 +1899,8 @@
                         <item>
                             <widget class="QCheckBox" name="savespot_Box">
                                 <property name="toolTip">
-                                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Keep off to open on top left
-                                        and sized for trading view&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Keep on to open on top left
+                                        and sized for trading view &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                                     </string>
                                 </property>
                                 <property name="text">
@@ -1933,18 +1967,66 @@
             </hints>
         </connection>
         <connection>
-            <sender>autoFilter_Box</sender>
-            <signal>clicked(bool)</signal>
-            <receiver>showFilter_Box</receiver>
-            <slot>setVisible(bool)</slot>
+            <sender>testMode_Box</sender>
+            <signal>toggled(bool)</signal>
+            <receiver>APIKey_edit_button</receiver>
+            <slot>setDisabled(bool)</slot>
             <hints>
                 <hint type="sourcelabel">
-                    <x>101</x>
-                    <y>1204</y>
+                    <x>201</x>
+                    <y>67</y>
                 </hint>
                 <hint type="destinationlabel">
-                    <x>101</x>
-                    <y>1225</y>
+                    <x>338</x>
+                    <y>1164</y>
+                </hint>
+            </hints>
+        </connection>
+        <connection>
+            <sender>testMode_Box</sender>
+            <signal>toggled(bool)</signal>
+            <receiver>saveButton</receiver>
+            <slot>setDisabled(bool)</slot>
+            <hints>
+                <hint type="sourcelabel">
+                    <x>201</x>
+                    <y>67</y>
+                </hint>
+                <hint type="destinationlabel">
+                    <x>197</x>
+                    <y>1366</y>
+                </hint>
+            </hints>
+        </connection>
+        <connection>
+            <sender>testMode_Box</sender>
+            <signal>toggled(bool)</signal>
+            <receiver>UpdateLocalDB_button</receiver>
+            <slot>setDisabled(bool)</slot>
+            <hints>
+                <hint type="sourcelabel">
+                    <x>201</x>
+                    <y>67</y>
+                </hint>
+                <hint type="destinationlabel">
+                    <x>197</x>
+                    <y>1332</y>
+                </hint>
+            </hints>
+        </connection>
+        <connection>
+            <sender>testMode_Box</sender>
+            <signal>toggled(bool)</signal>
+            <receiver>save_filter_button</receiver>
+            <slot>setDisabled(bool)</slot>
+            <hints>
+                <hint type="sourcelabel">
+                    <x>201</x>
+                    <y>67</y>
+                </hint>
+                <hint type="destinationlabel">
+                    <x>280</x>
+                    <y>1083</y>
                 </hint>
             </hints>
         </connection>

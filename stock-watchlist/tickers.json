@@ -5,10 +5,6 @@
       "halal": true
     },
     {
-      "ticker": "BTC",
-      "halal": true
-    },
-    {
       "ticker": "QCOM",
       "halal": true
     },
@@ -18,7 +14,7 @@
     },
     {
       "ticker": "RRX",
-      "halal": true
+      "halal": false
     },
     {
       "ticker": "EOG",
@@ -38,7 +34,7 @@
     },
     {
       "ticker": "MIDD",
-      "halal": true
+      "halal": false
     },
     {
       "ticker": "CL",
@@ -82,7 +78,7 @@
     },
     {
       "ticker": "CSGS",
-      "halal": true
+      "halal": false
     },
     {
       "ticker": "CHK",
@@ -98,7 +94,7 @@
     },
     {
       "ticker": "BAX",
-      "halal": true
+      "halal": false
     },
     {
       "ticker": "CVX",
@@ -114,7 +110,7 @@
     },
     {
       "ticker": "HPQ",
-      "halal": true
+      "halal": false
     },
     {
       "ticker": "WY",
@@ -135,10 +131,6 @@
     {
       "ticker": "CPB",
       "halal": false
-    },
-    {
-      "ticker": "HOLX",
-      "halal": true
     },
     {
       "ticker": "BOX",
@@ -162,7 +154,7 @@
     },
     {
       "ticker": "HALO",
-      "halal": true
+      "halal": false
     },
     {
       "ticker": "WPC",
@@ -186,11 +178,11 @@
     },
     {
       "ticker": "CEG",
-      "halal": false
+      "halal": true
     },
     {
       "ticker": "KDP",
-      "halal": true
+      "halal": false
     },
     {
       "ticker": "NOC",
@@ -198,7 +190,7 @@
     },
     {
       "ticker": "SJM",
-      "halal": false
+      "halal": true
     },
     {
       "ticker": "BOWL",
@@ -213,10 +205,6 @@
       "halal": true
     },
     {
-      "ticker": "OSH",
-      "halal": true
-    },
-    {
       "ticker": "PCOR",
       "halal": true
     },
@@ -225,20 +213,12 @@
       "halal": true
     },
     {
-      "ticker": "GLBE",
-      "halal": true
-    },
-    {
-      "ticker": "MNDY",
-      "halal": true
-    },
-    {
       "ticker": "CAG",
       "halal": false
     },
     {
       "ticker": "AGCO",
-      "halal": false
+      "halal": true
     },
     {
       "ticker": "TWI",
@@ -330,7 +310,7 @@
     },
     {
       "ticker": "HCP",
-      "halal": true
+      "halal": false
     },
     {
       "ticker": "DOCN",
@@ -338,7 +318,7 @@
     },
     {
       "ticker": "SYM",
-      "halal": false
+      "halal": true
     },
     {
       "ticker": "NE",
@@ -414,7 +394,7 @@
     },
     {
       "ticker": "FSLY",
-      "halal": false
+      "halal": true
     },
     {
       "ticker": "XP",
@@ -422,7 +402,7 @@
     },
     {
       "ticker": "VRT",
-      "halal": false
+      "halal": true
     },
     {
       "ticker": "APP",
@@ -489,10 +469,6 @@
       "halal": false
     },
     {
-      "ticker": "MBLY",
-      "halal": true
-    },
-    {
       "ticker": "SMAR",
       "halal": true
     },
@@ -542,7 +518,7 @@
     },
     {
       "ticker": "JBL",
-      "halal": false
+      "halal": true
     },
     {
       "ticker": "DDOG",
@@ -662,7 +638,7 @@
     },
     {
       "ticker": "CHPT",
-      "halal": false
+      "halal": true
     },
     {
       "ticker": "NOVA",
@@ -670,15 +646,11 @@
     },
     {
       "ticker": "PATH",
-      "halal": false
+      "halal": true
     },
     {
       "ticker": "EXTR",
-      "halal": false
-    },
-    {
-      "ticker": "SDA",
-      "halal": false
+      "halal": true
     },
     {
       "ticker": "GME",
@@ -686,7 +658,7 @@
     },
     {
       "ticker": "FIVN",
-      "halal": false
+      "halal": true
     },
     {
       "ticker": "ABCL",
@@ -745,8 +717,16 @@
       "halal": false
     },
     {
-      "ticker": "0R2V-LN",
+      "ticker": "SD",
+      "halal": false
+    },
+    {
+      "ticker": "CAT",
       "halal": true
+    },
+    {
+      "ticker": "AL",
+      "halal": false
     }
   ]
 }

@@ -1,3 +1,4 @@
+import csv
 import json
 import random
 import sys
@@ -8,6 +9,8 @@ from datetime import datetime
 import finviz
 from finviz.screener import Screener
 
+import tradingview_ta_kataki as ta
+
 # Settings
 # Testing
 
@@ -16,6 +19,13 @@ dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 today = date.today()
 date = today.strftime("%d/%m/%Y")
 timestamp = dt_string
+interval = ta.Interval.INTERVAL_4_HOURS
+with open('exchanges.json', 'r') as f:
+    ticker_exchanges = json.load(f)
+with open('tickers.json', 'r') as f:
+    tickers_data = json.load(f)["logs"]
+with open('exchanges.json', 'r') as f:
+    exchange_pairs = json.load(f)
 # Variables
 num = random.randint(0, 10000)
 num2 = str(num)
@@ -32,33 +42,213 @@ yes = ["yes", "yep", "yea", "y", "yup", "true", "t", "Yes", "Yep", "Yea", "Y", "
 no = ["no", "n", "false", "f", "nope", "No", "N", False, "False", "F", "Nope", "nothalal", "Nothalal", "notHalal",
       "NotHalal", "nah", "Nah", "u", "b", "U", "B", "under", "below", "Under", "Below", "down", "Down", "DOWN"]
 # indicators
-t200 = {"name": "The 200!", "gWeight": 2, "bWeight": -2, "spc": "Is the 200 crossing up or down?", "gsp": 1,
-        "bsp": -1.5, "notes": ""}
-t9 = {"name": "The 9!", "gWeight": 1.5, "bWeight": -1.5,
-      "spc": "Is it One candle close above or below thw nine the 9? (Means get in or watch or get out if below)",
-      "gsp": 1.5, "bsp": -1.5, "notes": "Prob close when under 9"}
-MACD = {"name": "MACD", "gWeight": 1.5, "bWeight": -1.5, "spc": "Is the MACD reversing up or down, is it crossing?",
-        "gsp": 1.5, "bsp": -1.5, "notes": ""}
-RSI = {"name": "RSI", "gWeight": 1, "bWeight": -1, "spc": "Is the RSI  Oversold(good)(y) or Overbought(bad)(n)?", "gsp": 1.5,
-       "bsp": -1, "notes": "over bought for selling only"}
-VWAP = {"name": "VWAP", "gWeight": 1.5, "bWeight": -1.5, "spc": "None/WIP", "gsp": 0, "bsp": 0,
-        "notes": ""}
-HA = {"name": "Heiken Ashi", "gWeight": 1.2, "bWeight": -1, "spc": "None/WIP", "gsp": 0, "bsp": 0,
-      "notes": ""}
-SHAC = {"name": "Smoothed Ha Candles", "gWeight": 1.2, "bWeight": -1, "spc": "None/WIP", "gsp": 0, "bsp": 0,
-        "notes": ""}
-RIB = {"name": "Ribbons", "gWeight": 1.5, "bWeight": -1.5, "spc": "None/WIP", "gsp": 0, "bsp": 0,
-       "notes": ""}
-VPVR = {"name": "VPVR", "gWeight": 1.2, "bWeight": -1, "spc": "Is it Jump Up/Jump Down?", "gsp": 2, "bsp": -2,
-        "notes": "Good for crypto."}
-# t9 = {"name" : "The 9!", "gWeight" : 1.5, "bWeight" : -1.5, "spc" : "Is it One candle close above or below thw nine the 9? (Means get in or watch or get out if below)", "gsp" : 1.5, "bsp" : -1.5, "notes" : "Prob close when under 9"}
-others = ["Support", "Resistance", "Moveing Averages", "VBottoms (for entry) and etc...", "Wedges and etc...",
-          "Divergence (really bad)", "Earnings Call (bad)"]
-# LUX = "Is it neer a cloud?"
-LUX = {"name": "LUX", "gWeight": 1, "bWeight": -1, "spc": "Is it neer a cloud? Buy Cloud(y) Sell Cloud(n)", "gsp": 1.5, "bsp": -1.5,
-       "notes": "Prob close when under 9"}
+try:
+    with open("settings.json", "r") as settingsFile:
+        settingsLoaded = json.load(settingsFile)
+
+
+        def getWeight(spinbox: str):
+            for i in settingsLoaded["weights"]:
+                try:
+                    return i[spinbox]
+                except KeyError:
+                    pass
+            raise Exception(f"EOF: Invalid SpinBox ({spinbox})")
+
+
+        def getBox(checkbox: str):
+            for i in settingsLoaded["boxes"]:
+                try:
+                    return i[checkbox]
+                except KeyError:
+                    pass
+            raise Exception(f"EOF: Invalid CheckBox ({checkbox})")
+
+
+        def get_line_edit(line_edit: str):
+            for i in settingsLoaded["line_edits"]:
+                try:
+                    return i[line_edit]
+                except KeyError:
+                    pass
+            raise Exception(f"EOF: Invalid Line Edit ({line_edit})")
+
+
+        t200 = {"name": "The 200!", "gWeight": getWeight("doubleSpinBox_57"), "bWeight": getWeight("doubleSpinBox_58"),
+                "spc": "Is the 200 crossing up or down?", "gsp": getWeight("doubleSpinBox_59"),
+                "bsp": getWeight("doubleSpinBox_60"), "notes": ""}
+        t9 = {"name": "The 9!", "gWeight": getWeight("doubleSpinBox_53"), "bWeight": getWeight("doubleSpinBox_54"),
+              "spc": "Is it One candle close above or below thw nine the 9? (Means get in or watch or get out if below)",
+              "gsp": getWeight("doubleSpinBox_55"), "bsp": getWeight("doubleSpinBox_56"),
+              "notes": "Prob close when under 9"}
+        MACD = {"name": "MACD", "gWeight": getWeight("doubleSpinBox_45"), "bWeight": getWeight("doubleSpinBox_46"),
+                "spc": "Is the MACD reversing up or down, is it crossing?",
+                "gsp": getWeight("doubleSpinBox_47"), "bsp": getWeight("doubleSpinBox_48"), "notes": ""}
+        RSI = {"name": "RSI", "gWeight": getWeight("doubleSpinBox_65"), "bWeight": getWeight("doubleSpinBox_66"),
+               "spc": "Is the RSI  Oversold(good)(y) or Overbought(bad)(n)?", "gsp": getWeight("doubleSpinBox_67"),
+               "bsp": getWeight("doubleSpinBox_68"), "notes": "over bought for selling only"}
+        VWAP = {"name": "VWAP", "gWeight": getWeight("doubleSpinBox_73"), "bWeight": getWeight("doubleSpinBox_74"),
+                "spc": "None/WIP", "gsp": getWeight("doubleSpinBox_75"), "bsp": getWeight("doubleSpinBox_76"),
+                "notes": ""}
+        HA = {"name": "Heiken Ashi", "gWeight": getWeight("doubleSpinBox_69"), "bWeight": getWeight("doubleSpinBox_70"),
+              "spc": "None/WIP", "gsp": getWeight("doubleSpinBox_72"), "bsp": getWeight("doubleSpinBox_72"),
+              "notes": ""}
+        SHAC = {"name": "Smoothed Ha Candles", "gWeight": getWeight("doubleSpinBox_49"),
+                "bWeight": getWeight("doubleSpinBox_50"), "spc": "None/WIP", "gsp": getWeight("doubleSpinBox_51"),
+                "bsp": getWeight("doubleSpinBox_52"),
+                "notes": ""}
+        RIB = {"name": "Ribbons", "gWeight": getWeight("doubleSpinBox_61"), "bWeight": getWeight("doubleSpinBox_62"),
+               "spc": "None/WIP", "gsp": getWeight("doubleSpinBox_63"), "bsp": getWeight("doubleSpinBox_64"),
+               "notes": ""}
+        VPVR = {"name": "VPVR", "gWeight": getWeight("doubleSpinBox_77"), "bWeight": getWeight("doubleSpinBox_78"),
+                "spc": "Is it Jump Up/Jump Down?", "gsp": getWeight("doubleSpinBox_79"),
+                "bsp": getWeight("doubleSpinBox_80"),
+                "notes": "Good for crypto."}
+        # t9 = {"name" : "The 9!", "gWeight" : 1.5, "bWeight" : -1.5, "spc" : "Is it One candle close above or below thw nine the 9? (Means get in or watch or get out if below)", "gsp" : 1.5, "bsp" : -1.5, "notes" : "Prob close when under 9"}
+        others = ["Support", "Resistance", "Moveing Averages", "VBottoms (for entry) and etc...", "Wedges and etc...",
+                  "Divergence (really bad)", "Earnings Call (bad)"]
+        # LUX = "Is it neer a cloud?"
+        LUX = {"name": "LUX", "gWeight": getWeight("doubleSpinBox"), "bWeight": getWeight("doubleSpinBox_2"),
+               "spc": "Is it neer a cloud? Buy Cloud(y) Sell Cloud(n)",
+               "gsp": getWeight("doubleSpinBox_3"), "bsp": getWeight("doubleSpinBox_4"),
+               "notes": "Prob close when under 9"}
+except Exception as e:
+    print(e)
+    settingsLoaded = {
+        "boxes": [
+            {"testMode_Box": False},
+            {"autoFilter_Box": False},
+            {"showFilter_Box": False},
+            {"savespot_Box": False},
+            {"clear_Box": False}
+        ],
+        "currentFilter": "",
+        "weights": [
+            {"doubleSpinBox_61": 1.0},
+            {"doubleSpinBox_62": -1.0},
+            {"doubleSpinBox_63": 0.0},
+            {"doubleSpinBox_64": 0.0},
+            {"doubleSpinBox_49": 1.0},
+            {"doubleSpinBox_50": -1.0},
+            {"doubleSpinBox_51": 0.0},
+            {"doubleSpinBox_52": 0.0},
+            {"doubleSpinBox_65": 1.0},
+            {"doubleSpinBox_66": -1.0},
+            {"doubleSpinBox_67": 1.5},
+            {"doubleSpinBox_68": -1.0},
+            {"doubleSpinBox_69": 1.0},
+            {"doubleSpinBox_70": -1.0},
+            {"doubleSpinBox_71": 0.0},
+            {"doubleSpinBox_72": 0.0},
+            {"doubleSpinBox_73": 1.5},
+            {"doubleSpinBox_74": -1.5},
+            {"doubleSpinBox_75": 0.0},
+            {"doubleSpinBox_76": 0.0},
+            {"doubleSpinBox_77": 1.5},
+            {"doubleSpinBox_78": 0.0},
+            {"doubleSpinBox_79": 2.0},
+            {"doubleSpinBox_80": -2.0},
+            {"doubleSpinBox": 1.0},
+            {"doubleSpinBox_2": -1.0},
+            {"doubleSpinBox_3": 1.5},
+            {"doubleSpinBox_4": -1.5},
+            {"doubleSpinBox_45": 1.5},
+            {"doubleSpinBox_46": -1.5},
+            {"doubleSpinBox_47": 1.5},
+            {"doubleSpinBox_48": -1.5},
+            {"doubleSpinBox_53": 1.5},
+            {"doubleSpinBox_54": -1.5},
+            {"doubleSpinBox_55": 1.5},
+            {"doubleSpinBox_56": -1.5},
+            {"doubleSpinBox_57": 2.0},
+            {"doubleSpinBox_58": -2.0},
+            {"doubleSpinBox_59": 1.0},
+            {"doubleSpinBox_60": -1.5}
+        ]
+
+    }
+
+
+    def getWeight(spinbox: str):
+        for i in settingsLoaded["weights"]:
+            try:
+                return i[spinbox]
+            except KeyError:
+                pass
+        raise Exception(f"EOF: Invalid SpinBox ({spinbox})")
+
+
+    def getBox(checkbox: str):
+        for i in settingsLoaded["boxes"]:
+            try:
+                return i[checkbox]
+            except KeyError:
+                pass
+        raise Exception(f"EOF: Invalid CheckBox ({checkbox})")
+
+
+    def get_line_edit(line_edit: str):
+        for i in settingsLoaded["line_edits"]:
+            try:
+                return i[line_edit]
+            except KeyError:
+                pass
+        raise Exception(f"EOF: Invalid Line Edit ({line_edit})")
+
+
+    t200 = {"name": "The 200!", "gWeight": 2, "bWeight": -2, "spc": "Is the 200 crossing up or down?", "gsp": 1,
+            "bsp": -1.5, "notes": ""}
+    t9 = {"name": "The 9!", "gWeight": 1.5, "bWeight": -1.5,
+          "spc": "Is it One candle close above or below thw nine the 9? (Means get in or watch or get out if below)",
+          "gsp": 1.5, "bsp": -1.5, "notes": "Prob close when under 9"}
+    MACD = {"name": "MACD", "gWeight": 1.5, "bWeight": -1.5, "spc": "Is the MACD reversing up or down, is it crossing?",
+            "gsp": 1.5, "bsp": -1.5, "notes": ""}
+    RSI = {"name": "RSI", "gWeight": 1, "bWeight": -1, "spc": "Is the RSI  Oversold(good)(y) or Overbought(bad)(n)?",
+           "gsp": 1.5,
+           "bsp": -1, "notes": "over bought for selling only"}
+    VWAP = {"name": "VWAP", "gWeight": 1.5, "bWeight": -1.5, "spc": "None/WIP", "gsp": 0, "bsp": 0,
+            "notes": ""}
+    HA = {"name": "Heiken Ashi", "gWeight": 1.2, "bWeight": -1, "spc": "None/WIP", "gsp": 0, "bsp": 0,
+          "notes": ""}
+    SHAC = {"name": "Smoothed Ha Candles", "gWeight": 1.2, "bWeight": -1, "spc": "None/WIP", "gsp": 0, "bsp": 0,
+            "notes": ""}
+    RIB = {"name": "Ribbons", "gWeight": 1.5, "bWeight": -1.5, "spc": "None/WIP", "gsp": 0, "bsp": 0,
+           "notes": ""}
+    VPVR = {"name": "VPVR", "gWeight": 1.2, "bWeight": -1, "spc": "Is it Jump Up/Jump Down?", "gsp": 2, "bsp": -2,
+            "notes": "Good for crypto."}
+    # t9 = {"name" : "The 9!", "gWeight" : 1.5, "bWeight" : -1.5, "spc" : "Is it One candle close above or below thw nine the 9? (Means get in or watch or get out if below)", "gsp" : 1.5, "bsp" : -1.5, "notes" : "Prob close when under 9"}
+    others = ["Support", "Resistance", "Moveing Averages", "VBottoms (for entry) and etc...", "Wedges and etc...",
+              "Divergence (really bad)", "Earnings Call (bad)"]
+    # LUX = "Is it neer a cloud?"
+    LUX = {"name": "LUX", "gWeight": 1, "bWeight": -1, "spc": "Is it neer a cloud? Buy Cloud(y) Sell Cloud(n)",
+           "gsp": 1.5, "bsp": -1.5,
+           "notes": "Prob close when under 9"}
 
 # Form, Window = uic.loadUiType("Stock-Watchlist-Logger.ui")
+
+exchanges = [
+    "NYSE",  # New York Stock Exchange
+    "NASDAQ",
+    "TSE",  # Tokyo Stock Exchange
+    "SSE",  # Shanghai Stock Exchange
+    "HKEX",  # Hong Kong Stock Exchange
+    "ENX",  # Euronext
+    "LSE",  # London Stock Exchange
+    "SZSE",  # Shenzhen Stock Exchange
+    "TSX",  # Toronto Stock Exchange
+    "BSE",  # Bombay Stock Exchange
+    "NSE",  # National Stock Exchange of India
+    "DB",  # Deutsche Börse
+    "ASX",  # Australian Securities Exchange
+    "KRX",  # Korea Exchange
+    "SIX",  # SIX Swiss Exchange
+    "TWSE",  # Taiwan Stock Exchange
+    "MOEX",  # Moscow Exchange
+    "BME",  # Madrid Stock Exchange
+    "B3",  # BM&F Bovespa
+    "JSE"  # Johannesburg Stock Exchange
+]
+
 
 class homeScreen(QDialog):
 
@@ -175,7 +365,7 @@ class stockCheck(QDialog):
 
         self.indicators = []
 
-        self.submit_Button.clicked.connect(self.score)
+        self.submit_Button.clicked.connect(self.do_score)
         #self.ticker_Input.cursorPositionChanged.connect(self.submited)
         self.ticker_Input.returnPressed.connect(self.checkHalal)
         self.ticker_Input.textEdited.connect(self.checkTicker)
@@ -251,7 +441,7 @@ class stockCheck(QDialog):
         self.VPVR_Check_False.clicked.connect(self.VPVR_check_False)
         self.VPVR_SPC_True.clicked.connect(self.VPVR_spc_True)
         self.VPVR_SPC_False.clicked.connect(self.VPVR_spc_False)
-        #LUX
+        # LUX
         self.LUX_Is_True.clicked.connect(self.LUX_is_True)
         self.LUX_Is_False.clicked.connect(self.LUX_is_False)
         self.LUX_Check_True.clicked.connect(self.LUX_check_True)
@@ -261,7 +451,8 @@ class stockCheck(QDialog):
 
         # self.show()
 
-
+        # Grab ticker data from TradingView
+        self.tv_ta_ticker_data()
 
     def submited(self):
         t.sleep(.5)
@@ -282,6 +473,8 @@ class stockCheck(QDialog):
             self.new_Ticker.hide()
             self.halal_Box.setEnabled(False)
             self.q_Area.setEnabled(True)
+            # Stock is halal so do some analysis
+            self.auto_check_ticker(name)
         elif name not in seeStock("halal"):
             self.halal_Box.setChecked(False)
             self.new_Ticker.hide()
@@ -346,8 +539,156 @@ class stockCheck(QDialog):
         self.another_Button.hide()
         self.home_Button.hide()
 
+    def tv_ta_ticker_data(self):
+        data_return = {}
+        for ticker in tickers_data:
+            exchange_found = True
+            if ticker["halal"]:
+                if not check_in(ticker["ticker"]):
+                    exchange_found = False
+                    for exchange in exchanges:
+                        try:
+                            tesla = ta.TA_Handler(
+                                symbol=ticker["ticker"],
+                                screener='america',
+                                exchange=exchange,
+                                interval=interval
+                            )
+                            # If analysis is successful, check if the exchange is in the existing list
+                            if tesla.get_analysis().indicators:
+                                exchange_pair = {ticker["ticker"]: exchange}
+                                if exchange_pair not in ticker_exchanges:
+                                    ticker_exchanges.append(exchange_pair)
+                                    exchange_found = True
+                                    print(f"Added {ticker['ticker']} to exchanges.json with exchange {exchange}")
+                                break
+                        except Exception as e:
+                            pass
 
+                    if not exchange_found:
+                        print(f"No exchange found for {ticker['ticker']}")
 
+                else:
+                    try:
+                        result = ta.TA_Handler(
+                            symbol=ticker["ticker"],
+                            screener='america',
+                            exchange=get_exchange(ticker["ticker"]),
+                            interval=interval
+                        )
+                        data_return[ticker["ticker"]] = result
+                    except Exception:
+                        print(f'Invalid Exchange: {ticker["ticker"]}')
+
+        # Write updated ticker-exchange pairs to the exchanges.json file
+        with open('exchanges.json', 'w') as f:
+            json.dump(ticker_exchanges, f)
+
+        self.data_result = data_return
+
+    def auto_check_ticker(self, ticker):
+        analysis = self.data_result[ticker]
+        indicators = analysis.get_indicators()
+
+        t200_line = indicators["SMA200"]
+        t9_line = indicators["SMA9"]
+        macd_line = indicators["MACD.macd"]
+        macd_signal = indicators["MACD.signal"]
+        rsi_line = indicators["RSI"]
+        rsi_line_past1 = indicators["RSI[1]"]
+        vwap_line = indicators["VWAP"]
+        open = indicators["open"]
+        close = indicators["close"]
+        larger = (open if open > close else close)
+        smaller = (close if close < open else open)
+        candle_height = larger - smaller
+        candle_avg = smaller + (candle_height / 2)
+        percent_tolorance = 0.05
+        dot_tolorance = 0.3
+        normal_price_threshold = 50
+        high_price_threshold = 70
+        low_price_threshold = 30
+        is_above = lambda price, line: True if price >= line else False
+        is_below = lambda price, line: True if price <= line else False
+        is_within_5_percent = lambda price, line: abs(line - price) / line <= percent_tolorance
+        is_within_dot3 = lambda line1, line2: abs(line1 - line2) <= dot_tolorance
+        is_contains = lambda price_larger, price_smaller, line: price_larger > line and price_smaller < line
+
+        # t200 abouve or below
+        # t200 is above
+        self.twohundred_Is_True.setChecked(True if ((open >= t200_line) & (close >= t200_line)) or
+                                                   is_above(candle_avg, t200_line) else False)
+        # t200 is below
+        if not self.twohundred_Is_True.isChecked():
+            self.twohundred_Is_False.setChecked(True if ((open <= t200_line) & (close <= t200_line)) or
+                                                        is_below(candle_avg, t200_line) else False)
+        # t200 is crossing
+        self.twohundred_Check_True.setChecked(is_within_5_percent(candle_avg, t200_line))
+        if not self.twohundred_Check_True.isChecked():
+            self.twohundred_Check_False.setChecked(False if is_within_5_percent(candle_avg, t200_line) else True)
+
+        # t200 is crossing up / down
+        if self.twohundred_Check_True.isChecked():
+            self.twohundred_SPC_True.setChecked(is_below(candle_avg, t200_line) and is_above(candle_avg, t9_line))
+            if not self.twohundred_SPC_True.isChecked():
+                self.twohundred_SPC_False.setChecked(is_above(candle_avg, t200_line) and is_below(candle_avg, t9_line))
+
+        # t9 above or below
+        # t200 is above
+        self.nine_Is_True.setChecked(True if ((open >= t9_line) & (close >= t9_line)) or
+                                             is_above(candle_avg, t9_line) else False)
+        # t29 is below
+        if not self.nine_Is_True.isChecked():
+            self.nine_Is_False.setChecked(True if ((open <= t9_line) & (close <= t9_line)) or
+                                                  is_below(candle_avg, t9_line) else False)
+
+        # t9 one candle close
+        if not smaller >= t9_line + candle_height or not larger >= t9_line - candle_height:
+            self.nine_Check_True.setChecked(True)
+            self.nine_SPC_True.setChecked(is_above(smaller, t9_line))
+            self.nine_SPC_False.setChecked(is_below(larger, t9_line))
+
+        else:
+            self.nine_Check_False.setChecked(True)
+
+        # macd
+        if macd_line > macd_signal:
+            self.MACD_Is_True.setChecked(True)
+        else:
+            self.MACD_Is_False.setChecked(True)
+
+        # macd reversing
+        self.MACD_Check_True.setChecked(is_within_dot3(macd_line, macd_signal))
+        if not self.MACD_Check_True.isChecked():
+            self.MACD_Check_False.setChecked(False if is_within_dot3(macd_line, macd_signal) else True)
+
+        # macd reverse up / down
+        if self.MACD_Check_True.isChecked():
+            self.MACD_SPC_True.setChecked(is_below(macd_line, macd_signal) and self.nine_Is_True.isChecked())
+            if not self.MACD_SPC_True.isChecked():
+                self.MACD_SPC_False.setChecked(is_above(macd_line, macd_signal) and not self.nine_Is_True.isChecked())
+
+        # RSI low / high
+        self.RSI_Is_True.setChecked(is_below(rsi_line, normal_price_threshold))
+        if not self.RSI_Is_True.isChecked():
+            self.RSI_Is_False.setChecked(is_above(rsi_line, normal_price_threshold))
+
+        # rsi overbought / oversold
+        self.RSI_Check_True.setChecked(
+            is_below(rsi_line, low_price_threshold) or is_above(rsi_line, high_price_threshold))
+        if not self.RSI_Check_True.isChecked():
+            self.RSI_Check_False.setChecked(
+                False if is_below(rsi_line, low_price_threshold) or is_above(rsi_line, high_price_threshold) else True)
+
+        if self.RSI_Check_True.isChecked():
+            self.RSI_SPC_True.setChecked(is_below(rsi_line, low_price_threshold))
+            if not self.RSI_SPC_True.isChecked():
+                self.RSI_SPC_False.setChecked(is_above(rsi_line, high_price_threshold))
+
+        # VWAP
+        self.VWAP_Is_True.setChecked(is_above(vwap_line, t9_line))
+        if not self.VWAP_Is_True.isChecked():
+            self.VWAP_Is_False.setChecked(is_below(vwap_line, t9_line))
 
 
     def score(self):
@@ -356,6 +697,7 @@ class stockCheck(QDialog):
         self.q_Area.setEnabled(False)
         # self.Ticker_Box.setEnabled(False)
         # self._SPC.isEnabled
+        # TODO make it so that is a chekbox is not true or false than it doent apply and isent counted
         # t200
         if self.twoHundred == True:
             score += t200["gWeight"];
@@ -481,25 +823,32 @@ class stockCheck(QDialog):
         # enable saving
         timestamp = time("time")
         if not testMode:
-            save({"ticker": name.upper(), "time": timestamp, "packet": [timestamp, stuffy]}, "save_data.json")
-
-        self.another_Button.show()
-        self.home_Button.show()
-        self.submit_Button.setEnabled(False)
-        self.ticker_Input.setEnabled(False)
+            return {"ticker": name.upper(), "time": timestamp, "packet": [timestamp, stuffy]}, "save_data.json"
 
         # TODO
         # make search only need a fe leters ex searching 't' with still bring up 'TSLA' (Ticker History) DONE!
 
-        #return pack
+        # return pack
 
-    #t200
+    def do_score(self):
+        score = self.score()
+        if not testMode:
+            save(score[0], score[1])
+            self.another_Button.show()
+            self.home_Button.show()
+            self.submit_Button.setEnabled(False)
+            self.ticker_Input.setEnabled(False)
+
+    # t200
     def twohundred_is_True(self):
         self.twoHundred = True
+
     def twohundred_is_False(self):
         self.twoHundred = False
+
     def twohundred_check_True(self):
         pass
+
     def twohundred_check_False(self):
         pass
     def twohundred_spc_True(self):
@@ -747,16 +1096,16 @@ def convert_csv_to_json(input_file, output_file):
     input_data = []
 
     with open(input_file, newline='') as csvfile:
-        next(csvfile)  # Skip the header line
+        reader = csv.reader(csvfile)
+        next(reader)  # Skip the header line
 
-        for line in csvfile:
-            columns = line.strip().split(',')  # Splitting each line using comma as delimiter
-
-            transformed_entry = {
-                "ticker": columns[1].strip(),  # Assuming Symbol is the second column
-                "halal": columns[2].strip() == "Pass"  # Assuming Compliance Status is the third column
-            }
-            input_data.append(transformed_entry)
+        for row in reader:
+            if len(row) == 3:  # Assuming three columns: Name, Symbol, and Status
+                transformed_entry = {
+                    "ticker": row[1].strip(),  # Assuming Symbol is the second column
+                    "halal": row[2].strip() == "Pass"  # Assuming Compliance Status is the third column
+                }
+                input_data.append(transformed_entry)
 
     with open(output_file, 'w') as jsonfile:
         json.dump(input_data, jsonfile, indent=4)
@@ -788,6 +1137,25 @@ def merge_json(old_file, new_file, output_file):
         json.dump(old_data, merged_json, indent=4)
 
 
+def check_in(ticker):
+    for i in exchange_pairs:
+        try:
+            i[ticker]
+            return True
+        except KeyError:
+            pass
+    return False
+
+
+def get_exchange(ticker):
+    for i in exchange_pairs:
+        try:
+            return i[ticker]
+        except KeyError:
+            pass
+    return False
+
+
 class halalChic(QDialog):
     def __init__(self):
         super(halalChic, self).__init__()
@@ -801,8 +1169,9 @@ class halalChic(QDialog):
         self.home_Button.clicked.connect(self.goHome)
         self.savables = {"fields": [self.ticker_Input.text(), self.lotso_Input.toPlainText()], "halal": []}
 
-        # self.savedables = dict(json.loads(SETTINGS.value("halal", defaultValue=json.dumps('{"fields": [self.ticker_Input.text(), self.lotso_Input.toPlainText()], "halal": []}'))))
-        # fields = self.savedables["fields"]
+        default_json = '{"fields": ["' + self.ticker_Input.text() + '", "' + self.lotso_Input.toPlainText() + '"], "halal": []}'
+        self.savedables = json.loads(SETTINGS.value("halal", defaultValue=default_json))
+        fields = self.savedables["fields"]
         # self.ticker_Input.setText("replace with qsettings") if fields[0] else None
         # self.lotso_Input.setText("replace with qsettings") if fields[1] else None; self.lotso_Box.setChecked(True) if fields[1] else None; self.lotso_Box.stateChanged.emit(self.lotso_Box.isChecked()) if fields[1] else None
 
@@ -813,9 +1182,10 @@ class halalChic(QDialog):
         if self.lotso_Box.isChecked():
             self.lotso_Input.show()
         else:
-            self.lotso_Input.hide();
-            self.lotso_Input.setText(
-                "") if "qSettings" else None  # todo mapke this a setting "clear lots o tickers imput when unchecked
+            self.lotso_Input.hide()
+            if getBox("clear_Box"):
+                self.lotso_Input.setText(
+                    "")  # todoDONE mapke this a setting "clear lots o tickers imput when unchecked
 
     def process(self):
         halal_Stocks = []
@@ -883,8 +1253,8 @@ class halalChic(QDialog):
                 g.setLayout(l)
                 self.new_Ticker_Boxes.append((t, c))
                 self.verticalLayout_3.addWidget(g)
-        if self.savables["halal"]:
-            for i in self.savables["halal"]:
+        if self.savedables["halal"]:
+            for i in self.savedables["halal"]:
                 if not i[0] in new_Stocks:
                     g = QGroupBox()
                     l = QHBoxLayout()
@@ -1156,8 +1526,10 @@ class todayStock(QDialog):
         super(todayStock, self).__init__()
         uic.loadUi("TodaysStock.ui", self)
 
-        self.prevent429 = 1  # how long to sleep for to avoid making too many requests to the api in a short time
+        self.prevent429 = 1.5  # how long to sleep for to avoid making too many requests to the api in a short time # TODO maybe make this a setting
         # self.filters.hide() if "QSETTINGS" else None
+
+        self.filterCount = 1
 
         self.savables = {"halal": [], "filters": {
             "Default": ['fa_salesqoq_o30', 'ind_stocksonly', 'ipodate_prev3yrs', 'sh_avgvol_o500', 'sh_short_o5',
@@ -1167,10 +1539,31 @@ class todayStock(QDialog):
 
         self.submit_Ticker_Button.clicked.connect(self.process_New)
         self.home_Button.clicked.connect(self.goHome)
+        self.filters.currentIndexChanged.connect(self.process)
+
+        self.filters.hide()
+
+        try:
+            self.current_filter_index = settingsLoaded["currentFilter"]
+            current_filter = settingsLoaded["filters"][self.current_filter_index]
+        except IndexError:
+            self.current_filter_index = 0
+            error(f"Warning: Missing filter index {settingsLoaded['currentFilter']}")
+            current_filter = settingsLoaded["filters"][self.current_filter_index]
+
+        self.filters.clear()  # Gets rid of the "Default" filter option
+
+        for i in settingsLoaded["filters"]:
+            self.filters.addItem(list(i.keys())[0], list(i.values())[0])
+
+        self.filters.setCurrentIndex(self.current_filter_index)
         self.process()
 
     def goHome(self):
         widget.setCurrentIndex(widget.currentIndex() - 9)
+
+    def changeFilter(self, current_filter_index):
+        self.filters.setCurrentIndex(current_filter_index)
 
     def get_Stock(self, filters):
         # stock_list1, stock_list2, stock_list3 = Screener(filters=filters, table='Performance',
@@ -1178,7 +1571,7 @@ class todayStock(QDialog):
         #                                                                           table='Performance'), []
         # this was not uses because it assigned variables too fast an made too many requests Too Many Requests for url: https://finviz.com/screener.ashx?
 
-        stock_list1 = Screener(filters=filters, table='Performance', order='price');
+        stock_list1 = Screener(filters=filters, table='Performance', order='price')
         t.sleep(self.prevent429)
         stock_list2 = Screener(filters=filters, table='Performance')
         stock_list3 = []
@@ -1205,9 +1598,12 @@ class todayStock(QDialog):
                    'ta_sma50_pa']  # , 'ta_volatility_mo15' to test the except statement
         filters2 = ['cap_midover', 'sh_curvol_o1000', 'ta_sma20_pa10']
 
+        current_filter_index = self.filters.currentIndex()
+        current_filter = settingsLoaded["filters"][current_filter_index]
+
         try:
             self.submit_Ticker_Button.setEnabled(True)
-            tickers = self.get_Stock(filters2)
+            tickers = self.get_Stock(self.filters.currentData())
 
             for i in tickers:
                 if i in seeStock("halal"): halal_Stocks.append(i)
@@ -1275,8 +1671,16 @@ class todayStock(QDialog):
         except (finviz.helper_functions.error_handling.NoResults,
                 IndexError) as e:  # Replace with idex error if needed in testing, seems to be ide's fault
             # print(e.__traceback__.__str__())
-            # self.filters
-            self.filters.show()
+            if getBox("autoFilter_Box"):
+                if self.filterCount == 1:
+                    self.filters.setCurrentIndex(0)
+                if (x := self.filterCount) <= (y := self.filters.count()):
+                    f = self.filterCount - 1
+                    self.filters.setCurrentIndex(f)
+                    self.filterCount += 1
+                    self.process()
+            if getBox("showFilter_Box"):
+                self.filters.show()
             self.submit_Ticker_Button.setEnabled(False)
             label = QLabel(
                 """Sorry,\nNo New Tickers Today\n
@@ -1311,7 +1715,7 @@ ____________
             label.setFont(QFont("Arial", 16))
             label.setStyleSheet('color: rgb(244, 184, 243)')
             label.setAlignment(QtCore.Qt.AlignCenter)
-            label.setToolTip(str(filters))
+            label.setToolTip(str(self.filters.currentData()))
             self.verticalLayout_3.addWidget(label)
 
     def process_New(self):
@@ -1347,21 +1751,53 @@ class Settings(QDialog):  # TODO make sure new filters match format with regex
         uic.loadUi("Settings.ui", self)
 
         self.scrollArea.hide()
-        self.autoFilter_Box.clicked.connect(lambda: self.showFilter_Box.setChecked(True) if "qSettings" else False)
+        # self.autoFilter_Box.clicked.connect(lambda: self.showFilter_Box.setChecked(True) if "qSettings" else False)
 
         self.home_Button.clicked.connect(self.goHome)
-        self.filterBox.addItems(i for i in stockT.getSavables()["filters"].keys())
-        self.filterBox.currentIndexChanged.connect(self.changeFilter)
+        # self.filterBox.addItems(i for i in stockT.getSavables()["filters"].keys())
+        # self.filterBox.currentIndexChanged.connect(self.changeFilter)
         self.saveButton.clicked.connect(self.saveSettings)
         self.UpdateLocalDB_button.clicked.connect(self.UpdateLocalDB)
+        self.APIKey_edit_button.clicked.connect(self.enableAPIedit)
 
+        self.getSavables()
+
+        # self.savedables = json.loads(SETTINGS.value("settings", defaultValue=json.dumps({
+        #     "boxes": [{self.testMode_Box.objectName(): self.testMode_Box.isChecked()} , {self.autoFilter_Box.objectName(): self.autoFilter_Box.isChecked()} , {self.showFilter_Box.objectName(): self.showFilter_Box.isChecked()} , {self.savespot_Box.objectName(): self.savespot_Box.isChecked()} , {self.clear_Box.objectName(): self.clear_Box.isChecked()} ],
+        #     "currentFilter": "",
+        #     "weights": [{self.doubleSpinBox_61.objectName(): self.doubleSpinBox_61.value()} , {self.doubleSpinBox_62.objectName(): self.doubleSpinBox_62.value()} , {self.doubleSpinBox_63.objectName(): self.doubleSpinBox_63.value()} , {self.doubleSpinBox_64.objectName(): self.doubleSpinBox_64.value()} , #FIXME fix these names theyre horrendous
+        #                 {self.doubleSpinBox_49.objectName(): self.doubleSpinBox_49.value()} , {self.doubleSpinBox_50.objectName(): self.doubleSpinBox_50.value()} , {self.doubleSpinBox_51.objectName(): self.doubleSpinBox_51.value()} , {self.doubleSpinBox_52.objectName(): self.doubleSpinBox_52.value()} ,
+        #                 {self.doubleSpinBox_65.objectName(): self.doubleSpinBox_65.value()} , {self.doubleSpinBox_66.objectName(): self.doubleSpinBox_66.value()} , {self.doubleSpinBox_67.objectName(): self.doubleSpinBox_67.value()} , {self.doubleSpinBox_68.objectName(): self.doubleSpinBox_68.value()} ,
+        #                 {self.doubleSpinBox_69.objectName(): self.doubleSpinBox_69.value()} , {self.doubleSpinBox_70.objectName(): self.doubleSpinBox_70.value()} , {self.doubleSpinBox_71.objectName(): self.doubleSpinBox_71.value()} , {self.doubleSpinBox_72.objectName(): self.doubleSpinBox_72.value()} ,
+        #                 {self.doubleSpinBox_73.objectName(): self.doubleSpinBox_73.value()} , {self.doubleSpinBox_74.objectName(): self.doubleSpinBox_74.value()} , {self.doubleSpinBox_75.objectName(): self.doubleSpinBox_75.value()} , {self.doubleSpinBox_76.objectName(): self.doubleSpinBox_76.value()} ,
+        #                 {self.doubleSpinBox_77.objectName(): self.doubleSpinBox_77.value()} , {self.doubleSpinBox_78.objectName(): self.doubleSpinBox_78.value()} , {self.doubleSpinBox_78.objectName(): self.doubleSpinBox_78.value()} , {self.doubleSpinBox_80.objectName(): self.doubleSpinBox_80.value()} ,
+        #                 {self.doubleSpinBox.objectName(): self.doubleSpinBox.value()} , {self.doubleSpinBox_2.objectName(): self.doubleSpinBox_2.value()} , {self.doubleSpinBox_3.objectName(): self.doubleSpinBox_3.value()} , {self.doubleSpinBox_4.objectName(): self.doubleSpinBox_4.value()} ,
+        #                 {self.doubleSpinBox_45.objectName(): self.doubleSpinBox_45.value()} , {self.doubleSpinBox_46.objectName(): self.doubleSpinBox_46.value()} , {self.doubleSpinBox_47.objectName(): self.doubleSpinBox_47.value()} , {self.doubleSpinBox_48.objectName(): self.doubleSpinBox_48.value()} ,
+        #                 {self.doubleSpinBox_53.objectName(): self.doubleSpinBox_53.value()} , {self.doubleSpinBox_54.objectName(): self.doubleSpinBox_54.value()} , {self.doubleSpinBox_55.objectName(): self.doubleSpinBox_55.value()} , {self.doubleSpinBox_56.objectName(): self.doubleSpinBox_56.value()} ,
+        #                 {self.doubleSpinBox_57.objectName(): self.doubleSpinBox_57.value()} , {self.doubleSpinBox_58.objectName(): self.doubleSpinBox_58.value()} , {self.doubleSpinBox_59.objectName(): self.doubleSpinBox_59.value()} , {self.doubleSpinBox_60.objectName(): self.doubleSpinBox_60.value()}
+        #                 ]
+        # })))
+        self.loadSettings()
+
+        if self.APIKey_edit.text() != '':
+            self.APIKey_edit.setEnabled(False)
+
+    def goHome(self):
+        widget.setCurrentIndex(widget.currentIndex() - 10)
+
+    def enableAPIedit(self):
+        self.APIKey_edit.setEnabled(True)
+
+    def getSavables(self):
         self.savables = {
             "boxes": [{self.testMode_Box.objectName(): self.testMode_Box.isChecked()},
                       {self.autoFilter_Box.objectName(): self.autoFilter_Box.isChecked()},
                       {self.showFilter_Box.objectName(): self.showFilter_Box.isChecked()},
                       {self.savespot_Box.objectName(): self.savespot_Box.isChecked()},
                       {self.clear_Box.objectName(): self.clear_Box.isChecked()}],
-            "currentFilter": "",
+            "line_edits": [{self.APIKey_edit.objectName(): self.APIKey_edit.text()}],
+            "currentFilter": self.filterBox.currentIndex(),
+            "filters": settingsLoaded["filters"],
             "weights": [{self.doubleSpinBox_61.objectName(): self.doubleSpinBox_61.value()},
                         {self.doubleSpinBox_62.objectName(): self.doubleSpinBox_62.value()},
                         {self.doubleSpinBox_63.objectName(): self.doubleSpinBox_63.value()},
@@ -1385,7 +1821,7 @@ class Settings(QDialog):  # TODO make sure new filters match format with regex
                         {self.doubleSpinBox_76.objectName(): self.doubleSpinBox_76.value()},
                         {self.doubleSpinBox_77.objectName(): self.doubleSpinBox_77.value()},
                         {self.doubleSpinBox_78.objectName(): self.doubleSpinBox_78.value()},
-                        {self.doubleSpinBox_78.objectName(): self.doubleSpinBox_78.value()},
+                        {self.doubleSpinBox_79.objectName(): self.doubleSpinBox_79.value()},
                         {self.doubleSpinBox_80.objectName(): self.doubleSpinBox_80.value()},
                         {self.doubleSpinBox.objectName(): self.doubleSpinBox.value()},
                         {self.doubleSpinBox_2.objectName(): self.doubleSpinBox_2.value()},
@@ -1406,151 +1842,98 @@ class Settings(QDialog):  # TODO make sure new filters match format with regex
                         ]
         }
 
-        # self.savedables = json.loads(SETTINGS.value("settings", defaultValue=json.dumps({
-        #     "boxes": [{self.testMode_Box.objectName(): self.testMode_Box.isChecked()} , {self.autoFilter_Box.objectName(): self.autoFilter_Box.isChecked()} , {self.showFilter_Box.objectName(): self.showFilter_Box.isChecked()} , {self.savespot_Box.objectName(): self.savespot_Box.isChecked()} , {self.clear_Box.objectName(): self.clear_Box.isChecked()} ],
-        #     "currentFilter": "",
-        #     "weights": [{self.doubleSpinBox_61.objectName(): self.doubleSpinBox_61.value()} , {self.doubleSpinBox_62.objectName(): self.doubleSpinBox_62.value()} , {self.doubleSpinBox_63.objectName(): self.doubleSpinBox_63.value()} , {self.doubleSpinBox_64.objectName(): self.doubleSpinBox_64.value()} , #FIXME fix these names theyre horrendous
-        #                 {self.doubleSpinBox_49.objectName(): self.doubleSpinBox_49.value()} , {self.doubleSpinBox_50.objectName(): self.doubleSpinBox_50.value()} , {self.doubleSpinBox_51.objectName(): self.doubleSpinBox_51.value()} , {self.doubleSpinBox_52.objectName(): self.doubleSpinBox_52.value()} ,
-        #                 {self.doubleSpinBox_65.objectName(): self.doubleSpinBox_65.value()} , {self.doubleSpinBox_66.objectName(): self.doubleSpinBox_66.value()} , {self.doubleSpinBox_67.objectName(): self.doubleSpinBox_67.value()} , {self.doubleSpinBox_68.objectName(): self.doubleSpinBox_68.value()} ,
-        #                 {self.doubleSpinBox_69.objectName(): self.doubleSpinBox_69.value()} , {self.doubleSpinBox_70.objectName(): self.doubleSpinBox_70.value()} , {self.doubleSpinBox_71.objectName(): self.doubleSpinBox_71.value()} , {self.doubleSpinBox_72.objectName(): self.doubleSpinBox_72.value()} ,
-        #                 {self.doubleSpinBox_73.objectName(): self.doubleSpinBox_73.value()} , {self.doubleSpinBox_74.objectName(): self.doubleSpinBox_74.value()} , {self.doubleSpinBox_75.objectName(): self.doubleSpinBox_75.value()} , {self.doubleSpinBox_76.objectName(): self.doubleSpinBox_76.value()} ,
-        #                 {self.doubleSpinBox_77.objectName(): self.doubleSpinBox_77.value()} , {self.doubleSpinBox_78.objectName(): self.doubleSpinBox_78.value()} , {self.doubleSpinBox_78.objectName(): self.doubleSpinBox_78.value()} , {self.doubleSpinBox_80.objectName(): self.doubleSpinBox_80.value()} ,
-        #                 {self.doubleSpinBox.objectName(): self.doubleSpinBox.value()} , {self.doubleSpinBox_2.objectName(): self.doubleSpinBox_2.value()} , {self.doubleSpinBox_3.objectName(): self.doubleSpinBox_3.value()} , {self.doubleSpinBox_4.objectName(): self.doubleSpinBox_4.value()} ,
-        #                 {self.doubleSpinBox_45.objectName(): self.doubleSpinBox_45.value()} , {self.doubleSpinBox_46.objectName(): self.doubleSpinBox_46.value()} , {self.doubleSpinBox_47.objectName(): self.doubleSpinBox_47.value()} , {self.doubleSpinBox_48.objectName(): self.doubleSpinBox_48.value()} ,
-        #                 {self.doubleSpinBox_53.objectName(): self.doubleSpinBox_53.value()} , {self.doubleSpinBox_54.objectName(): self.doubleSpinBox_54.value()} , {self.doubleSpinBox_55.objectName(): self.doubleSpinBox_55.value()} , {self.doubleSpinBox_56.objectName(): self.doubleSpinBox_56.value()} ,
-        #                 {self.doubleSpinBox_57.objectName(): self.doubleSpinBox_57.value()} , {self.doubleSpinBox_58.objectName(): self.doubleSpinBox_58.value()} , {self.doubleSpinBox_59.objectName(): self.doubleSpinBox_59.value()} , {self.doubleSpinBox_60.objectName(): self.doubleSpinBox_60.value()}
-        #                 ]
-        # })))
-        self.loadSettings()
-
-    def goHome(self):
-        widget.setCurrentIndex(widget.currentIndex() - 10)
-
-    def getSavables(self):
+        if self.filterName.text() and self.filter_new_edit.toPlainText():
+            self.savables["filters"].append({self.filterName.text(): self.filter_new_edit.toPlainText()})
         return self.savables
 
     def getSavedables(self):
         # return self.savedables
         pass
 
-    def changeFilter(self, index):
-        # self.savables["currentFilter"] = {index: stockSettings["filters"][index]} if index != -1 else None
-        self.saveSettings()
+    # def changeFilter(self, index):
+    #     # self.savables["currentFilter"] = {index: stockSettings["filters"][index]} if index != -1 else None
+    #     self.saveSettings()
+
+    def changeFilter(self, current_filter_index):
+        self.filterBox.setCurrentIndex(current_filter_index)
 
     # TODO func to add new filter to stockT qSettings
 
     def saveSettings(self):
-        # self.savedables = json.loads(SETTINGS.value("settings", defaultValue=json.dumps({
-        #     "boxes": [{self.testMode_Box.objectName(): self.testMode_Box.isChecked()},
-        #               {self.autoFilter_Box.objectName(): self.autoFilter_Box.isChecked()},
-        #               {self.showFilter_Box.objectName(): self.showFilter_Box.isChecked()},
-        #               {self.savespot_Box.objectName(): self.savespot_Box.isChecked()},
-        #               {self.clear_Box.objectName(): self.clear_Box.isChecked()}],
-        #     "currentFilter": "",
-        #     "weights": [{self.doubleSpinBox_61.objectName(): self.doubleSpinBox_61.value()},
-        #                 {self.doubleSpinBox_62.objectName(): self.doubleSpinBox_62.value()},
-        #                 {self.doubleSpinBox_63.objectName(): self.doubleSpinBox_63.value()},
-        #                 {self.doubleSpinBox_64.objectName(): self.doubleSpinBox_64.value()},
-        #                 # FIXME fix these names theyre horrendous
-        #                 {self.doubleSpinBox_49.objectName(): self.doubleSpinBox_49.value()},
-        #                 {self.doubleSpinBox_50.objectName(): self.doubleSpinBox_50.value()},
-        #                 {self.doubleSpinBox_51.objectName(): self.doubleSpinBox_51.value()},
-        #                 {self.doubleSpinBox_52.objectName(): self.doubleSpinBox_52.value()},
-        #                 {self.doubleSpinBox_65.objectName(): self.doubleSpinBox_65.value()},
-        #                 {self.doubleSpinBox_66.objectName(): self.doubleSpinBox_66.value()},
-        #                 {self.doubleSpinBox_67.objectName(): self.doubleSpinBox_67.value()},
-        #                 {self.doubleSpinBox_68.objectName(): self.doubleSpinBox_68.value()},
-        #                 {self.doubleSpinBox_69.objectName(): self.doubleSpinBox_69.value()},
-        #                 {self.doubleSpinBox_70.objectName(): self.doubleSpinBox_70.value()},
-        #                 {self.doubleSpinBox_71.objectName(): self.doubleSpinBox_71.value()},
-        #                 {self.doubleSpinBox_72.objectName(): self.doubleSpinBox_72.value()},
-        #                 {self.doubleSpinBox_73.objectName(): self.doubleSpinBox_73.value()},
-        #                 {self.doubleSpinBox_74.objectName(): self.doubleSpinBox_74.value()},
-        #                 {self.doubleSpinBox_75.objectName(): self.doubleSpinBox_75.value()},
-        #                 {self.doubleSpinBox_76.objectName(): self.doubleSpinBox_76.value()},
-        #                 {self.doubleSpinBox_77.objectName(): self.doubleSpinBox_77.value()},
-        #                 {self.doubleSpinBox_78.objectName(): self.doubleSpinBox_78.value()},
-        #                 {self.doubleSpinBox_78.objectName(): self.doubleSpinBox_78.value()},
-        #                 {self.doubleSpinBox_80.objectName(): self.doubleSpinBox_80.value()},
-        #                 {self.doubleSpinBox.objectName(): self.doubleSpinBox.value()},
-        #                 {self.doubleSpinBox_2.objectName(): self.doubleSpinBox_2.value()},
-        #                 {self.doubleSpinBox_3.objectName(): self.doubleSpinBox_3.value()},
-        #                 {self.doubleSpinBox_4.objectName(): self.doubleSpinBox_4.value()},
-        #                 {self.doubleSpinBox_45.objectName(): self.doubleSpinBox_45.value()},
-        #                 {self.doubleSpinBox_46.objectName(): self.doubleSpinBox_46.value()},
-        #                 {self.doubleSpinBox_47.objectName(): self.doubleSpinBox_47.value()},
-        #                 {self.doubleSpinBox_48.objectName(): self.doubleSpinBox_48.value()},
-        #                 {self.doubleSpinBox_53.objectName(): self.doubleSpinBox_53.value()},
-        #                 {self.doubleSpinBox_54.objectName(): self.doubleSpinBox_54.value()},
-        #                 {self.doubleSpinBox_55.objectName(): self.doubleSpinBox_55.value()},
-        #                 {self.doubleSpinBox_56.objectName(): self.doubleSpinBox_56.value()},
-        #                 {self.doubleSpinBox_57.objectName(): self.doubleSpinBox_57.value()},
-        #                 {self.doubleSpinBox_58.objectName(): self.doubleSpinBox_58.value()},
-        #                 {self.doubleSpinBox_59.objectName(): self.doubleSpinBox_59.value()},
-        #                 {self.doubleSpinBox_60.objectName(): self.doubleSpinBox_60.value()}
-        #                 ]
-        # })))
-        # SETTINGS.setValue("settings", json.dumps(self.getSavables()))
-        # stockT.saveSettings()
-        # SETTINGS.sync()
-        pass
+        self.getSavables()
+        with open("settings.json", "w") as settingsFile:
+            json.dump(self.savables, settingsFile)
 
     def loadSettings(self):
-        # self.savedables = json.loads(SETTINGS.value("settings", defaultValue=json.dumps({
-        #     "boxes": [{self.testMode_Box.objectName(): self.testMode_Box.isChecked()},
-        #               {self.autoFilter_Box.objectName(): self.autoFilter_Box.isChecked()},
-        #               {self.showFilter_Box.objectName(): self.showFilter_Box.isChecked()},
-        #               {self.savespot_Box.objectName(): self.savespot_Box.isChecked()},
-        #               {self.clear_Box.objectName(): self.clear_Box.isChecked()}],
-        #     "currentFilter": "",
-        #     "weights": [{self.doubleSpinBox_61.objectName(): self.doubleSpinBox_61.value()},
-        #                 {self.doubleSpinBox_62.objectName(): self.doubleSpinBox_62.value()},
-        #                 {self.doubleSpinBox_63.objectName(): self.doubleSpinBox_63.value()},
-        #                 {self.doubleSpinBox_64.objectName(): self.doubleSpinBox_64.value()},
-        #                 # FIXME fix these names theyre horrendous
-        #                 {self.doubleSpinBox_49.objectName(): self.doubleSpinBox_49.value()},
-        #                 {self.doubleSpinBox_50.objectName(): self.doubleSpinBox_50.value()},
-        #                 {self.doubleSpinBox_51.objectName(): self.doubleSpinBox_51.value()},
-        #                 {self.doubleSpinBox_52.objectName(): self.doubleSpinBox_52.value()},
-        #                 {self.doubleSpinBox_65.objectName(): self.doubleSpinBox_65.value()},
-        #                 {self.doubleSpinBox_66.objectName(): self.doubleSpinBox_66.value()},
-        #                 {self.doubleSpinBox_67.objectName(): self.doubleSpinBox_67.value()},
-        #                 {self.doubleSpinBox_68.objectName(): self.doubleSpinBox_68.value()},
-        #                 {self.doubleSpinBox_69.objectName(): self.doubleSpinBox_69.value()},
-        #                 {self.doubleSpinBox_70.objectName(): self.doubleSpinBox_70.value()},
-        #                 {self.doubleSpinBox_71.objectName(): self.doubleSpinBox_71.value()},
-        #                 {self.doubleSpinBox_72.objectName(): self.doubleSpinBox_72.value()},
-        #                 {self.doubleSpinBox_73.objectName(): self.doubleSpinBox_73.value()},
-        #                 {self.doubleSpinBox_74.objectName(): self.doubleSpinBox_74.value()},
-        #                 {self.doubleSpinBox_75.objectName(): self.doubleSpinBox_75.value()},
-        #                 {self.doubleSpinBox_76.objectName(): self.doubleSpinBox_76.value()},
-        #                 {self.doubleSpinBox_77.objectName(): self.doubleSpinBox_77.value()},
-        #                 {self.doubleSpinBox_78.objectName(): self.doubleSpinBox_78.value()},
-        #                 {self.doubleSpinBox_78.objectName(): self.doubleSpinBox_78.value()},
-        #                 {self.doubleSpinBox_80.objectName(): self.doubleSpinBox_80.value()},
-        #                 {self.doubleSpinBox.objectName(): self.doubleSpinBox.value()},
-        #                 {self.doubleSpinBox_2.objectName(): self.doubleSpinBox_2.value()},
-        #                 {self.doubleSpinBox_3.objectName(): self.doubleSpinBox_3.value()},
-        #                 {self.doubleSpinBox_4.objectName(): self.doubleSpinBox_4.value()},
-        #                 {self.doubleSpinBox_45.objectName(): self.doubleSpinBox_45.value()},
-        #                 {self.doubleSpinBox_46.objectName(): self.doubleSpinBox_46.value()},
-        #                 {self.doubleSpinBox_47.objectName(): self.doubleSpinBox_47.value()},
-        #                 {self.doubleSpinBox_48.objectName(): self.doubleSpinBox_48.value()},
-        #                 {self.doubleSpinBox_53.objectName(): self.doubleSpinBox_53.value()},
-        #                 {self.doubleSpinBox_54.objectName(): self.doubleSpinBox_54.value()},
-        #                 {self.doubleSpinBox_55.objectName(): self.doubleSpinBox_55.value()},
-        #                 {self.doubleSpinBox_56.objectName(): self.doubleSpinBox_56.value()},
-        #                 {self.doubleSpinBox_57.objectName(): self.doubleSpinBox_57.value()},
-        #                 {self.doubleSpinBox_58.objectName(): self.doubleSpinBox_58.value()},
-        #                 {self.doubleSpinBox_59.objectName(): self.doubleSpinBox_59.value()},
-        #                 {self.doubleSpinBox_60.objectName(): self.doubleSpinBox_60.value()}
-        #                 ]
-        # })))
-        # for i  in self.savedables["boxes"]:
-        #     self.findChild(QtWidgets.QCheckBox, list(i.items())[0][0]).setChecked(list(i.items())[0][1])
-        #     print(list(i.items())[0][1])
-        # SETTINGS.sync()
-        pass
+        # Boxes
+        self.testMode_Box.setChecked(getBox(self.testMode_Box.objectName()))
+        self.autoFilter_Box.setChecked(getBox(self.autoFilter_Box.objectName()))
+        self.showFilter_Box.setChecked(getBox(self.showFilter_Box.objectName()))
+        self.savespot_Box.setChecked(getBox(self.savespot_Box.objectName()))
+        self.clear_Box.setChecked(getBox(self.clear_Box.objectName()))
+
+        # Line Edits
+
+        self.APIKey_edit.setText(get_line_edit(self.APIKey_edit.objectName()))
+
+        # Filters
+
+        try:
+            current_filter_index = settingsLoaded["currentFilter"]
+            current_filter = settingsLoaded["filters"][current_filter_index]
+        except IndexError:
+            current_filter_index = 0
+            error(f"Warning: Missing filter index {settingsLoaded['currentFilter']}")
+            current_filter = settingsLoaded["filters"][current_filter_index]
+
+        self.filterBox.clear()  # Gets rid of the "Default" filter option
+
+        for i in settingsLoaded["filters"]:
+            self.filterBox.addItem(list(i.keys())[0], list(i.values())[0])
+
+        self.filterBox.setCurrentIndex(current_filter_index)
+
+        # Spin Boxes
+        self.doubleSpinBox_61.setValue(float(getWeight(self.doubleSpinBox_61.objectName())))
+        self.doubleSpinBox_62.setValue(float(getWeight(self.doubleSpinBox_62.objectName())))
+        self.doubleSpinBox_63.setValue(float(getWeight(self.doubleSpinBox_63.objectName())))
+        self.doubleSpinBox_64.setValue(float(getWeight(self.doubleSpinBox_64.objectName())))
+        self.doubleSpinBox_49.setValue(float(getWeight(self.doubleSpinBox_49.objectName())))
+        self.doubleSpinBox_50.setValue(float(getWeight(self.doubleSpinBox_50.objectName())))
+        self.doubleSpinBox_51.setValue(float(getWeight(self.doubleSpinBox_51.objectName())))
+        self.doubleSpinBox_52.setValue(float(getWeight(self.doubleSpinBox_52.objectName())))
+        self.doubleSpinBox_65.setValue(float(getWeight(self.doubleSpinBox_65.objectName())))
+        self.doubleSpinBox_66.setValue(float(getWeight(self.doubleSpinBox_66.objectName())))
+        self.doubleSpinBox_67.setValue(float(getWeight(self.doubleSpinBox_67.objectName())))
+        self.doubleSpinBox_68.setValue(float(getWeight(self.doubleSpinBox_68.objectName())))
+        self.doubleSpinBox_69.setValue(float(getWeight(self.doubleSpinBox_69.objectName())))
+        self.doubleSpinBox_70.setValue(float(getWeight(self.doubleSpinBox_70.objectName())))
+        self.doubleSpinBox_71.setValue(float(getWeight(self.doubleSpinBox_71.objectName())))
+        self.doubleSpinBox_72.setValue(float(getWeight(self.doubleSpinBox_72.objectName())))
+        self.doubleSpinBox_73.setValue(float(getWeight(self.doubleSpinBox_73.objectName())))
+        self.doubleSpinBox_74.setValue(float(getWeight(self.doubleSpinBox_74.objectName())))
+        self.doubleSpinBox_75.setValue(float(getWeight(self.doubleSpinBox_75.objectName())))
+        self.doubleSpinBox_76.setValue(float(getWeight(self.doubleSpinBox_76.objectName())))
+        self.doubleSpinBox_77.setValue(float(getWeight(self.doubleSpinBox_77.objectName())))
+        self.doubleSpinBox_78.setValue(float(getWeight(self.doubleSpinBox_78.objectName())))
+        self.doubleSpinBox_79.setValue(float(getWeight(self.doubleSpinBox_79.objectName())))
+        self.doubleSpinBox_80.setValue(float(getWeight(self.doubleSpinBox_80.objectName())))
+        self.doubleSpinBox.setValue(float(getWeight(self.doubleSpinBox.objectName())))
+        self.doubleSpinBox_2.setValue(float(getWeight(self.doubleSpinBox_2.objectName())))
+        self.doubleSpinBox_3.setValue(float(getWeight(self.doubleSpinBox_3.objectName())))
+        self.doubleSpinBox_4.setValue(float(getWeight(self.doubleSpinBox_4.objectName())))
+        self.doubleSpinBox_45.setValue(float(getWeight(self.doubleSpinBox_45.objectName())))
+        self.doubleSpinBox_46.setValue(float(getWeight(self.doubleSpinBox_46.objectName())))
+        self.doubleSpinBox_47.setValue(float(getWeight(self.doubleSpinBox_47.objectName())))
+        self.doubleSpinBox_48.setValue(float(getWeight(self.doubleSpinBox_48.objectName())))
+        self.doubleSpinBox_53.setValue(float(getWeight(self.doubleSpinBox_53.objectName())))
+        self.doubleSpinBox_54.setValue(float(getWeight(self.doubleSpinBox_54.objectName())))
+        self.doubleSpinBox_55.setValue(float(getWeight(self.doubleSpinBox_55.objectName())))
+        self.doubleSpinBox_56.setValue(float(getWeight(self.doubleSpinBox_56.objectName())))
+        self.doubleSpinBox_57.setValue(float(getWeight(self.doubleSpinBox_57.objectName())))
+        self.doubleSpinBox_58.setValue(float(getWeight(self.doubleSpinBox_58.objectName())))
+        self.doubleSpinBox_59.setValue(float(getWeight(self.doubleSpinBox_59.objectName())))
+        self.doubleSpinBox_60.setValue(float(getWeight(self.doubleSpinBox_60.objectName())))
 
     def UpdateLocalDB(self):
         try:
@@ -1580,8 +1963,7 @@ def main():
     QCoreApplication.setOrganizationName("FireFlies")
     QCoreApplication.setOrganizationDomain("https://github.com/Kataki-Takanashi")
     # SETTINGS = QSettings()
-
-    testMode = False
+    testmode = getBox("testMode_Box") # NOT DYNAMIC
 
     widget = QtWidgets.QStackedWidget()
     home = homeScreen()
@@ -1595,6 +1977,11 @@ def main():
     today = seeToday()
     stockT = todayStock()
     settings = Settings()  # to find stuff that looks like this use this regex \w{0,20}\s*\=\s*[^qQ]{0,20}\(\)$ https://regex-vis.com/?r=%5Cw%7B0%2C20%7D%5Cs*%5C%3D%5Cs*%5B%5EqQ%5D%7B0%2C20%7D%5C%28%5C%29%24&e=0
+
+    testmode = getBox(settings.testMode_Box.objectName())
+    # Connections
+    settings.filterBox.currentIndexChanged.connect(stockT.changeFilter)
+
     widget.addWidget(home)
     widget.addWidget(stock)
     widget.addWidget(halal)
@@ -1616,6 +2003,7 @@ QCoreApplication.setOrganizationName("FireFlies")
 QCoreApplication.setOrganizationDomain("https://github.com/Kataki-Takanashi")
 QCoreApplication.setApplicationName("HalalStockOrganizer")
 SETTINGS = QSettings()
+testmode = getBox("testMode_Box")  # NOT DYNAMIC
 
 app = QApplication(sys.argv)
 widget = QtWidgets.QStackedWidget()
@@ -1664,12 +2052,15 @@ widget.addWidget(settings)
 windowSettings = SETTINGS.value("window", defaultValue=[False, False], type=list)
 
 # testMode = settings.getSavedables()["boxes"][0]
-testMode = False
-print(testMode)
-
+testmode = getBox(settings.testMode_Box.objectName())
+# Connections
+settings.filterBox.currentIndexChanged.connect(lambda: stockT.changeFilter(settings.filterBox.currentIndex()))
+stockT.filters.currentIndexChanged.connect(lambda: settings.changeFilter(stockT.filters.currentIndex()))
+# print(getBox(settings.testMode_Box.objectName()))
 widget.show()
-widget.setFixedSize(487, 1387) if windowSettings[0] else None
-widget.move(0, 0) if windowSettings[1] else None
+if getBox("savespot_Box"):
+    widget.setFixedSize(487, 1387)  # if windowSettings[0] else None
+    widget.move(0, 0)  # if windowSettings[1] else None
 app.exec_()
 
 

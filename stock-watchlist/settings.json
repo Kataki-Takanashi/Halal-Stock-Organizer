@@ -1,0 +1,169 @@
+{
+  "boxes": [
+    {
+      "testMode_Box": false
+    },
+    {
+      "autoFilter_Box": false
+    },
+    {
+      "showFilter_Box": true
+    },
+    {
+      "savespot_Box": false
+    },
+    {
+      "clear_Box": false
+    }
+  ],
+  "line_edits": [
+    {
+      "APIKey_edit": ""
+    }
+  ],
+  "currentFilter": 0,
+  "filters": [
+    {
+      "Filter 1": [
+        "fa_salesqoq_o30",
+        "ind_stocksonly",
+        "ipodate_prev3yrs",
+        "sh_avgvol_o500",
+        "sh_short_o5",
+        "ta_changeopen_u",
+        "ta_sma20_pa",
+        "ta_sma200_pa",
+        "ta_sma50_pa"
+      ]
+    },
+    {
+      "Filter 2": [
+        "cap_midover",
+        "sh_curvol_o1000",
+        "ta_sma20_pa10"
+      ]
+    }
+  ],
+  "weights": [
+    {
+      "doubleSpinBox_61": 1.0
+    },
+    {
+      "doubleSpinBox_62": -1.0
+    },
+    {
+      "doubleSpinBox_63": 0.0
+    },
+    {
+      "doubleSpinBox_64": 0.0
+    },
+    {
+      "doubleSpinBox_49": 1.0
+    },
+    {
+      "doubleSpinBox_50": -1.0
+    },
+    {
+      "doubleSpinBox_51": 0.0
+    },
+    {
+      "doubleSpinBox_52": 0.0
+    },
+    {
+      "doubleSpinBox_65": 1.0
+    },
+    {
+      "doubleSpinBox_66": -1.0
+    },
+    {
+      "doubleSpinBox_67": 1.5
+    },
+    {
+      "doubleSpinBox_68": -1.0
+    },
+    {
+      "doubleSpinBox_69": 1.0
+    },
+    {
+      "doubleSpinBox_70": -1.0
+    },
+    {
+      "doubleSpinBox_71": 0.0
+    },
+    {
+      "doubleSpinBox_72": 0.0
+    },
+    {
+      "doubleSpinBox_73": 1.5
+    },
+    {
+      "doubleSpinBox_74": -1.5
+    },
+    {
+      "doubleSpinBox_75": 0.0
+    },
+    {
+      "doubleSpinBox_76": 0.0
+    },
+    {
+      "doubleSpinBox_77": 1.5
+    },
+    {
+      "doubleSpinBox_78": 0.0
+    },
+    {
+      "doubleSpinBox_79": 2.0
+    },
+    {
+      "doubleSpinBox_80": -2.0
+    },
+    {
+      "doubleSpinBox": 1.0
+    },
+    {
+      "doubleSpinBox_2": -1.0
+    },
+    {
+      "doubleSpinBox_3": 1.5
+    },
+    {
+      "doubleSpinBox_4": -1.5
+    },
+    {
+      "doubleSpinBox_45": 1.5
+    },
+    {
+      "doubleSpinBox_46": -1.5
+    },
+    {
+      "doubleSpinBox_47": 1.5
+    },
+    {
+      "doubleSpinBox_48": -1.5
+    },
+    {
+      "doubleSpinBox_53": 1.5
+    },
+    {
+      "doubleSpinBox_54": -1.5
+    },
+    {
+      "doubleSpinBox_55": 1.5
+    },
+    {
+      "doubleSpinBox_56": -1.5
+    },
+    {
+      "doubleSpinBox_57": 2.0
+    },
+    {
+      "doubleSpinBox_58": -2.0
+    },
+    {
+      "doubleSpinBox_59": 1.0
+    },
+    {
+      "doubleSpinBox_60": -1.5
+    }
+  ]
+}

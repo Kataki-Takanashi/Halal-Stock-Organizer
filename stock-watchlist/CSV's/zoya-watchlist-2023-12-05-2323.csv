@@ -1,0 +1,184 @@
+Name,Symbol,Compliance Status
+Oracle Corp.,0R1Z-LN,Pass
+Walt Disney Co (The),DIS,Fail
+Wayfair Inc - Class A,W,Fail
+AbCellera Biologics Inc,ABCL,Fail
+Five9 Inc,FIVN,Pass
+Gamestop Corporation - Class A,GME,Questionable
+Sandridge Energy Inc New,SD,Fail
+Extreme Networks Inc.,EXTR,Pass
+UiPath Inc - Class A,PATH,Pass
+Sunnova Energy International Inc,NOVA,Fail
+ChargePoint Holdings Inc - Class A,CHPT,Pass
+Iovance Biotherapeutics Inc,IOVA,Fail
+SoFi Technologies Inc,SOFI,Fail
+Netflix Inc.,NFLX,Questionable
+Entegris Inc,ENTG,Fail
+Capital One Financial Corp.,COF,Fail
+"MKS Instruments, Inc.",MKSI,Fail
+Jabil Inc,JBL,Pass
+PDD Holdings Inc - ADR,PDD,Fail
+Twilio Inc Class A,TWLO,Fail
+Lumentum Holdings Inc,LITE,Fail
+Wolfspeed Inc,WOLF,Fail
+Ionis Pharmaceuticals Inc,IONS,Fail
+Western Digital Corp.,WDC,Fail
+PBF Energy Inc - Class A,PBF,Fail
+Coherent Corp,COHR,Fail
+Caterpillar Inc.,CAT,Pass
+Western Alliance Bancorp,WAL,Fail
+RingCentral Inc. - Class A,RNG,Fail
+Air Lease Corp - Class A,AL,Fail
+C3.ai Inc - Class A,AI,Fail
+"Urban Outfitters, Inc.",URBN,Fail
+Zions Bancorporation N.A,ZION,Fail
+Flex Ltd,FLEX,Fail
+Upstart Holdings Inc,UPST,Fail
+Applovin Corp - Class A,APP,Fail
+Vertiv Holdings Co - Class A,VRT,Pass
+XP Inc - Class A,XP,Fail
+Fastly Inc - Class A,FSLY,Pass
+Rivian Automotive Inc - Class A,RIVN,Fail
+Goodyear Tire & Rubber Co.,GT,Fail
+Affirm Holdings Inc - Class A,AFRM,Fail
+Palantir Technologies Inc - Class A,PLTR,Questionable
+Carvana Co. - Class A,CVNA,Fail
+CCC Intelligent Solutions Holdings Inc,CCCS,Questionable
+Snap Inc - Class A,SNAP,Questionable
+Bausch Health Companies Inc,BHC,Fail
+ASE Technology Holding Co.Ltd - ADR,ASX,Fail
+Nu Holdings Ltd Class A,NU,Fail
+Equitrans Midstream Corporation,ETRN,Fail
+GoodRx Holdings Inc - Class A,GDRX,Fail
+Joby Aviation Inc,JOBY,Fail
+Ginkgo Bioworks Holdings Inc - Class A,DNA,Fail
+Symbotic Inc - Class A,SYM,Pass
+DigitalOcean Holdings Inc,DOCN,Fail
+Life Time Group Holdings Inc,LTH,Fail
+IonQ Inc,IONQ,Fail
+Recursion Pharmaceuticals Inc - Class A,RXRX,Fail
+Eos Energy Enterprises Inc - Class A,EOSE,Fail
+Oscar Health Inc - Class A,OSCR,Fail
+Mirion Technologies Inc. - Class A,MIR,Fail
+BWX Technologies Inc,BWXT,Fail
+Macy`s Inc,M,Fail
+Hess Midstream LP - Class A,HESM,Fail
+"Quest Diagnostics, Inc.",DGX,Fail
+"Titan International, Inc.",TWI,Fail
+AGCO Corp.,AGCO,Pass
+Conagra Brands Inc,CAG,Fail
+Dutch Bros Inc - Class A,BROS,Fail
+Bowlero Corp - Class A,BOWL,Fail
+J.M. Smucker Co.,SJM,Pass
+Northrop Grumman Corp.,NOC,Fail
+Constellation Energy Corporation,CEG,Pass
+Progressive Corp.,PGR,Fail
+LPL Financial Holdings Inc,LPLA,Fail
+W. P. Carey Inc,WPC,Fail
+Grocery Outlet Holding Corp,GO,Fail
+WEC Energy Group Inc,WEC,Fail
+Campbell Soup Co.,CPB,Fail
+Kellanova Co,K,Fail
+ZoomInfo Technologies Inc.,ZI,Pass
+Accenture plc,ACN,Pass
+MongoDB Inc,MDB,Pass
+Broadcom Inc,AVGO,Pass
+ASML Holding NV,ASML,Pass
+Lam Research Corp.,LRCX,Pass
+Monolithic Power System Inc,MPWR,Pass
+KLA Corp.,KLAC,Pass
+"Synopsys, Inc.",SNPS,Pass
+Adobe Inc,ADBE,Pass
+Super Micro Computer Inc,SMCI,Pass
+Workday Inc,WDAY,Pass
+Palo Alto Networks Inc,PANW,Pass
+Arista Networks Inc,ANET,Pass
+Atlassian Corporation,TEAM,Pass
+Crowdstrike Holdings Inc,CRWD,Pass
+Applied Materials Inc.,AMAT,Pass
+Zscaler Inc,ZS,Pass
+Advanced Micro Devices Inc.,AMD,Pass
+Fabrinet,FN,Pass
+"Teradyne, Inc.",TER,Pass
+Taiwan Semiconductor Manufacturing,TSM,Pass
+e.l.f. Beauty Inc,ELF,Pass
+Splunk Inc,SPLK,Pass
+Datadog Inc,DDOG,Pass
+Okta Inc,OKTA,Pass
+Ambarella Inc,AMBA,Pass
+Micron Technology Inc.,MU,Pass
+Elastic N.V,ESTC,Pass
+Rambus Inc.,RMBS,Pass
+Marvell Technology Inc,MRVL,Pass
+Cloudflare Inc,NET,Pass
+Smartsheet Inc,SMAR,Pass
+Gitlab Inc,GTLB,Pass
+DoubleVerify Holdings Inc,DV,Pass
+Nutanix Inc,NTNX,Pass
+Pure Storage Inc,PSTG,Pass
+"Immunogen, Inc.",IMGN,Pass
+Duolingo Inc,DUOL,Pass
+DoorDash Inc,DASH,Pass
+Noble Corp Plc,NE,Pass
+HashiCorp Inc,HCP,Fail
+Confluent Inc,CFLT,Pass
+Fluence Energy Inc,FLNC,Pass
+Asana Inc,ASAN,Pass
+SentinelOne Inc,S,Pass
+Credo Technology Group Holding Ltd,CRDO,Pass
+Zeta Global Holdings Corp,ZETA,Pass
+Velo3D Inc,VLD,Pass
+Navitas Semiconductor Corp,NVTS,Pass
+"Agilysys, Inc",AGYS,Pass
+Sarepta Therapeutics Inc,SRPT,Pass
+SoundHound AI Inc,SOUN,Pass
+Procore Technologies Inc,PCOR,Pass
+Samsara Inc,IOT,Pass
+Keurig Dr Pepper Inc,KDP,Fail
+Floor & Decor Holdings Inc,FND,Pass
+"Cal-Maine Foods, Inc.",CALM,Pass
+Halozyme Therapeutics Inc.,HALO,Fail
+Johnson & Johnson,JNJ,Pass
+Box Inc,BOX,Pass
+"Cadence Design Systems, Inc.",CDNS,Pass
+Weyerhaeuser Co.,WY,Pass
+HP Inc,HPQ,Fail
+"West Fraser Timber Co., Ltd.",WFG,Pass
+"O`Reilly Automotive, Inc.",ORLY,Pass
+Chevron Corp.,CVX,Pass
+Baxter International Inc.,BAX,Fail
+"Flowers Foods, Inc.",FLO,Pass
+Freeport-McMoRan Inc,FCX,Pass
+Chesapeake Energy Corp.,CHK,Pass
+CSG Systems International Inc.,CSGS,Fail
+Magnolia Oil & Gas Corp,MGY,Pass
+Exxon Mobil Corp.,XOM,Pass
+"Alliance Resource Partners, LP",ARLP,Pass
+"Vertex Pharmaceuticals, Inc.",VRTX,Pass
+Mckesson Corporation,MCK,Pass
+"Church & Dwight Co., Inc.",CHD,Pass
+Schneider National Inc,SNDR,Pass
+PepsiCo Inc,PEP,Pass
+"C.H. Robinson Worldwide, Inc.",CHRW,Pass
+Colgate-Palmolive Co.,CL,Pass
+Middleby Corp.,MIDD,Fail
+Merck & Co Inc,MRK,Pass
+Lilly(Eli) & Co,LLY,Pass
+ServiceNow Inc,NOW,Pass
+"EOG Resources, Inc.",EOG,Pass
+Regal Rexnord Corp,RRX,Fail
+Aspen Technology Inc,AZPN,Pass
+"Qualcomm, Inc.",QCOM,Pass
+NVIDIA Corp,NVDA,Pass
+Amazon.com Inc.,AMZN,Questionable
+Amazon.com Inc.,0R1O-LN,Questionable
+Alphabet Inc,0RIH-LN,Questionable
+Alphabet Inc,GOOGL,Questionable
+Alphabet Inc,0HD6-LN,Questionable
+Alphabet Inc,GOOG,Questionable
+Microsoft Corporation,0QYP-LN,Questionable
+Microsoft Corporation,MSFT,Questionable
+Apple Inc,0R2V-LN,Pass
+Apple Inc,AAPL,Pass
+Procter & Gamble Co.,PG,Pass
+Tesla Inc,TSLA,Pass
