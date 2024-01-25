@@ -31,3 +31,5 @@ c
 3stock-watchlist/tradingview_ta_kataki/technicals.py,9/d/9d9580caec06084012f8a59c447d3985b08261ec
 a
 1stock-watchlist/tradingview_ta_kataki/__init__.py,b/f/bf4d4e0be1b293ca72109c82a045c41cb4ae2e95
+S
+#stock-watchlist/homeScreenDialog.ui,c/6/c655d038b3d0684a3a6a15b916a42d2e891e888e

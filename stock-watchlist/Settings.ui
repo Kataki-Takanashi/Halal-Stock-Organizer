@@ -14,11 +14,30 @@
             <string>Settings</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout">
-            <item alignment="Qt::AlignRight">
-                <widget class="QPushButton" name="home_Button">
-                    <property name="text">
-                        <string>Home</string>
+            <item>
+                <widget class="QWidget" name="horizontalWidget" native="true">
+                    <property name="maximumSize">
+                        <size>
+                            <width>16777215</width>
+                            <height>44</height>
+                        </size>
                     </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_8">
+                        <item alignment="Qt::AlignLeft">
+                            <widget class="QPushButton" name="logs_Button">
+                                <property name="text">
+                                    <string>View Logs</string>
+                                </property>
+                            </widget>
+                        </item>
+                        <item alignment="Qt::AlignRight">
+                            <widget class="QPushButton" name="home_Button">
+                                <property name="text">
+                                    <string>Home</string>
+                                </property>
+                            </widget>
+                        </item>
+                    </layout>
                 </widget>
             </item>
             <item>

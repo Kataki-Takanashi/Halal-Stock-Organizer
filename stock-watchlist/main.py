@@ -7,6 +7,7 @@ from datetime import date
 from datetime import datetime
 
 import finviz
+import requests
 import timeago
 from finviz.screener import Screener
 
@@ -23,6 +24,7 @@ date_ago = today.strftime("%Y-%m-%d")
 timestamp = dt_string
 interval = ta.Interval.INTERVAL_4_HOURS
 # interval = "4h"
+
 with open('exchanges.json', 'r') as f:
     ticker_exchanges = json.load(f)
 with open('tickers.json', 'r') as f:
@@ -77,6 +79,8 @@ try:
             raise Exception(f"EOF: Invalid Line Edit ({line_edit})")
 
 
+        has_apikey = get_line_edit("APIKey_edit")
+
         t200 = {"name": "The 200!", "gWeight": getWeight("doubleSpinBox_57"), "bWeight": getWeight("doubleSpinBox_58"),
                 "spc": "Is the 200 crossing up or down?", "gsp": getWeight("doubleSpinBox_59"),
                 "bsp": getWeight("doubleSpinBox_60"), "notes": ""}
@@ -121,11 +125,29 @@ except Exception as e:
         "boxes": [
             {"testMode_Box": False},
             {"autoFilter_Box": False},
-            {"showFilter_Box": False},
+            {"showFilter_Box": True},
             {"savespot_Box": False},
-            {"clear_Box": False}
+            {"clear_Box": False},
         ],
-        "currentFilter": "",
+        "line_edits": [{"APIKey_edit": ""}],
+        "currentFilter": 0,
+        "filters": [
+            {
+                "Filter 1": [
+                    "fa_salesqoq_o30",
+                    "ind_stocksonly",
+                    "ipodate_prev3yrs",
+                    "sh_avgvol_o500",
+                    "sh_short_o5",
+                    "ta_changeopen_u",
+                    "ta_sma20_pa",
+                    "ta_sma200_pa",
+                    "ta_sma50_pa",
+                ]
+            },
+            {"Filter 2": ["cap_midover", "sh_curvol_o1000", "ta_sma20_pa10"]},
+        ],
+        "db_last_update": "2024-01-23",
         "weights": [
             {"doubleSpinBox_61": 1.0},
             {"doubleSpinBox_62": -1.0},
@@ -166,9 +188,8 @@ except Exception as e:
             {"doubleSpinBox_57": 2.0},
             {"doubleSpinBox_58": -2.0},
             {"doubleSpinBox_59": 1.0},
-            {"doubleSpinBox_60": -1.5}
-        ]
-
+            {"doubleSpinBox_60": -1.5},
+        ],
     }
 
 
@@ -198,6 +219,8 @@ except Exception as e:
                 pass
         raise Exception(f"EOF: Invalid Line Edit ({line_edit})")
 
+
+    has_apikey = get_line_edit("APIKey_edit")
 
     t200 = {"name": "The 200!", "gWeight": 2, "bWeight": -2, "spc": "Is the 200 crossing up or down?", "gsp": 1,
             "bsp": -1.5, "notes": ""}
@@ -286,12 +309,13 @@ class homeScreen(QDialog):
             # print(timeago.format("2024-1-23", today.strftime("%Y-%m-%d")))
 
 
-        elif not 'month' in ago or not 'year' in ago or not 'months' in ago or not 'years' in ago:
+        elif not 'month' in ago and not 'year' in ago and not 'months' in ago and not 'years' in ago:
             self.db_last_update_label.setText(f"Database last updated: {ago}")
             self.db_last_update_label.setStyleSheet("color: green")
             # print(timeago.format(settingsLoaded["db_last_update"], today.strftime("%Y-%m-%d")))
 
         else:
+            # print("long ago")
             self.db_last_update_label.setText(f"Database last updated: {ago}")
 
     def showStockCheck(self):
@@ -1147,11 +1171,15 @@ def merge_json(old_file, new_file, output_file):
         for old_entry in old_data["logs"]:
             if old_entry["ticker"] == ticker:
                 # Update existing halal status if ticker exists in old data
+                if old_entry["halal"] != new_entry["halal"]:
+                    error(
+                        f"{ticker}'s halal status has changed to {new_entry['halal']}! It used to be {old_entry['halal']}.")
                 old_entry["halal"] = new_entry["halal"]
                 break
         else:
             # Add missing ticker data from the new file to the old data
             old_data["logs"].append(new_entry)
+            error(f"Added {new_entry['ticker']} to DB. It is {'halal' if new_entry['halal'] else 'not halal'}.")
 
     # Write the merged data to a new JSON file
     with open(output_file, 'w') as merged_json:
@@ -1175,6 +1203,49 @@ def get_exchange(ticker):
         except KeyError:
             pass
     return False
+
+
+def UpdateLocalDB_api(api_key):
+    sandbox_url = "https://sandbox-api.zoya.finance/graphql"
+    sandbox_apikey = "sandbox-82dbe157-5d4e-47a8-b16b-c5b5d9fc17aa"
+    zoya_url = "https://sandbox-api.zoya.finance/graphql"
+
+    headers = {"Authorization": sandbox_apikey, "Content-Type": "application/json"}
+    query = """
+    query ListCompliantStocks {
+      basicCompliance {
+        reports(input: {
+          filters: { status: COMPLIANT }
+        }) {
+          items {
+            symbol
+            status
+          }
+          nextToken
+        }
+      }
+    }
+    """
+
+    # Prepare the request payload
+    payload = {"query": query}
+
+    # Send the GraphQL request
+    response = requests.post(sandbox_url, headers=headers, json=payload)
+    # print(response.json())
+
+    new_data = {
+        "logs": [
+            {"ticker": item["symbol"], "halal": item["status"] == "COMPLIANT"} for item in
+            response.json()["data"]["basicCompliance"]["reports"]["items"]
+        ]
+    }
+
+    if not testMode:
+        with open('new_data.json', 'w') as new_data_file:
+            json.dump(new_data, new_data_file, indent=4)
+
+        merge_json('tickers.json', 'new_data.json', 'new_data.json')
 
 
 class halalChic(QDialog):
@@ -1778,8 +1849,9 @@ class Settings(QDialog):  # TODO make sure new filters match format with regex
         # self.filterBox.addItems(i for i in stockT.getSavables()["filters"].keys())
         # self.filterBox.currentIndexChanged.connect(self.changeFilter)
         self.saveButton.clicked.connect(self.saveSettings)
-        self.UpdateLocalDB_button.clicked.connect(self.UpdateLocalDB)
+        self.UpdateLocalDB_button.clicked.connect(self.UpdateLocalDB_csv)
         self.APIKey_edit_button.clicked.connect(self.enableAPIedit)
+        self.logs_Button.clicked.connect(self.viewLogs)
 
         self.db_updated_today = False
 
@@ -1807,6 +1879,9 @@ class Settings(QDialog):  # TODO make sure new filters match format with regex
 
     def goHome(self):
         widget.setCurrentIndex(widget.currentIndex() - 10)
+
+    def viewLogs(self):
+        widget.setCurrentIndex(widget.currentIndex() + 1)
 
     def enableAPIedit(self):
         self.APIKey_edit.setEnabled(True)
@@ -1967,7 +2042,7 @@ class Settings(QDialog):  # TODO make sure new filters match format with regex
         self.doubleSpinBox_59.setValue(float(getWeight(self.doubleSpinBox_59.objectName())))
         self.doubleSpinBox_60.setValue(float(getWeight(self.doubleSpinBox_60.objectName())))
 
-    def UpdateLocalDB(self):
+    def UpdateLocalDB_csv(self):
         try:
             options = QFileDialog.Options()
             options |= QFileDialog.DontUseNativeDialog
@@ -1983,6 +2058,8 @@ class Settings(QDialog):  # TODO make sure new filters match format with regex
 
                 self.db_updated_today = True
 
+                self.saveSettings()
+
 
         except:
             self.UpdateLocalDB_button.setStyleSheet("color: red")
@@ -1991,13 +2068,48 @@ class Settings(QDialog):  # TODO make sure new filters match format with regex
             self.UpdateLocalDB_button.setStyleSheet("color: white")
             self.UpdateLocalDB_button.setText("Update Local Tickers (.csv)")
 
+
+class Logs_Viewer(QDialog):
+    def __init__(self):
+        super(Logs_Viewer, self).__init__()
+        uic.loadUi("Logs_Viewer.ui", self)
+
+        self.home_Button.clicked.connect(self.goHome)
+        self.back_Button.clicked.connect(self.goBack)
+
+        self.logsFile = 'errors.json'
+
+        self.loadLogs()
+
+    def goHome(self):
+        widget.setCurrentIndex(widget.currentIndex() - 11)
+
+    def goBack(self):
+        widget.setCurrentIndex(widget.currentIndex() - 1)
+
+    def loadLogs(self):
+        with open(self.logsFile, 'r') as logs_file:
+            loaded = json.load(logs_file)['logs']
+            parsed_data_formated = ""
+            for i in loaded:
+                timestamp = list(i.values())[0][0]['timestamp']
+                error = list(i.values())[0][0]['error']
+
+                parsed_data_formated += 'Time: ' + timestamp + ':\n' + error + '\n\n\n'
+
+            self.Viewer.setText(parsed_data_formated)
+
+            # scrollbar = self.Viewer.verticalScrollBar()
+            # scrollbar.setValue(scrollbar.maximum()) #FIXME: Why does this never work
+
+
 def main():
     app = QApplication(sys.argv)
 
     QCoreApplication.setOrganizationName("FireFlies")
     QCoreApplication.setOrganizationDomain("https://github.com/Kataki-Takanashi")
     # SETTINGS = QSettings()
-    testmode = getBox("testMode_Box") # NOT DYNAMIC
+    testMode = getBox("testMode_Box")  # NOT DYNAMIC
 
     widget = QtWidgets.QStackedWidget()
     home = homeScreen()
@@ -2011,8 +2123,9 @@ def main():
     today = seeToday()
     stockT = todayStock()
     settings = Settings()  # to find stuff that looks like this use this regex \w{0,20}\s*\=\s*[^qQ]{0,20}\(\)$ https://regex-vis.com/?r=%5Cw%7B0%2C20%7D%5Cs*%5C%3D%5Cs*%5B%5EqQ%5D%7B0%2C20%7D%5C%28%5C%29%24&e=0
+    logs = Logs_Viewer()
 
-    testmode = getBox(settings.testMode_Box.objectName())
+    testMode = getBox(settings.testMode_Box.objectName())
     # Connections
     settings.filterBox.currentIndexChanged.connect(stockT.changeFilter)
 
@@ -2027,6 +2140,7 @@ def main():
     widget.addWidget(today)
     widget.addWidget(stockT)
     widget.addWidget(settings)
+    widget.addWidget(logs)
     widget.show()
     widget.setFixedSize(487, 1387)  # TODO setting to save current window pos and one for size as default
     widget.move(0, 0)
@@ -2037,7 +2151,7 @@ QCoreApplication.setOrganizationName("FireFlies")
 QCoreApplication.setOrganizationDomain("https://github.com/Kataki-Takanashi")
 QCoreApplication.setApplicationName("HalalStockOrganizer")
 SETTINGS = QSettings()
-testmode = getBox("testMode_Box")  # NOT DYNAMIC
+testMode = getBox("testMode_Box")  # NOT DYNAMIC
 
 app = QApplication(sys.argv)
 widget = QtWidgets.QStackedWidget()
@@ -2052,6 +2166,7 @@ yesterday = seeYesterday()
 today = seeToday()
 stockT = todayStock()
 settings = Settings()
+logs = Logs_Viewer()
 widget.addWidget(home)
 widget.addWidget(stock)
 widget.addWidget(halal)
@@ -2063,6 +2178,7 @@ widget.addWidget(yesterday)
 widget.addWidget(today)
 widget.addWidget(stockT)
 widget.addWidget(settings)
+widget.addWidget(logs)
 
 # halalSettings = json.loads(SETTINGS.value("halal", defaultValue=json.dumps({"fields": [halal.ticker_Input.text(), halal.lotso_Input.toPlainText()], "halal": []})))
 # stockSettings = json.loads(SETTINGS.value("stock", defaultValue=json.dumps({"halal": [], "filters": {"Default": ['fa_salesqoq_o30', 'ind_stocksonly', 'ipodate_prev3yrs', 'sh_avgvol_o500', 'sh_short_o5',
@@ -2086,11 +2202,18 @@ widget.addWidget(settings)
 windowSettings = SETTINGS.value("window", defaultValue=[False, False], type=list)
 
 # testMode = settings.getSavedables()["boxes"][0]
-testmode = getBox(settings.testMode_Box.objectName())
+testMode = getBox(settings.testMode_Box.objectName())
 # Connections
 settings.filterBox.currentIndexChanged.connect(lambda: stockT.changeFilter(settings.filterBox.currentIndex()))
 stockT.filters.currentIndexChanged.connect(lambda: settings.changeFilter(stockT.filters.currentIndex()))
 # print(getBox(settings.testMode_Box.objectName()))
+if has_apikey:
+    home.Update_Button.clicked.connect(lambda: UpdateLocalDB_api(has_apikey))
+    settings.db_updated_today = True
+    settings.saveSettings()
+else:
+    home.Update_Button.clicked.connect(settings.UpdateLocalDB_csv)
+
 widget.show()
 if getBox("savespot_Box"):
     widget.setFixedSize(487, 1387)  # if windowSettings[0] else None
