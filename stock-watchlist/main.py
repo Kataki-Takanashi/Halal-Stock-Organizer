@@ -1210,7 +1210,7 @@ def UpdateLocalDB_api(api_key):
     sandbox_apikey = "sandbox-82dbe157-5d4e-47a8-b16b-c5b5d9fc17aa"
     zoya_url = "https://sandbox-api.zoya.finance/graphql"
 
-    headers = {"Authorization": sandbox_apikey, "Content-Type": "application/json"}
+    headers = {"Authorization": api_key, "Content-Type": "application/json"}
     query = """
     query ListCompliantStocks {
       basicCompliance {
@@ -1231,7 +1231,7 @@ def UpdateLocalDB_api(api_key):
     payload = {"query": query}
 
     # Send the GraphQL request
-    response = requests.post(sandbox_url, headers=headers, json=payload)
+    response = requests.post(zoya_url, headers=headers, json=payload)
     # print(response.json())
 
     new_data = {

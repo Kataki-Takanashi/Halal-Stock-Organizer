@@ -33,3 +33,7 @@ a
 1stock-watchlist/tradingview_ta_kataki/__init__.py,b/f/bf4d4e0be1b293ca72109c82a045c41cb4ae2e95
 S
 #stock-watchlist/homeScreenDialog.ui,c/6/c655d038b3d0684a3a6a15b916a42d2e891e888e
+M
+stock-watchlist/new_data.json,f/f/ff9015df6cc992ee027a357dd2cd860ae89ad3a6
+N
+stock-watchlist/Logs_Viewer.ui,9/f/9f0748a43a9ad5e8242820fc35317437b85e5636
