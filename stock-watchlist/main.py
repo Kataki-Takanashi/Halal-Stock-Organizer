@@ -10,6 +10,7 @@ import finviz
 import requests
 import timeago
 from finviz.screener import Screener
+from line_profiler_pycharm import profile
 
 import tradingview_ta_kataki as ta
 
@@ -1205,7 +1206,7 @@ def get_exchange(ticker):
     return False
 
 
-def UpdateLocalDB_api(api_key):
+def UpdateLocalDB_api(api_key: str):
     sandbox_url = "https://sandbox-api.zoya.finance/graphql"
     sandbox_apikey = "sandbox-82dbe157-5d4e-47a8-b16b-c5b5d9fc17aa"
     zoya_url = "https://sandbox-api.zoya.finance/graphql"
@@ -2103,6 +2104,7 @@ class Logs_Viewer(QDialog):
             # scrollbar.setValue(scrollbar.maximum()) #FIXME: Why does this never work
 
 
+@profile
 def main():
     app = QApplication(sys.argv)
 
